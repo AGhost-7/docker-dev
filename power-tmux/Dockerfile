@@ -7,6 +7,8 @@ RUN sudo apt-get update && \
 
 ENV XDG_CONFIG_HOME $HOME/.config
 
+ENV LANG en_US.UTF-8
+
 ADD powerline $HOME/.config/powerline
 
 ADD .tmux.conf $HOME/.tmux.conf
@@ -27,7 +29,7 @@ RUN git clone https://github.com/powerline/fonts.git /tmp/fonts && \
 	/tmp/fonts/install.sh
 
 RUN sudo apt-get clean && \
-	apt-get remove python-dev python-pip software-properties-common fontconfig -y
+	sudo apt-get remove python-dev python-pip software-properties-common fontconfig -y
 
 CMD ["tmux", "new", "-A", "aghost-7"]
 
