@@ -1,0 +1,21 @@
+{
+	"segments": {
+		"right": [
+			{
+				"function": "powerline.segments.common.time.date",
+				"name": "time",
+				"args": {
+					"format": "%H:%M",
+					"istime": true
+				},
+				"priority": 50
+			},
+			{
+				"function": "powerline.segments.common.net.hostname"
+			},
+			{
+				"function": "powerline.segments.common.net.internal_ip"
+			}
+		]
+	}
+}
