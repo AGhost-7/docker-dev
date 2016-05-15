@@ -38,5 +38,5 @@ RUN sudo apt-get clean && \
 	sudo rm -r /tmp/fonts && \
 	sudo rm /tmp/bashrc-additions.sh
 
-CMD ["tmux", "new", "-A", "aghost-7"]
+CMD ["bin/bash"]
 

@@ -17,5 +17,5 @@ RUN curl -sSL https://get.docker.com/ | sh
 # cache is useless to keep
 RUN sudo apt-get clean
 
-CMD ["bash"]
+CMD ["bin/bash"]
 
