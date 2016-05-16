@@ -6,6 +6,11 @@ can build images for a Rust or Scala environment (or w/e language) from the
 same neovim/tmux/powerline setup, without having to strip out the nodejs part
 first.
 
+To run, just:
+```
+docker run -ti aghost7/nodejs-dev:v0.10.38 bash
+```
+
 ## Images
 - `ubuntu-dev-base`: Ubuntu Trusty image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
