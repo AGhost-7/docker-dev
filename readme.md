@@ -15,7 +15,7 @@ docker run -ti aghost7/nodejs-dev:v0.10.38 bash
 - `ubuntu-dev-base`: Ubuntu Trusty image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
 Main thing with this image though is that it downgrades from root to a regular
-user. It is also configured to also passwordless `sudo` just like those vagrant
+user. It is also configured to allow passwordless `sudo` just like those vagrant
 images.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 - `ubuntu-nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
@@ -37,4 +37,4 @@ Breaking it down this way allows one to just run
 specific programing languages and libraries.
 
 ## TODO
-Add `htop` \w config, and pre-install `tree`.
+Add `htop` \w config, and pre-install `tree`. Also want `tldr` (get using python-pip).
