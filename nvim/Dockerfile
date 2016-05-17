@@ -30,7 +30,7 @@ RUN sudo apt-get install cmake -y && \
 	echo $HOME && \
 	/home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py
 
-RUN sudo apt-get purge python-dev software-properties-common cmake -y && \
+RUN sudo apt-get purge software-properties-common cmake -y && \
 	sudo apt-get autoremove -y && \
 	sudo apt-get clean && \
 	sudo rm /tmp/bashrc-additions.sh
