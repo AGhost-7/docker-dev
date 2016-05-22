@@ -24,7 +24,7 @@ setup (no language-specific plugins in there).
 nodejs version which is pre-installed. For example nodejs v0.10.38 is named 
 aghost7/nodejs-dev:v0.10.38.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
-`aghost/rust-dev:stable` is the only current tag available.
+`aghost7/rust-dev:stable` is the only current tag available.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
