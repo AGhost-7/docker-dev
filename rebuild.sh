@@ -9,4 +9,4 @@ rebuild-img ubuntu-dev-base latest
 rebuild-img power-tmux latest
 rebuild-img nvim latest
 rebuild-img nodejs-dev v0.10.38
-
+rebuild-img rust-dev stable
