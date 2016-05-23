@@ -24,7 +24,7 @@ RUN sudo pip install docker-compose
 
 # Install misc help tools
 RUN sudo pip install tldr && \
-	sudo apt-get install man-db
+	sudo apt-get install man-db -y
 
 # cache is useless to keep
 RUN sudo apt-get autoremove -y && \
