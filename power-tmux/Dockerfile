@@ -34,7 +34,7 @@ RUN git clone https://github.com/powerline/fonts.git /tmp/fonts && \
 	/tmp/fonts/install.sh
 
 RUN sudo apt-get clean && \
-	sudo apt-get remove python-pip software-properties-common fontconfig -y && \
+	sudo apt-get remove software-properties-common fontconfig -y && \
 	sudo rm -r /tmp/fonts && \
 	sudo rm /tmp/bashrc-additions.sh
 
