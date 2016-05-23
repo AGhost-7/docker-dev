@@ -22,6 +22,10 @@ RUN curl -sSL https://get.docker.com/ | sh && \
 
 RUN sudo pip install docker-compose
 
+# Install misc help tools
+RUN sudo pip install tldr && \
+	sudo apt-get install man-db
+
 # cache is useless to keep
 RUN sudo apt-get autoremove -y && \
 	sudo apt-get clean
