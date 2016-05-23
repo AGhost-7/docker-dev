@@ -10,7 +10,7 @@ COPY plugin.vim /tmp/plugin.vim
 RUN cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim && \
 	nvim +PlugInstall +qall
 
-# Install racer completer/recomple ycmd
+# Install racer completer/recompile ycmd
 RUN sudo apt-get update && \
 	sudo apt-get install cmake -y && \
 	/home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py --racer-completer
