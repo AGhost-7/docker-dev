@@ -15,11 +15,12 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh
 # Set env variable so it installs locally (no need for sudo)
 ENV NVM_DIR /home/aghost-7/.nvm
 
+ARG NODE_VERSION
+
 # TODO: Should be able to have different tags for different versions.
 RUN . /home/aghost-7/.nvm/nvm.sh && \
-	nvm install v0.10.38 && \
-	nvm alias default v0.10.38 && \
-	npm install -g jscs@1.13.1 nodemon jshint
+	nvm install $NODE_VERSION && \
+	nvm alias default $NODE_VERSION
 
 RUN sudo rm /tmp/*.vim
 
