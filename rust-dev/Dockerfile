@@ -15,6 +15,9 @@ RUN sudo apt-get update && \
 	sudo apt-get install cmake -y && \
 	/home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py --racer-completer
 
+# I need the header files in this one so I can compile against it for hyper.
+RUN sudo apt-=get install libssl-dev -y
+
 RUN sudo apt-get remove cmake -y && \
 	sudo apt-get clean && \
 	sudo apt-get autoremove -y
