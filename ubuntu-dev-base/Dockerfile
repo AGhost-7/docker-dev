@@ -12,6 +12,9 @@ USER aghost-7
 # For some reason, this environment variable isn't set by docker.
 ENV USER aghost-7
 
+# Required for `clear` command to work, etc.
+ENV TERM screen-256color
+
 RUN sudo apt-get update
 
 # Super essential tools
