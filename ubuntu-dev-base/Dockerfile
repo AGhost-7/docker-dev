@@ -12,8 +12,12 @@ USER aghost-7
 # For some reason, this environment variable isn't set by docker.
 ENV USER aghost-7
 
-RUN sudo apt-get update && \
-	sudo apt-get install curl python-pip -y
+RUN sudo apt-get update
+
+# Super essential tools
+RUN sudo apt-get install tree curl -y
+
+RUN sudo apt-get install python-pip -y
 
 # For dockerception
 RUN curl -sSL https://get.docker.com/ | sh && \
@@ -25,6 +29,9 @@ RUN sudo pip install docker-compose
 # Install misc help tools
 RUN sudo pip install tldr && \
 	sudo apt-get install man-db -y
+
+# System info. Nethogs has a bug on trusty so just going to use iftop.
+RUN sudo apt-get install htop iotop iftop -y
 
 # cache is useless to keep
 RUN sudo apt-get autoremove -y && \

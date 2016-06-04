@@ -39,4 +39,5 @@ Breaking it down this way allows one to just run
 specific programing languages and libraries.
 
 ## TODO
-Add `htop` \w config, and pre-install `tree`. Also want `tldr` (get using python-pip).
+- Add `htop` \w config.
+- Upgrade to Xenial.
