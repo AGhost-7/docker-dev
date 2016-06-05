@@ -22,6 +22,9 @@ RUN sudo apt-get install tree curl -y
 
 RUN sudo apt-get install python-pip -y
 
+# See readme for how to get the clipboard working.
+RUN sudo apt-get install xclip -y
+
 # For dockerception
 RUN curl -sSL https://get.docker.com/ | sh && \
 	sudo usermod -aG docker aghost-7 && \

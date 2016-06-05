@@ -33,6 +33,10 @@ RUN sudo pip install powerline-status
 RUN git clone https://github.com/powerline/fonts.git /tmp/fonts && \
 	/tmp/fonts/install.sh
 
+# Add fzf fuzzy finder
+RUN git clone https://github.com/junegunn/fzf.git ~/.fzf && \
+	~/.fzf/install --all
+
 RUN sudo apt-get clean && \
 	sudo apt-get remove software-properties-common fontconfig -y && \
 	sudo rm -r /tmp/fonts && \

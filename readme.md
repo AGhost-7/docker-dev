@@ -38,6 +38,53 @@ Breaking it down this way allows one to just run
 `cat addition.vim >> $XDG_CONFIG_PATH/file` to add new plugins and configs for
 specific programing languages and libraries.
 
+## Calling Docker on the Host
+The docker daemon run over a socket. The command line tool is just a client to
+the daemon. In other words, if we make the 
+
+For some reason it needs `privileged` to work as well.
+```bash
+docker run -ti --rm \
+	--privileged \
+	--v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
+	aghost7/ubuntu-dev-base:latest \
+	bash
+```
+
+## SSH Forwarding and Git
+For ssh, just pass the socket over to the container.
+```
+docker run -ti --rm \
+	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+	-e SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+	aghost7/ubuntu-dev-base:latest \
+	bash
+```
+I like to avoid having to reconfigure git every time, so I mount a volume for
+`.gitconfig`. `~/.ssh/known_hosts` is also anoying.
+
+## Getting the Clipboard Working
+Basically, X11 is built in a manner that allows sending display data over the
+wire. I've managed to run GUI applications from a headless server through an
+ssh connection in the past. The way I'm doing this is through the same old
+unix socket trick for controlling the docker daemon that's on the host machine.
+
+```bash
+docker run -ti --rm \
+	-e DISPLAY=$DISPLAY \
+	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+	aghost7/ubuntu-dev-base:latest bash
+```
+
+On the host you'll need to disable one of the security features in X11.
+```bash
+xhost +
+```
+Disabling this shouldn't be a problem as long as you're on a single-user
+system. If there are other end-users in the system there's a way to do it
+properly...
+
+Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers
+
 ## TODO
-- Add `htop` \w config.
 - Upgrade to Xenial.

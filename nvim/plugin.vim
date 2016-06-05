@@ -43,5 +43,6 @@ Plug 'scrooloose/syntastic'
 " ~/.config/nvim/plugged/YouCompleteMe/install.py
 Plug 'Valloric/YouCompleteMe'
 
-
+" Minimalist mode.
+Plug 'junegunn/goyo.vim'
 
