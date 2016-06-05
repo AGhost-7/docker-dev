@@ -40,7 +40,8 @@ specific programing languages and libraries.
 
 ## Calling Docker on the Host
 The docker daemon run over a socket. The command line tool is just a client to
-the daemon. In other words, if we make the 
+the daemon. In other words, if we make the socket connectable from within the
+container we're in business.
 
 For some reason it needs `privileged` to work as well.
 ```bash
