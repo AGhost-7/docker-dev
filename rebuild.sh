@@ -1,13 +1,28 @@
 set -e
 
+push=1
+case "$1" in
+	"--no-push")
+		push=0
+		;;
+esac
+
+if [[ "$push" == "0" ]]; then
+	echo Skipping pushing to dockerhub
+fi
+
 rebuild-img() {
 	docker build -t aghost7/${1}:${2} "$1"
-	docker push aghost7/${1}:$2
+	if [[ "$push" == "1" ]]; then
+		docker push aghost7/${1}:$2
+	fi
 }
 
 rebuild-node() {
 	docker build -t aghost7/nodejs-dev:${1} --build-arg NODE_VERSION="$1" nodejs-dev
-	docker push aghost7/nodejs-dev:${1}
+	if [[ "$push" == "1" ]]; then
+		docker push aghost7/nodejs-dev:${1}
+	fi
 }
 
 rebuild-img ubuntu-dev-base latest
