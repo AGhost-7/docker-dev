@@ -19,3 +19,5 @@ exit () {
 		tmux detach
 	fi
 }
+
+export FZF_DEFAULT_OPTS='--color=light,hl:12,hl+:15,info:10,bg+:4'
