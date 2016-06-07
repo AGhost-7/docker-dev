@@ -47,5 +47,9 @@ set t_Co=256
 " This will close the current buffer without closing the window
 command Bd bp|bd #
 
+" Enable clipboard. Can use x11 forwarding or socket mounting to
+" make host clipboard accessible by the container.
+set clipboard+=unnamedplus
+
 " Annnd, load the plugin-specific configurations.
 source ~/.config/nvim/post-plugin.vim
