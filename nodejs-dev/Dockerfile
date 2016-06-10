@@ -22,6 +22,10 @@ RUN . /home/aghost-7/.nvm/nvm.sh && \
 	nvm install $NODE_VERSION && \
 	nvm alias default $NODE_VERSION
 
-RUN sudo rm /tmp/*.vim
+RUN sudo apt-get update && \
+	sudo apt-get install jq -y
+
+RUN sudo rm /tmp/*.vim && \
+	sudo apt-get clean
 
 CMD ["/bin/bash"]
