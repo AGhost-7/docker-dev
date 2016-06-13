@@ -1,0 +1,18 @@
+{
+	"segments": {
+		"left": [
+			{
+				"function": "powerline.segments.common.vsc.branch",
+				"args": {
+					"status_colors": true
+				}
+			},
+			{
+				"function": "powerline.segments.shell.cwd"
+			},
+			{
+				"function": "powerline.segments.shell.last_status"
+			}
+		]
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "Default",
+	"groups": {
+		"branch_clean": {
+			"fg": "white",
+			"bg": "darkblue",
+			"attrs": ["bold"]
+		},
+		"branch_dirty": {
+			"fg": "white",
+			"bg": "brightorange",
+			"attrs": ["bold"]
+		}
+	}
+}
