@@ -2,7 +2,7 @@
 	"segments": {
 		"left": [
 			{
-				"function": "powerline.segments.common.vsc.branch",
+				"function": "powerline.segments.common.vcs.branch",
 				"args": {
 					"status_colors": true
 				}

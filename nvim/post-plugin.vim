@@ -14,6 +14,4 @@ let g:airline_powerline_fonts = 1
 " Set the theme for vim-airline
 autocmd VimEnter * AirlineTheme powerlineish
 
-" Enable mouse mode, just don't want to have the single click so I can split
-" the panel when I feel like it.
-let g:NERDTreeMouseMode = 2
+let g:NERDTreeMouseMode = 3
