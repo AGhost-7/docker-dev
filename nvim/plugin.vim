@@ -29,11 +29,8 @@ Plug 'vim-airline/vim-airline-themes'
 " View man pages from inside vim
 Plug 'vim-utils/vim-man'
 
-" Now the tougher ones to set up
-
-" Syntax checker.
-" Requires: `npm install -g jshint` to install js support.
-Plug 'scrooloose/syntastic'
+" Async linter!
+Plug 'neomake/neomake'
 
 " Add autocomplete support
 " Requires:
