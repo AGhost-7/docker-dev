@@ -30,10 +30,21 @@ RUN sudo apt-get install cmake -y && \
 	echo $HOME && \
 	/home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py
 
-RUN sudo apt-get purge software-properties-common cmake -y && \
+# Shellcheck: Grade A shell script linter
+RUN git clone https://github.com/koalaman/shellcheck.git /tmp/shellcheck && \
+	sudo apt-get install haskell-platform -y && \
+	cabal update && \
+	cd /tmp/shellcheck && \
+	cabal install --force-reinstalls && \
+	sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
+
+# Cleanups
+RUN sudo apt-get purge software-properties-common cmake haskell-platform -y && \
 	sudo apt-get autoremove -y && \
 	sudo apt-get clean && \
-	sudo rm /tmp/bashrc-additions.sh
+	sudo rm /tmp/bashrc-additions.sh && \
+	rm -rf /tmp/shellcheck && \
+	rm -rf ~/.cabal
 
 CMD ["bin/bash"]
 

@@ -25,6 +25,8 @@ nodejs version which is pre-installed. For example nodejs v0.10.38 is named
 aghost7/nodejs-dev:v0.10.38.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 `aghost7/rust-dev:stable` is the only current tag available.
+- `py-dev`: Python configuration with autocomplete for python.
+`aghost7/py-dev:27` is the only image available for now.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
