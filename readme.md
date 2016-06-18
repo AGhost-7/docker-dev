@@ -86,5 +86,10 @@ xhost +si:localuser:$USER > /dev/null
 
 Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers
 
+## Complete Example Startup Script
+This is what I use on my current machine to get it working with everything.
+
+https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
+
 ## TODO
 - Upgrade to Xenial.
