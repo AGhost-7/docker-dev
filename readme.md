@@ -26,7 +26,7 @@ aghost7/nodejs-dev:v0.10.38.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 `aghost7/rust-dev:stable` is the only current tag available.
 - `py-dev`: Python configuration with autocomplete for python.
-`aghost7/py-dev:27` is the only image available for now.
+`aghost7/py-dev:2.7` is the only image available for now.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
@@ -49,7 +49,7 @@ For some reason it needs `privileged` to work as well.
 ```bash
 docker run -ti --rm \
 	--privileged \
-	--v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
+	-v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
 	aghost7/ubuntu-dev-base:latest \
 	bash
 ```
@@ -59,7 +59,7 @@ For ssh, just pass the socket over to the container.
 ```
 docker run -ti --rm \
 	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
-	-e SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
 	aghost7/ubuntu-dev-base:latest \
 	bash
 ```
