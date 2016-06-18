@@ -81,11 +81,8 @@ docker run -ti --rm \
 
 On the host you'll need to disable one of the security features in X11.
 ```bash
-xhost +
+xhost +si:localuser:$USER > /dev/null
 ```
-Disabling this shouldn't be a problem as long as you're on a single-user
-system. If there are other end-users in the system there's a way to do it
-properly...
 
 Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers
 
