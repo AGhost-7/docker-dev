@@ -25,6 +25,8 @@ nodejs version which is pre-installed. For example nodejs v0.10.38 is named
 aghost7/nodejs-dev:v0.10.38.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 `aghost7/rust-dev:stable` is the only current tag available.
+- `py-dev`: Python configuration with autocomplete for python.
+`aghost7/py-dev:2.7` is the only image available for now.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
@@ -47,7 +49,7 @@ For some reason it needs `privileged` to work as well.
 ```bash
 docker run -ti --rm \
 	--privileged \
-	--v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
+	-v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
 	aghost7/ubuntu-dev-base:latest \
 	bash
 ```
@@ -57,7 +59,7 @@ For ssh, just pass the socket over to the container.
 ```
 docker run -ti --rm \
 	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
-	-e SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
 	aghost7/ubuntu-dev-base:latest \
 	bash
 ```
@@ -79,13 +81,15 @@ docker run -ti --rm \
 
 On the host you'll need to disable one of the security features in X11.
 ```bash
-xhost +
+xhost +si:localuser:$USER > /dev/null
 ```
-Disabling this shouldn't be a problem as long as you're on a single-user
-system. If there are other end-users in the system there's a way to do it
-properly...
 
 Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers
+
+## Complete Example Startup Script
+This is what I use on my current machine to get it working with everything.
+
+https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
 
 ## TODO
 - Upgrade to Xenial.

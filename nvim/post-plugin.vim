@@ -15,3 +15,5 @@ let g:airline_powerline_fonts = 1
 autocmd VimEnter * AirlineTheme powerlineish
 
 let g:NERDTreeMouseMode = 3
+
+autocmd! BufWritePost * Neomake
