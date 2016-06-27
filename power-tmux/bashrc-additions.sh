@@ -21,3 +21,24 @@ exit () {
 }
 
 export FZF_DEFAULT_OPTS='--color=light,hl:12,hl+:15,info:10,bg+:4'
+
+# Utility to set "current working directory". For each new tab or window
+# you won't need to cd to the project config every time.
+
+fbind () {
+	case "$1" in
+		-u)
+			rm ~/.bindrc
+			;;
+		-c)
+			if [ -f ~/.bindrc ]; then
+				cd `cat ~/.bindrc`
+			fi
+			;;
+		*)
+			echo `readlink -f "$1"` > ~/.bindrc
+			;;
+	esac
+}
+
+fbind -c
