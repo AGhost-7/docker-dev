@@ -17,6 +17,10 @@ ENV NVM_DIR /home/aghost-7/.nvm
 
 ARG NODE_VERSION
 
+COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
+
+RUN cat /tmp/bashrc-additions.sh >> /home/aghost-7/.bashrc
+
 # TODO: Should be able to have different tags for different versions.
 RUN . /home/aghost-7/.nvm/nvm.sh && \
 	nvm install $NODE_VERSION && \

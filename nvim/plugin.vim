@@ -43,3 +43,5 @@ Plug 'Valloric/YouCompleteMe'
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
 
+" Required for sql completion
+Plug 'vim-scripts/dbext.vim'
