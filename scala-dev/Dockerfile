@@ -12,7 +12,7 @@ VOLUME /home/aghost-7/.ivy2/cache
 RUN curl -L -o /tmp/sbt.deb https://dl.bintray.com/sbt/debian/sbt-0.13.11.deb && \
 	sudo dpkg -i /tmp/sbt.deb
 
-COPY plugins.sbt /home/aghost-7/.sbt/0.13/plugins.sbt
+COPY plugins.sbt /home/aghost-7/.sbt/0.13/plugins/plugins.sbt
 
 COPY plugin.vim /tmp/plugin.vim
 
