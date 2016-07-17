@@ -97,3 +97,4 @@ https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
 
 ## TODO
 - Upgrade to Xenial.
+- Get coursier running on the scala image.
