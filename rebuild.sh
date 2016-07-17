@@ -32,3 +32,4 @@ rebuild-node v0.10.38
 rebuild-node v4.4.4
 rebuild-img rust-dev stable
 rebuild-img py-dev 2.7
+rebuild-img scala-dev latest
