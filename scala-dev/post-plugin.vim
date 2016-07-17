@@ -1,0 +1,3 @@
+
+au BufWritePost *.scala :EnTypeCheck
+

@@ -14,14 +14,20 @@ RUN curl -L -o /tmp/sbt.deb https://dl.bintray.com/sbt/debian/sbt-0.13.11.deb &&
 
 COPY plugins.sbt /home/aghost-7/.sbt/0.13/plugins/plugins.sbt
 
+RUN sudo chown -R aghost-7:aghost-7 ~/.sbt && \
+	sudo chown -R aghost-7:aghost-7 ~/.ivy2
+
 COPY plugin.vim /tmp/plugin.vim
 
-RUN cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim
+COPY post-plugin.vim /tmp/post-plugin.vim
 
-RUN nvim +PlugInstall +qall
+RUN cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim && \
+	cat /tmp/post-plugin.vim >> /home/aghost-7/.config/nvim/post-plugin.vim
 
 RUN sudo pip install websocket-client sexpdata
 
-RUN sudo chown -R aghost-7:aghost-7 ~/.sbt && \
-	sudo chown -R aghost-7:aghost-7 ~/.ivy2
+RUN nvim +PlugInstall +qall && \
+	nvim +UpdateRemotePlugins +qall
+
+
 
