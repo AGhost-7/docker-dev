@@ -27,6 +27,10 @@ aghost7/nodejs-dev:v0.10.38.
 `aghost7/rust-dev:stable` is the only current tag available.
 - `py-dev`: Python configuration with autocomplete for python.
 `aghost7/py-dev:2.7` is the only image available for now.
+- `scala-dev`: Scala configuration with ensime server. It is strongly
+recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
+host file system. Ivy is extremely slow at resolving dependencies.
+There is only a `latest` tag for the scala image.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
@@ -93,3 +97,7 @@ https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
 
 ## TODO
 - Upgrade to Xenial.
+- Get coursier running on the scala image.
+- Get something better for browsing git commits visually. Something like [gitv](https://github.com/gregsexton/gitv)
+- https://github.com/junegunn/vim-journal ? Or some sort of markdown display
+mode for vim.
