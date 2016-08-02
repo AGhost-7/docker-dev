@@ -45,5 +45,5 @@ RUN sudo apt-get install htop iotop iftop -y
 RUN sudo apt-get autoremove -y && \
 	sudo apt-get clean
 
-CMD ["bin/bash"]
+CMD ["/bin/bash"]
 
