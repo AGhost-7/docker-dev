@@ -1,9 +1,15 @@
+#!/usr/bin/env bash
+
 set -e
 
 push=1
 case "$1" in
 	"--no-push")
 		push=0
+		;;
+	"--only")
+		docker build -t aghost7/${2}:${3} "$2"
+		docker push aghost7/${2}:${3}
 		;;
 esac
 
@@ -33,3 +39,4 @@ rebuild-node v4.4.4
 rebuild-img rust-dev stable
 rebuild-img py-dev 2.7
 rebuild-img scala-dev latest
+rebuild-img pg-dev 9.3
