@@ -10,6 +10,7 @@ case "$1" in
 	"--only")
 		docker build -t aghost7/${2}:${3} "$2"
 		docker push aghost7/${2}:${3}
+		exit 0
 		;;
 esac
 
