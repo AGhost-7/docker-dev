@@ -33,7 +33,8 @@ host file system. Ivy is extremely slow at resolving dependencies.
 There is only a `latest` tag for the scala image.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
-version, and the only version currently available is Postgresql 9.3.
+version, and the only version currently available is Postgresql 9.3 (so there's
+just a `9.3` tag atm).
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
