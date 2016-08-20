@@ -15,8 +15,8 @@ docker run -ti aghost7/nodejs-dev:v0.10.38 bash
 - `ubuntu-dev-base`: Ubuntu Trusty image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
 Main thing with this image though is that it downgrades from root to a regular
-user. It is also configured to allow passwordless `sudo` just like those vagrant
-images.
+user. It is also configured to allow passwordless `sudo` just like those
+nice vagrant images.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 - `ubuntu-nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there).
@@ -31,6 +31,9 @@ aghost7/nodejs-dev:v0.10.38.
 recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.
 There is only a `latest` tag for the scala image.
+- `pg-dev`: Postgresql image with pgcli, a command line client with
+autocompletions and syntax highlighting. Tags correspond to the Postgresql
+version, and the only version currently available is Postgresql 9.3.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
