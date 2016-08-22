@@ -27,3 +27,6 @@ autocmd VimEnter * AirlineTheme powerlineish
 let g:NERDTreeMouseMode = 3
 
 autocmd! BufWritePost * Neomake
+
+" Force the emoji to show up in the completion dropdown
+let g:github_complete_emoji_force_available = 1

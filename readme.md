@@ -1,4 +1,5 @@
-Just a concept inspired by: https://github.com/bbartolome/docker-bash
+# Docker Dev
+Concept inspired by: https://github.com/bbartolome/docker-bash
 
 Basic idea is to have a portable development environment using docker. I took
 it a bit further and made everything layered (broke it down a lot). This way I

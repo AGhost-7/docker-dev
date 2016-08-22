@@ -45,3 +45,6 @@ Plug 'junegunn/goyo.vim'
 
 " Required for sql completion
 Plug 'vim-scripts/dbext.vim'
+
+" Autocomplete for github names, links, emoji, etc.
+Plug 'AGhost-7/github-complete.vim', { 'branch': 'feature-force-emoji', 'for': 'markdown' }
