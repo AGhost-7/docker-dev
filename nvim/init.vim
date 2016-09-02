@@ -51,5 +51,10 @@ command Bd bp|bd #
 " make host clipboard accessible by the container.
 set clipboard+=unnamedplus
 
+" Using the blazing fast ag search tool for lgrep calls instead.
+set grepprg=ag\ --nogroup\ --nocolor
+
 " Annnd, load the plugin-specific configurations.
 source ~/.config/nvim/post-plugin.vim
+
+
