@@ -23,7 +23,7 @@ apt-install cmake build-essential
 /home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py --racer-completer
 
 # I need the header files in this one so I can compile against it for hyper.
-apt-install libssl-dev -y
+apt-install libssl-dev
 
 # Install cargo file watcher
 cargo install cargo-watch
