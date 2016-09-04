@@ -36,7 +36,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 nvim +PlugInstall +qall
 
 # Install YouCompleteMe
-apt-install cmake gcc
+apt-install cmake
 /home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py
 
 # Shellcheck: Grade A shell script linter
