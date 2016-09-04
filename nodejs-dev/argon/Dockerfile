@@ -6,6 +6,6 @@ USER aghost-7
 # Set env variable so it installs locally (no need for sudo)
 ENV NVM_DIR /home/aghost-7/.nvm
 
-RUN NODE_VERSION=v4.5.0 curl -o- https://github.com/AGhost-7/docker-dev/blob/master/nodejs-dev | bash
+RUN NODE_VERSION=v4.5.0 curl -o- https://raw.githubusercontent.com/AGhost-7/docker-dev/master/nodejs-dev/build.sh | bash
 
 CMD ["/bin/bash"]
