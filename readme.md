@@ -21,11 +21,11 @@ nice vagrant images.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 - `ubuntu-nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there).
-- `nodejs-dev`: nvm + nodejs specific configurations. Tag convention uses the
-nodejs version which is pre-installed. For example nodejs v0.10.38 is named 
-aghost7/nodejs-dev:v0.10.38.
+- `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
+	- `v0.10.38`: Nodejs v0.10.38
+	- `argon`: Nodejs LTS.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
-`aghost7/rust-dev:stable` is the only current tag available.
+`stable` is the only current tag available.
 - `py-dev`: Python configuration with autocomplete for python.
 `aghost7/py-dev:2.7` is the only image available for now.
 - `scala-dev`: Scala configuration with ensime server. It is strongly
