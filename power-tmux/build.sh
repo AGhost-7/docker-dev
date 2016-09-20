@@ -12,6 +12,10 @@ apt-install() {
 
 sudo apt-get update
 
+# Fix file permissions from the copy
+sudo chown -R aghost-7:aghost-7 /home/aghost-7/.config
+sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
+
 apt-install software-properties-common fontconfig
 
 # Add tmux repo for latest
@@ -24,10 +28,6 @@ sudo apt-get update
 apt-install language-pack-en-base
 sudo dpkg-reconfigure locales
 sudo apt-get purge language-pack-en-base -y
-
-# Permissions? TODO: Check if I still need this...
-sudo chown -R aghost-7:aghost-7 /home/aghost-7/.config
-sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
 
 # Install tmux
 apt-install tmux
