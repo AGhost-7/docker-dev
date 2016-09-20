@@ -33,7 +33,8 @@ git clone https://github.com/ticki/dybuk.git
 cargo install --path dybuk
 rm -rf dybuk
 
-echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> /home/aghost-7/.bashrc
+# Put in profile to always have the path set properly
+echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> /home/aghost-7/.profile
 
 sudo apt-get purge build-essential cmake -y
 sudo apt-get clean

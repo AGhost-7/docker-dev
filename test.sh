@@ -4,7 +4,7 @@ set -e
 
 set -x
 
-tests=(ubuntu-dev-base power-tmux nvim nodejs-dev haskell-dev)
+tests=(ubuntu-dev-base power-tmux nvim nodejs-dev haskell-dev go-dev)
 
 for t in "${tests[@]}"; do
 	pushd "$t" >> /dev/null

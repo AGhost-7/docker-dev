@@ -49,8 +49,10 @@ apt-install tcpdump
 # Blazing fast search tool.
 apt-install silversearcher-ag
 
+# Add timestamp to history.
+echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
+
 # cache is useless to keep
 sudo apt-get clean
-
 sudo rm -rf /var/lib/apt/lists/*
 
