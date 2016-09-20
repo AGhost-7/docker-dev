@@ -4,6 +4,11 @@ set -e
 
 set -x
 
+if [ "$NODE_VERSION" == "" ]; then
+	echo 'NODE_VERSION not set'
+	exit 1
+fi
+
 tmp-download() {
 	curl -o "/tmp/$1" "https://raw.githubusercontent.com/AGhost-7/docker-dev/master/nodejs-dev/$1"
 }
@@ -29,6 +34,7 @@ rm /tmp/bashrc-additions.sh
 
 # Install specified node version.
 . /home/aghost-7/.nvm/nvm.sh
+echo "Installing node version $NODE_VERSION"
 nvm install "$NODE_VERSION"
 nvm alias default "$NODE_VERSION"
 
