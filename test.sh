@@ -4,12 +4,13 @@ set -e
 
 set -x
 
-tests=(ubuntu-dev-base power-tmux nvim nodejs-dev haskell-dev)
 
-for t in "${tests[@]}"; do
-	pushd "$t" >> /dev/null
-	bash "test.sh"
-	popd
+for d in *; do
+	if [ -d "$d" ] && [ -f "$d/test.sh" ];  then
+		pushd "$d" >> /dev/null
+		bash "test.sh"
+		popd >> /dev/null
+	fi
 done
 
 set +x
