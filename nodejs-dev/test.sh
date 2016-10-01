@@ -13,3 +13,4 @@ testnode() {
 }
 
 testnode v0.10.38
+testnode v4.5.0
