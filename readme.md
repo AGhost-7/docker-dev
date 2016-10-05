@@ -36,6 +36,7 @@ There is only a `latest` tag for the scala image.
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version, and the only version currently available is Postgresql 9.3 (so there's
 just a `9.3` tag atm).
+- `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
