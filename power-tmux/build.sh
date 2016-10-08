@@ -52,6 +52,7 @@ sudo rm /tmp/bashrc-additions.sh
 sudo apt-get purge software-properties fontconfig -y
 
 # Cleanup cache
+sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 

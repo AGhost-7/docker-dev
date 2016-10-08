@@ -53,6 +53,7 @@ apt-install silversearcher-ag
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 
 # cache is useless to keep
+sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 

@@ -49,6 +49,7 @@ sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
 
 # Cleanups
 sudo apt-get purge build-essential software-properties-common cmake haskell-platform -y
+sudo apt-get autoremove -y
 sudo apt-get clean
 rm -rf /tmp/shellcheck
 rm -rf ~/.cabal
