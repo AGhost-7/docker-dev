@@ -42,3 +42,5 @@ fbind () {
 }
 
 fbind -c
+
+alias nyan='nc -v nyancat.dakko.us 23'
