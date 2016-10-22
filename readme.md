@@ -33,9 +33,10 @@ recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.
 There is only a `latest` tag for the scala image.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
-autocompletions and syntax highlighting. Tags correspond to the Postgresql
-version, and the only version currently available is Postgresql 9.3 (so there's
-just a `9.3` tag atm).
+autocompletions and syntax highlighting. There is also a web based client
+([pgweb](https://github.com/sosedoff/pgweb)) that binds to the 8081 port. Tags
+correspond to the Postgresql version, and the only version currently available
+is Postgresql 9.3 (so there's just a `9.3` tag atm).
 - `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
 
 ## Vim Configuration
