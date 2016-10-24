@@ -43,5 +43,6 @@ sudo apt-get update
 sudo apt-get install jq -y
 
 # Cleanup whats left...
+sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
