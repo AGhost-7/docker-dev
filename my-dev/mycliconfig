@@ -1,0 +1,18 @@
+# vi: ft=dosini
+
+# TODO: I want auto expand enabled by default.
+# Need this as an option but its not part of the options atm...
+# https://github.com/dbcli/pgcli/issues/298
+
+[main]
+
+multi_line = True
+
+pager = cat
+
+less_chatty = True
+
+vi = True
+
+syntax_style = monokai
+
