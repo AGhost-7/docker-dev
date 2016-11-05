@@ -21,9 +21,6 @@ tmp-download post-plugin.vim
 cat /tmp/post-plugin.vim >> /home/aghost-7/.config/nvim/post-plugin.vim
 rm /tmp/post-plugin.vim
 
-# Install vim plugins
-nvim +PlugInstall +qall
-
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 
@@ -46,3 +43,6 @@ sudo apt-get install jq -y
 sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
+
+# Install vim plugins
+nvim +PlugInstall +qall

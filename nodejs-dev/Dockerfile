@@ -6,6 +6,8 @@ USER aghost-7
 
 ARG NODE_VERSION
 
+ENV NVM_DIR /home/aghost-7/.nvm
+
 COPY ./build.sh /tmp/build.sh
 
 RUN NODE_VERSION="$NODE_VERSION" /tmp/build.sh && \
