@@ -47,6 +47,9 @@ cd /tmp/shellcheck
 cabal install --force-reinstalls
 sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
 
+# Install ctags for code jump
+apt-install exuberant-ctags
+
 # Cleanups
 sudo apt-get purge build-essential software-properties-common cmake haskell-platform -y
 sudo apt-get autoremove -y
