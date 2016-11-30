@@ -35,6 +35,9 @@ apt-install tmux
 # POWER TMUX
 sudo pip install powerline-status
 
+# Make git status extra nice :)
+sudo pip install powerline-gitstatus
+
 # Install the nice powerline fonts :)
 git clone https://github.com/powerline/fonts.git /tmp/fonts
 /tmp/fonts/install.sh

@@ -40,7 +40,7 @@ apt-install cmake
 /home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py
 
 # Shellcheck: Grade A shell script linter
-git clone https://github.com/koalaman/shellcheck.git /tmp/shellcheck
+git clone -b v0.4.5 https://github.com/koalaman/shellcheck.git /tmp/shellcheck
 apt-install haskell-platform
 cabal update
 cd /tmp/shellcheck
