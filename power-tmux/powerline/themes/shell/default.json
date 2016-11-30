@@ -2,10 +2,7 @@
 	"segments": {
 		"left": [
 			{
-				"function": "powerline.segments.common.vcs.branch",
-				"args": {
-					"status_colors": true
-				}
+				"function": "powerline_gitstatus.gitstatus"
 			},
 			{
 				"function": "powerline.segments.shell.cwd"
