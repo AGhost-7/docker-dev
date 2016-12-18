@@ -4,6 +4,8 @@ set -e
 
 set -x
 
+docker build -t aghost7/nodejs-dev-base base
+
 testnode() {
 	docker build -t "aghost7/nodejs-dev:$1" "$1"
 
