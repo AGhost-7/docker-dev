@@ -6,9 +6,9 @@ RUN apt-get update && \
 	adduser --disabled-password --gecos '' aghost-7 && \
 	adduser aghost-7 sudo && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists
-
 
 # Required for `clear` command to work, etc.
 ENV TERM screen-256color
