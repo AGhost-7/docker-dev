@@ -12,7 +12,7 @@
 			"attrs": []
 		},
 		"gitstatus_branch_clean": {
-			"fg": "green",
+			"fg": "gray8",
 			"bg": "gray2",
 			"attrs": []
 		},
