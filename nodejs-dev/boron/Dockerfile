@@ -1,12 +1,9 @@
-
-FROM aghost7/nvim
+FROM aghost7/nodejs-dev-base
 
 USER aghost-7
 
-# Set env variable so it installs locally (no need for sudo)
-ENV NVM_DIR /home/aghost-7/.nvm
-
-RUN export NODE_VERSION="v6.9.1" && \
-	curl -o- https://raw.githubusercontent.com/AGhost-7/docker-dev/master/nodejs-dev/build.sh | bash
+RUN . ~/.nvm/nvm.sh && \
+	nvm install --lts=boron && \
+	nvm alias default stable
 
 CMD ["/bin/bash"]
