@@ -10,38 +10,49 @@ apt-install() {
 	sudo apt-get install --no-install-recommends -y "$@"
 }
 
+install-tmux() {
+	local tmuxVersion=2.3
+	local tmuxTar="tmux-$tmuxVersion.tar.gz"
+	pushd /tmp
+	curl -L -o "/tmp/tmux-$tmuxVersion.tar.gz" \
+		"https://github.com/tmux/tmux/releases/download/$tmuxVersion/$tmuxTar"
+	tar xzf "$tmuxTar"
+	local tmuxSrc="/tmp/tmux-$tmuxVersion"
+	pushd "$tmuxSrc"
+	apt-install libevent-dev libncurses-dev build-essential
+	./configure
+	make
+	sudo make install
+	popd
+	rm -rf "$tmuxSrc"
+	rm -rf "$tmuxTar"
+	sudo apt-get purge -y libevent-dev libncurses-dev build-essential
+	popd
+}
+
+install-powerline() {
+	# POWER TMUX
+	sudo pip install powerline-status
+
+	# Make git status extra nice :)
+	sudo pip install powerline-gitstatus
+}
+
 sudo apt-get update
 
 # Fix file permissions from the copy
 sudo chown -R aghost-7:aghost-7 /home/aghost-7/.config
 sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
 
-apt-install software-properties-common fontconfig
-
-# Add tmux repo for latest
-sudo add-apt-repository -y ppa:pi-rho/dev
-
 # Need to update package cache...
 sudo apt-get update
 
-# Need this for proper fonts....
+# We're going to want utf-8 support...
 apt-install language-pack-en-base
-sudo dpkg-reconfigure locales
-sudo apt-get purge language-pack-en-base -y
 
-# Install tmux
-apt-install tmux
+install-powerline
 
-# POWER TMUX
-sudo pip install powerline-status
-
-# Make git status extra nice :)
-sudo pip install powerline-gitstatus
-
-# Install the nice powerline fonts :)
-git clone https://github.com/powerline/fonts.git /tmp/fonts
-/tmp/fonts/install.sh
-sudo rm -r /tmp/fonts
+install-tmux
 
 # Add fzf fuzzy finder
 git clone https://github.com/junegunn/fzf.git ~/.fzf
@@ -51,11 +62,7 @@ git clone https://github.com/junegunn/fzf.git ~/.fzf
 cat /tmp/bashrc-additions.sh >> /home/aghost-7/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
-# Cleanup deps
-sudo apt-get purge software-properties fontconfig -y
-
 # Cleanup cache
-sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 
