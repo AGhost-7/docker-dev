@@ -65,4 +65,4 @@ sudo rm /tmp/bashrc-additions.sh
 # Cleanup cache
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
-sudo apt-get autoremove
+sudo apt-get autoremove -y
