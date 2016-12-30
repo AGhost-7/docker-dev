@@ -19,7 +19,8 @@ install-tmux() {
 	tar xzf "$tmuxTar"
 	local tmuxSrc="/tmp/tmux-$tmuxVersion"
 	pushd "$tmuxSrc"
-	apt-install libevent-dev libncurses-dev build-essential
+	# libevent-2.0-5 is a run-time requirement.
+	apt-install libevent-2.0-5 libevent-dev libncurses-dev build-essential
 	./configure
 	make
 	sudo make install

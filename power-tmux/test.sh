@@ -16,7 +16,7 @@ if [ "$files" != "" ]; then
 fi
 
 tmuxVersion="$(docker run --rm aghost7/power-tmux:latest tmux -V)"
-if [ "$tmuxVersion" -ne "tmux 2.3" ]; then
+if [[ "$tmuxVersion" != "tmux 2.3" ]]; then
 	echo Version $tmuxVersion is not equal 2.3
 	exit 1
 fi
