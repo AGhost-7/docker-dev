@@ -8,6 +8,9 @@ Plug 'crusoexia/vim-monokai'
 " Better file system browser
 Plug 'scrooloose/nerdtree'
 
+" Run tests straight from vim
+Plug 'janko-m/vim-test'
+
 " Nerdtree git support!
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -25,9 +28,6 @@ Plug 'vim-airline/vim-airline'
 
 " Download powerline theme for the statusbar.
 Plug 'vim-airline/vim-airline-themes'
-
-" View man pages from inside vim
-Plug 'vim-utils/vim-man'
 
 " Async linter!
 Plug 'neomake/neomake'
