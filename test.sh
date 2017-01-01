@@ -2,8 +2,7 @@
 
 set -e
 
-set -x
-
+set -o verbose
 
 for d in *; do
 	if [ -d "$d" ] && [ -f "$d/test.sh" ];  then
