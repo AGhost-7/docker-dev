@@ -10,6 +10,8 @@ COPY init.vim /home/aghost-7/.config/nvim/init.vim
 COPY plugin.vim /home/aghost-7/.config/nvim/plugin.vim
 COPY post-plugin.vim /home/aghost-7/.config/nvim/post-plugin.vim
 
+COPY ./ycm-install /usr/local/bin/ycm-install
+
 RUN /tmp/build.sh && \
 	sudo rm /tmp/build.sh
 
