@@ -21,6 +21,8 @@ sudo rm /tmp/bashrc-additions.sh
 sudo apt-get update
 sudo apt-get install jq -y
 
+ycm-install
+
 # Cleanup whats left...
 sudo apt-get autoremove -y
 sudo apt-get clean

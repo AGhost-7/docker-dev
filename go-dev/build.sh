@@ -14,4 +14,11 @@ export GOBIN="$GOROOT/bin"
 export PATH="$PATH:$GOROOT/bin"
 ' >> $HOME/.bashrc
 
+ycm-install --gocode-completer
+sudo apt-get autoremove -y
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/*
+
 nvim +PlugInstall +qall
+
+

@@ -36,6 +36,8 @@ rm -rf dybuk
 # Put in profile to always have the path set properly
 echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> /home/aghost-7/.profile
 
+ycm-install --racer-completer
+
 sudo apt-get purge build-essential cmake -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*

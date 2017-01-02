@@ -32,14 +32,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Async linter!
 Plug 'neomake/neomake'
 
-" Add autocomplete support
-" Requires:
-" sudo apt-get install python-dev python-pip
-" sudo pip install neovim
-" sudo apt-get install cmake
-" ~/.config/nvim/plugged/YouCompleteMe/install.py
-Plug 'Valloric/YouCompleteMe'
-
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
 
