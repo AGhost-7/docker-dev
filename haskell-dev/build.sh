@@ -2,6 +2,9 @@
 
 
 sudo apt-get update
+
+ycm-install
+
 sudo apt-get install --no-install-recommends haskell-platform -y
 
 use-nvim-config() {

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+sudo apt-get install -y --no-install-recommends \
+	build-essential python-dev cmake
+
+echo "Plug 'Valloric/YouCompleteMe'" >> "$HOME/.config/nvim/plugin.vim"
+
+nvim +PlugInstall +qall
+
+"$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
+
+sudo apt-get purge build-essential python-dev cmake -y
