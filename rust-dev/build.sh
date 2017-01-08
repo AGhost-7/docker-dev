@@ -11,7 +11,7 @@ apt-install() {
 sudo apt-get update
 
 # Install rust!
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Add new plugins.
 cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim
