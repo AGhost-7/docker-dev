@@ -10,7 +10,7 @@ apt-install () {
 	sudo apt-get install -y --no-install-recommends "$@"
 }
 
-apt-install build-essential python-dev software-properties-common -y
+apt-install software-properties-common -y
 
 # Fix the permissions from the copy...
 sudo chown -R aghost-7:aghost-7 /home/aghost-7/.config/nvim
@@ -35,10 +35,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 # Install all plugins.
 nvim +PlugInstall +qall
 
-# Install YouCompleteMe
-apt-install cmake
-/home/aghost-7/.config/nvim/plugged/YouCompleteMe/install.py
-
 # Shellcheck: Grade A shell script linter
 git clone -b v0.4.5 https://github.com/koalaman/shellcheck.git /tmp/shellcheck
 apt-install haskell-platform
@@ -51,7 +47,7 @@ sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
 apt-install exuberant-ctags
 
 # Cleanups
-sudo apt-get purge build-essential software-properties-common cmake haskell-platform -y
+sudo apt-get purge software-properties-common haskell-platform -y
 sudo apt-get autoremove -y
 sudo apt-get clean
 rm -rf /tmp/shellcheck
