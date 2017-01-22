@@ -2,7 +2,7 @@
 
 apt-get update
 
-apt-get install --no-install-recommends curl python-pip python-dev build-essential -y
+apt-get install --no-install-recommends curl python-pip python-dev build-essential less -y
 
 curl -L --create-dirs -o /root/.config/mycli \
     https://raw.githubusercontent.com/AGhost-7/docker-dev/master/pg-dev/pgcliconfig

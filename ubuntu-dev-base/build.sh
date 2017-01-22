@@ -60,6 +60,8 @@ apt-install sudo
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 
+# Alias for tree view of commit history.
+git config --global alias.tree "log --all --graph --decorate=short --color --format=format:'%C(bold blue)%h%C(reset) %C(auto)%d%C(reset)\n         %C(blink yellow)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'"
 # cache is useless to keep
 apt-get autoremove -y
 apt-get clean
