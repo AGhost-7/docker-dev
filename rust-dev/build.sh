@@ -18,7 +18,9 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # Add new plugins.
 cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim
+cat /tmp/post-plugin.vim /home/aghost-7/.config/nvim/post-plugin.vim
 sudo rm /tmp/plugin.vim
+sudo rm /tmp/post-plugin.vim
 nvim +PlugInstall +qall
 
 # Install racer completer with ycmd
