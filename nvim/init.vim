@@ -54,7 +54,9 @@ set clipboard+=unnamedplus
 " Using the blazing fast ag search tool for lgrep calls instead.
 set grepprg=ag\ --nogroup\ --nocolor
 
+" For some reason the mouse isn't enabled by default anymore...
+set mouse=a
+
 " Annnd, load the plugin-specific configurations.
 source ~/.config/nvim/post-plugin.vim
-
 
