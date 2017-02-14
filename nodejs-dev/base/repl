@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+// Repl with preloaded dependencies
+
+var processArgs = function(args, options) {
+	if(args.length === 0) return options;
+	switch(args[0]) {
+		case '--exclude':
+		case '-x':
+			options.exclude = new RegExp(args[1]);
+			return processArgs(args.splice(2), options);
+		default:
+			console.error('Argument %s is invalid', args[0]);
+			process.exit(1);
+	}
+};
+
+var options = processArgs(process.argv.splice(2), {});
+
+var ctx = require('repl').start({}).context;
+
+var fs = require('fs');
+var cwd = process.cwd();
+var path = require('path');
+
+var loadDeps = function(dependencyMap) {
+	Object.keys(dependencyMap).forEach(function(dependency) {
+		
+		if(options.exclude && options.exclude.test(dependency)) {
+			return;
+		}
+
+		var pkgPath = path.join(cwd, 'node_modules', dependency);
+		if(!fs.existsSync(pkgPath)) {
+			return;
+		}
+
+		var pkg = require(path.join(pkgPath, 'package.json'));
+		var mainPath = path.join(pkgPath, pkg.main || 'index.js');
+		if(!fs.existsSync(mainPath)) {
+			return;
+		}
+
+		ctx[dependency] = require(pkgPath);
+	});
+};
+
+var pkg = require(path.join(cwd, 'package.json'));
+
+loadDeps(pkg.devDependencies);
+loadDeps(pkg.dependencies);
+
+if(ctx.lodash) ctx.L = ctx.lodash;
+
