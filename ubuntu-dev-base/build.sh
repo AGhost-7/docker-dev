@@ -39,6 +39,9 @@ apt-install man-db
 # tldr for a short form man pages.
 pip install tldr
 
+# Just gitgud
+pip install gitgud
+
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop
 
