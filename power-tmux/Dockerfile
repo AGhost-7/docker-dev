@@ -2,11 +2,11 @@ FROM aghost7/ubuntu-dev-base:latest
 
 USER aghost-7
 
-ENV XDG_CONFIG_HOME /home/aghost-7/.config
+ENV XDG_CONFIG_HOME "$HOME/.config"
 
-COPY ./powerline /home/aghost-7/.config/powerline
+COPY ./powerline "$HOME/.config/powerline"
 
-COPY ./.tmux.conf /home/aghost-7/.tmux.conf
+COPY ./.tmux.conf "$HOME/.tmux.conf"
 
 COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
