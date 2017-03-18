@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 sudo apt-get update
 # Probably don't need Swing and stuff so don't install it...
 sudo apt-get install openjdk-9-jdk-headless -y

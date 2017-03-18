@@ -17,8 +17,8 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 . ~/.profile
 
 # Add new plugins.
-cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim
-cat /tmp/post-plugin.vim /home/aghost-7/.config/nvim/post-plugin.vim
+cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
+cat /tmp/post-plugin.vim ~/.config/nvim/post-plugin.vim
 sudo rm /tmp/plugin.vim
 sudo rm /tmp/post-plugin.vim
 nvim +PlugInstall +qall
@@ -38,7 +38,7 @@ cargo install --path dybuk
 rm -rf dybuk
 
 # Put in profile to always have the path set properly
-echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> /home/aghost-7/.profile
+echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> ~/.profile
 
 sudo apt-get autoremove -y
 sudo apt-get clean

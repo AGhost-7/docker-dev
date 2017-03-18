@@ -42,7 +42,7 @@ install-powerline() {
 sudo apt-get update
 
 # Fix file permissions from the copy
-sudo chown -R aghost-7:aghost-7 /home/aghost-7/.config
+sudo chown -R aghost-7:aghost-7 "$HOME/.config"
 sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
 
 # Need to update package cache...
@@ -60,7 +60,7 @@ git clone https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
 # Add bashrc addons for powerline and etc.
-cat /tmp/bashrc-additions.sh >> /home/aghost-7/.bashrc
+cat /tmp/bashrc-additions.sh >> "$HOME/.bashrc"
 sudo rm /tmp/bashrc-additions.sh
 
 # Cleanup cache
