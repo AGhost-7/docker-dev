@@ -4,17 +4,17 @@ set -e
 
 set -x
 
-cat /tmp/plugin.vim >> /home/aghost-7/.config/nvim/plugin.vim
+cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 sudo rm /tmp/plugin.vim
 
-cat /tmp/post-plugin.vim >> /home/aghost-7/.config/nvim/post-plugin.vim
+cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 sudo rm /tmp/post-plugin.vim
 
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 
 # customize fzf to ignore node_modules
-cat /tmp/bashrc-additions.sh >> /home/aghost-7/.bashrc
+cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
 # jq, the greatest command line JSON querier
