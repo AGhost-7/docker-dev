@@ -11,7 +11,7 @@ cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 sudo rm /tmp/post-plugin.vim
 
 # Install node version manager
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/master/install.sh | bash
 
 # customize fzf to ignore node_modules
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
