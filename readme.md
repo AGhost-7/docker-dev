@@ -9,7 +9,7 @@ first.
 
 To run, just:
 ```
-docker run -ti aghost7/nodejs-dev:v0.10.38 bash
+docker run -ti aghost7/nodejs-dev:v0.10.38 tmux new
 ```
 
 ## Images
@@ -62,7 +62,7 @@ docker run -ti --rm \
 	--privileged \
 	-v `readlink -f /var/run/docker.sock`:/var/run/docker.sock \
 	aghost7/ubuntu-dev-base:latest \
-	bash
+	tmux new
 ```
 
 ## SSH Forwarding and Git
@@ -72,7 +72,7 @@ docker run -ti --rm \
 	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
 	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
 	aghost7/ubuntu-dev-base:latest \
-	bash
+	tmux new
 ```
 I like to avoid having to reconfigure git every time, so I mount a volume for
 `.gitconfig`. `~/.ssh/known_hosts` is also anoying.
