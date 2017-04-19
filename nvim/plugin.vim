@@ -17,6 +17,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Allows you to run git commands from vim
 Plug 'tpope/vim-fugitive'
 
+" Github integration
+Plug 'tpope/vim-rhubarb'
+
 " Fuzzy file name searcher
 Plug 'kien/ctrlp.vim'
 

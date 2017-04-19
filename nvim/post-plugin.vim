@@ -28,5 +28,8 @@ let g:NERDTreeMouseMode = 3
 
 autocmd! BufEnter,BufWritePost * Neomake
 
+" Use spaces instead just for yaml
+autocmd Filetype yaml setl expandtab
+
 " Force the emoji to show up in the completion dropdown
 let g:github_complete_emoji_force_available = 1
