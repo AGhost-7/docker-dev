@@ -60,6 +60,9 @@ apt-install silversearcher-ag
 # Install sudo command...
 apt-install sudo
 
+# Install bash tab completion.
+apt-install bash-completion
+
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 
