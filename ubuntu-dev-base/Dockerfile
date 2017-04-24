@@ -29,6 +29,6 @@ USER aghost-7
 
 COPY ./inputrc "$HOME/.inputrc"
 
-RUN chown "$USER":"$USER" "$HOME/.inputrc"
+RUN sudo chown "$USER":"$USER" "$HOME/.inputrc"
 
 CMD ["/bin/bash"]
