@@ -27,4 +27,8 @@ WORKDIR /home/aghost-7
 
 USER aghost-7
 
+COPY ./inputrc "$HOME/.inputrc"
+
+RUN chown "$USER":"$USER" "$HOME/.inputrc"
+
 CMD ["/bin/bash"]
