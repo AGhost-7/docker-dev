@@ -16,4 +16,4 @@ vi = True
 
 syntax_style = monokai
 
-expanded = True
+auto_vertical_output = True

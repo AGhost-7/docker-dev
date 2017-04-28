@@ -4,14 +4,9 @@ set -e
 
 apt-get update
 
-apt-get install --no-install-recommends curl python-pip python-dev build-essential less git -y
+apt-get install --no-install-recommends curl python-pip python-dev build-essential less -y
 
-git clone https://github.com/AGhost-7/mycli.git /tmp/mycli
+pip install mycli
 
-cd /tmp/mycli
-pip install .
-cd ~/
-rm -rf /tmp/mycli
-
-apt-get purge build-essential python-dev git -y
+apt-get purge build-essential python-dev -y
 rm -rf /var/lib/apt/lists/*
