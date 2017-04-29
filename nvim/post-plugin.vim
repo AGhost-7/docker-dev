@@ -33,3 +33,21 @@ autocmd Filetype yaml setl expandtab
 
 " Force the emoji to show up in the completion dropdown
 let g:github_complete_emoji_force_available = 1
+
+" Rely on tmux for the repl integration to work
+let g:slime_target = 'tmux'
+
+" This will ensure that the second panel in the current
+" window is used when I tell slime to send code to the
+" repl.
+let g:slime_default_config = {
+	\ 'socket_name': split($TMUX, ',')[0],
+	\ 'target_pane': ':.1'
+	\ }
+
+" I dont like the default mappings of this plugin...
+let g:slime_no_mappings = 1
+
+" Ctrl+s will send the paragraph over to the repl.
+nmap <c-s> <Plug>SlimeParagraphSend
+
