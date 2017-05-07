@@ -40,6 +40,9 @@ rm -rf dybuk
 # Put in profile to always have the path set properly
 echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> ~/.profile
 
+# Required for compiling C/C++ bindings properly.
+sudo apt-get install build-essential -y
+
 sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
