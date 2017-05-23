@@ -51,7 +51,7 @@ apt-install dnsutils
 apt-install net-tools
 
 # Packet sniffer for debugging.
-apt-install tcpdump
+apt-install tcpflow
 
 # Very usefull for finding issues coming from syscalls
 apt-install strace
