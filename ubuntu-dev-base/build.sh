@@ -6,7 +6,6 @@ set -e
 # Print every line executed to the terminal
 set -x
 
-
 apt-install() {
 	apt-get install --no-install-recommends -y "$@"
 }
@@ -53,6 +52,9 @@ apt-install net-tools
 
 # Packet sniffer for debugging.
 apt-install tcpdump
+
+# Very usefull for finding issues coming from syscalls
+apt-install strace
 
 # Blazing fast search tool.
 apt-install silversearcher-ag
