@@ -63,6 +63,17 @@ apt-install sudo
 # Install bash tab completion.
 apt-install bash-completion
 
+# Install latest git
+apt-install software-properties-common
+sudo apt-add-repository ppa:git-core/ppa
+sudo apt-get update
+apt-install git
+sudo apt-get purge -y software-properties-common
+
+# Required for so many languages this will simply be included by default.
+apt-install build-essential
+
+
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 

@@ -9,5 +9,5 @@ nvim +PlugInstall +qall
 
 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
 
-sudo apt-get purge build-essential python-dev cmake -y
+sudo apt-get purge python-dev cmake -y
 sudo apt-get install libpython2.7 -y
