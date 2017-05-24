@@ -24,7 +24,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'kien/ctrlp.vim'
 
 " Adds the ability to close all except the current buffer
-Plug 'BufOnly.vim'
+Plug 'vim-scripts/BufOnly.vim'
 
 " Unfortunately, neovim doesn't support bindeval, so I can't use powerline.
 Plug 'vim-airline/vim-airline'
