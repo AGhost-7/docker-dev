@@ -1,11 +1,5 @@
 # Docker Dev
-Concept inspired by: https://github.com/bbartolome/docker-bash
-
-Basic idea is to have a portable development environment using docker. I took
-it a bit further and made everything layered (broke it down a lot). This way I
-can build images for a Rust or Scala environment (or w/e language) from the
-same neovim/tmux/powerline setup, without having to strip out the nodejs part
-first.
+Spin up a container to develop from anywhere!
 
 To run, just:
 ```
