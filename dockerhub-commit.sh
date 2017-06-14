@@ -23,7 +23,7 @@ find .. -maxdepth 1 -not -name '.*' -and -type d | while read d; do
 		git commit -m "Update branch for image $image_name"
 	fi
 	if [ "$1" == "--push" ]; then
-		git push origin "branch"
+		git push origin "$branch"
 	fi
 done
 
