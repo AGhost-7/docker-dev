@@ -75,6 +75,8 @@ sudo apt-get purge -y software-properties-common
 # Required for so many languages this will simply be included by default.
 apt-install build-essential
 
+# Mail client for testing
+apt-install swaks
 
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
