@@ -39,11 +39,18 @@ install-powerline() {
 	sudo pip install powerline-gitstatus
 }
 
+install-tmate() {
+	curl -o /tmp/tmate.tar.gz -L https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
+	tar -xzf /tmp/tmate.tar.gz -C /tmp
+	sudo cp /tmp/tmate-2.2.1-static-linux-amd64/tmate /usr/local/bin/tmate
+}
+
 sudo apt-get update
 
 # Fix file permissions from the copy
 sudo chown -R aghost-7:aghost-7 "$HOME/.config"
 sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
+sudo chown $USER:$USER ~/.tmate.conf
 
 # Need to update package cache...
 sudo apt-get update
@@ -54,6 +61,8 @@ apt-install language-pack-en-base
 install-powerline
 
 install-tmux
+
+install-tmate
 
 # Add fzf fuzzy finder
 git clone https://github.com/junegunn/fzf.git ~/.fzf

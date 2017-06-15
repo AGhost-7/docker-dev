@@ -30,3 +30,4 @@ fbind () {
 fbind -c
 
 alias nyan='nc -v nyancat.dakko.us 23'
+alias tmate='tmate -f ~/.tmate.conf'
