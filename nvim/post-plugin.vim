@@ -40,10 +40,12 @@ let g:slime_target = 'tmux'
 " This will ensure that the second panel in the current
 " window is used when I tell slime to send code to the
 " repl.
+let s:socket_name = split($TMUX, ',')[0]
+
 let g:slime_default_config = {
-	\ 'socket_name': split($TMUX, ',')[0],
-	\ 'target_pane': ':.1'
-	\ }
+        \ 'socket_name': s:socket_name,
+        \ 'target_pane': ':.1'
+        \ }
 
 " I dont like the default mappings of this plugin...
 let g:slime_no_mappings = 1
