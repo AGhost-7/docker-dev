@@ -17,6 +17,7 @@ find .. -maxdepth 1 -not -name '.*' -and -type d | while read d; do
 	echo "Checking image $image_name"
 	branch="dockerhub/$image_name"
 	git checkout "$branch" 2> /dev/null || (git checkout --orphan "$branch" && git reset --hard)
+	git pull origin "$branch"
 	cp -r "../$image_name/"* .
 	git add -A
 	if ! git diff-index --quiet HEAD --; then
