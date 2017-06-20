@@ -95,10 +95,3 @@ Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forw
 This is what I use on my current machine to get it working with everything.
 
 https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
-
-## TODO
-- Upgrade to Xenial.
-- Get coursier running on the scala image.
-- Get something better for browsing git commits visually. Something like [gitv](https://github.com/gregsexton/gitv)
-- https://github.com/junegunn/vim-journal ? Or some sort of markdown display
-mode for vim.
