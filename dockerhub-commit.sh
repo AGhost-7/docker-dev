@@ -21,9 +21,9 @@ find .. -maxdepth 1 -not -name '.*' -and -type d | while read d; do
 	git add -A
 	if ! git diff-index --quiet HEAD --; then
 		git commit -m "Update branch for image $image_name"
-		if [ "$1" == "--push" ]; then
-			git push origin "$branch"
-		fi
+	fi
+	if [ "$1" == "--push" ]; then
+		git push origin "$branch"
 	fi
 done
 
