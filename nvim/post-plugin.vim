@@ -26,10 +26,19 @@ autocmd VimEnter * AirlineTheme powerlineish
 
 let g:NERDTreeMouseMode = 3
 
-autocmd! BufEnter,BufWritePost * Neomake
-
 " Use spaces instead just for yaml
 autocmd Filetype yaml setl expandtab
+
+" Highlighting on top of the error gutter is a bit overkill...
+let g:ale_set_highlights = 0
+
+" I want errors to be styled a bit more like neomake
+let g:ale_sign_error = '✖'
+highlight ALEErrorSign ctermfg=DarkRed ctermbg=NONE
+
+" Same with warnings
+let g:ale_sign_warning = '⚠'
+highlight ALEWarningSign ctermfg=Yellow ctermbg=NONE
 
 " Force the emoji to show up in the completion dropdown
 let g:github_complete_emoji_force_available = 1
@@ -52,4 +61,7 @@ let g:slime_no_mappings = 1
 
 " Ctrl+s will send the paragraph over to the repl.
 nmap <c-s> <Plug>SlimeParagraphSend
+
+" Ctrl+x will send the highlighted section over to the repl.
+xmap <c-s> <Plug>SlimeRegionSend
 
