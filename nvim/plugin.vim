@@ -49,3 +49,6 @@ Plug 'jpalardy/vim-slime'
 
 " Dropdown interface framework
 Plug 'Shougo/denite.nvim'
+
+" Allows to diff a visual selection.
+Plug 'AndrewRadev/linediff.vim'

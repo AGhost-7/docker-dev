@@ -1,5 +1,13 @@
 " Buffer delete all others (delete all except current one)
 command Bdo BufOnly
+cabbrev bdo BuffOnly
+
+" Visual diff command.
+command Ldiffthis Linediff
+cabbrev ldiffthis Linediff
+
+command Ldiffoff Linediffreset
+cabbrev ldiffoff LinediffReset
 
 " Load colors! On the initial install this will error out, so make it silent 
 " so it installs without issues.
