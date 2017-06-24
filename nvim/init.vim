@@ -35,9 +35,11 @@ set ruler
 " Display the row numbers (line number)
 set relativenumber
 
-" Add a bar on the side which delimits 100 characters. For personal use, its 80, but at work the
-" guideline is 100.
-set colorcolumn=100
+" Add a bar on the side which delimits 80 characters.
+set colorcolumn=80
+
+" 72 characters makes it easier to read git log output.
+autocmd Filetype gitcommit setl colorcolumn=72
 
 " Will search the file as you type your query
 set incsearch
@@ -56,6 +58,7 @@ set grepprg=ag\ --nogroup\ --nocolor
 
 " For some reason the mouse isn't enabled by default anymore...
 set mouse=a
+
 
 " Annnd, load the plugin-specific configurations.
 source ~/.config/nvim/post-plugin.vim
