@@ -16,8 +16,8 @@ nice vagrant images.
 - `ubuntu-nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there).
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `v0.10.38`: Nodejs v0.10.38
-	- `argon`: Nodejs LTS.
+	- `boron`
+	- `argon`
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 `stable` is the only current tag available.
 - `py-dev`: Python configuration with autocomplete for python.
