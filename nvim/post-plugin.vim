@@ -70,7 +70,7 @@ endif
 let g:slime_no_mappings = 1
 
 " Ctrl+s will send the paragraph over to the repl.
-nmap <c-s> <Plug>SlimeParagraphSend
+nmap <c-s> <Plug>SlimeLineSend
 
 " Ctrl+x will send the highlighted section over to the repl.
 xmap <c-s> <Plug>SlimeRegionSend
