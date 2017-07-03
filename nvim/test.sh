@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-set -e 
-
-set -x
-
-docker build -t aghost7/nvim:latest .
-
 vimOut="$(docker run --rm aghost7/nvim:latest nvim --headless -c ':T' +qall)"
 
 if [[ "$vimOut" == Error ]]; then

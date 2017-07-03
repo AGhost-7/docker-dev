@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
 
-docker build -t aghost7/rust-dev:stable .
+docker run --rm aghost7/rust-dev:stable which cargo

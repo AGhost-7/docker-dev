@@ -1,4 +1,8 @@
 sudo: required
 services:
   - docker
-script: ./test.sh
+branches:
+  only:
+    - master
+before_script: docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
+script: python2 build.py $TRAVIS_COMMIT..$TRAVIS_COMMIT~1

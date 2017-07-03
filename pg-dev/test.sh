@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
 
 docker build -t aghost7/pg-dev:9.3 .
 
