@@ -33,7 +33,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Async linter!
-Plug 'AGhost-7/ale'
+Plug 'w0rp/ale'
 
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
@@ -55,3 +55,6 @@ Plug 'AndrewRadev/linediff.vim'
 
 " For running unit tests written in vimL
 Plug 'junegunn/vader.vim'
+
+" Git commit browser
+Plug 'gregsexton/gitv'
