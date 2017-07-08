@@ -33,7 +33,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Async linter!
-Plug 'w0rp/ale'
+Plug 'AGhost-7/ale'
 
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
