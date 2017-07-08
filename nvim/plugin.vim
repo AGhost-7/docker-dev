@@ -52,3 +52,6 @@ Plug 'Shougo/denite.nvim'
 
 " Allows to diff a visual selection.
 Plug 'AndrewRadev/linediff.vim'
+
+" For running unit tests written in vimL
+Plug 'junegunn/vader.vim'
