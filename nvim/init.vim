@@ -59,7 +59,11 @@ set grepprg=ag\ --nogroup\ --nocolor
 " For some reason the mouse isn't enabled by default anymore...
 set mouse=a
 
-
 " Annnd, load the plugin-specific configurations.
 source ~/.config/nvim/post-plugin.vim
 
+" Folds start as opened instead of closed
+set foldlevelstart=99
+
+" Enable folds that are for the most part placed in the comments.
+set foldmethod=marker
