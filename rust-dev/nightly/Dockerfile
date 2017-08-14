@@ -1,7 +1,5 @@
 FROM aghost7/rust-dev-base
 
-ENV RUST_DEFAULT_TOOLCHAIN=nightly
-
 USER aghost-7
 
 COPY plugin.vim /tmp/plugin.vim
