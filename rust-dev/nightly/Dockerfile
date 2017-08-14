@@ -1,10 +1,12 @@
-FROM aghost7/nvim
+FROM aghost7/rust-dev-base
+
+ENV RUST_DEFAULT_TOOLCHAIN=nightly
 
 USER aghost-7
 
 COPY plugin.vim /tmp/plugin.vim
 COPY post-plugin.vim /tmp/post-plugin.vim
-COPY build.sh /tmp/build.sh
+COPY ./build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && \
 	sudo rm /tmp/build.sh

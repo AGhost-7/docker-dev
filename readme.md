@@ -19,7 +19,8 @@ setup (no language-specific plugins in there).
 	- `boron`
 	- `argon`
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
-`stable` is the only current tag available.
+	- `stable` uses rust stable with YouCompleteMe backed by only racer.
+	- `nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python.
 `aghost7/py-dev:2.7` is the only image available for now.
 - `scala-dev`: Scala configuration with ensime server. It is strongly

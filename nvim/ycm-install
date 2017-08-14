@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 sudo apt-get install -y --no-install-recommends \
 	build-essential python-dev cmake
 
