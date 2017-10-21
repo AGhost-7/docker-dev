@@ -7,9 +7,6 @@ set -x
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 sudo rm /tmp/plugin.vim
 
-cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
-sudo rm /tmp/post-plugin.vim
-
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/master/install.sh | bash
 

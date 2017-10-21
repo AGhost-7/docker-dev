@@ -75,3 +75,10 @@ nmap <c-s> <Plug>SlimeLineSend
 " Ctrl+x will send the highlighted section over to the repl.
 xmap <c-s> <Plug>SlimeRegionSend
 
+" Make it so that ctrlp ignores files in .gitignore
+let g:ctrlp_user_command = 'git ls-files -- %s'
+
+" Only interested in files in scm when editing source code.
+call denite#custom#var('grep', 'command', ['git', 'grep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('file_rec', 'command', ['git', 'ls-files'])
