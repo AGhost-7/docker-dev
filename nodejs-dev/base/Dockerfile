@@ -12,6 +12,8 @@ COPY ./build.sh /tmp/build.sh
 
 COPY ./plugin.vim /tmp/plugin.vim
 
+COPY ./post-pluggin.vim /tmp/post-plugin.vim
+
 COPY ./repl /usr/local/bin/repl
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh

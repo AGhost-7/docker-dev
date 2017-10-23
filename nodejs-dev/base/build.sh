@@ -4,8 +4,10 @@ set -e
 
 set -x
 
-cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
-sudo rm /tmp/plugin.vim
+for file in plugin post-plugin; do
+	cat "/tmp/$file.vim" >> "$HOME/.config/nvim/$file.vim"
+	sudo rm "/tmp/$file.vim"
+done
 
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/master/install.sh | bash
