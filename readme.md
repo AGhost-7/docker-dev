@@ -22,7 +22,7 @@ setup (no language-specific plugins in there).
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python.
-`aghost7/py-dev:2.7` is the only image available for now.
+`aghost7/py-dev:3.5` is the only image available for now.
 - `scala-dev`: Scala configuration with ensime server. It is strongly
 recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.

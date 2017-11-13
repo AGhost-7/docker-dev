@@ -1,7 +1,3 @@
 
-" Autocompletion plugin.
-Plug 'Shougo/deoplete.vim'
-
-" Python autocompletion plugin.
-Plug 'zchee/deoplete-jedi'
-
+" Autocompletion and goto definition engine.
+Plug 'Valloric/YouCompleteMe'

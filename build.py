@@ -14,7 +14,7 @@ images = [
         {'name': 'ubuntu-dev-base'},
         {'name': 'power-tmux'},
         {'name': 'nvim'},
-        {'name': 'py-dev', 'tag': '2.7'},
+        {'name': 'py-dev', 'tag': '3.5'},
         {'name': 'rust-dev-base', 'path': 'rust-dev/base'},
         {'name': 'rust-dev', 'tag': 'stable', 'path': 'rust-dev/stable'},
         {'name': 'rust-dev', 'tag': 'nightly', 'path': 'rust-dev/nightly'},
