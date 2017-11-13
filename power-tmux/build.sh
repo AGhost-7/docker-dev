@@ -20,14 +20,14 @@ install-tmux() {
 	local tmuxSrc="/tmp/tmux-$tmuxVersion"
 	pushd "$tmuxSrc"
 	# libevent-2.0-5 is a run-time requirement.
-	apt-install libevent-2.0-5 libevent-dev libncurses-dev build-essential
+	apt-install libevent-2.0-5 libevent-dev libncurses-dev
 	./configure
 	make
 	sudo make install
 	popd
 	rm -rf "$tmuxSrc"
 	rm -rf "$tmuxTar"
-	sudo apt-get purge -y libevent-dev libncurses-dev build-essential
+	sudo apt-get purge -y libevent-dev libncurses-dev
 	popd
 }
 
