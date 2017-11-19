@@ -1,4 +1,7 @@
-FROM postgres:9.3
+
+ARG PG_VERSION=9.3
+
+FROM postgres:$PG_VERSION
 
 ENV TERM screen-256color
 

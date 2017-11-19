@@ -21,6 +21,7 @@ images = [
         {'name': 'scala-dev'},
         {'name': 'my-dev', 'tag': '5.6'},
         {'name': 'pg-dev', 'tag': '9.3'},
+        {'name': 'pg-dev', 'args': {'PG_VERSION': '10'}, 'tag': '10'},
         {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base'},
         {'name': 'nodejs-dev', 'tag': 'boron', 'path': 'nodejs-dev/boron'},
         {'name': 'nodejs-dev', 'tag': 'argon', 'path': 'nodejs-dev/argon'},
@@ -68,7 +69,14 @@ def changed_images(images, ref):
 
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
-    call(['docker', 'build', '--tag', image['full_name'], image['path']])
+    command = ['docker', 'build', '--tag', image['full_name']]
+    if 'args' in image:
+        for k, v in image['args'].iteritems():
+            command.append('--build-arg')
+            command.append(k + '=' + v)
+
+    command.append(image['path'])
+    call(command)
     test_file = path.join(image['path'], 'test.sh')
     if path.isfile(test_file):
         call(['bash', '-e', '-x', path.abspath(test_file)])
