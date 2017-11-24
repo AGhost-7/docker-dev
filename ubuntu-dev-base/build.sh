@@ -65,6 +65,9 @@ apt-install sudo
 # Install bash tab completion.
 apt-install bash-completion
 
+# get lines of code in a directory
+apt-install cloc
+
 # Install latest git
 apt-install software-properties-common
 sudo apt-add-repository ppa:git-core/ppa
