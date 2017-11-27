@@ -65,6 +65,9 @@ apt-install sudo
 # Install bash tab completion.
 apt-install bash-completion
 
+# ssh
+apt-install openssh-client
+
 # Install latest git
 apt-install software-properties-common
 sudo apt-add-repository ppa:git-core/ppa
