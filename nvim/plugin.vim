@@ -57,4 +57,4 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'junegunn/vader.vim'
 
 " Git commit browser
-Plug 'gregsexton/gitv'
+Plug 'junegunn/GV'
