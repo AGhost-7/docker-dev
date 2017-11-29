@@ -71,6 +71,9 @@ apt-install openssh-client
 # get lines of code in a directory
 apt-install cloc
 
+# pager better than less...
+apt-install less
+
 # Install latest git
 apt-install software-properties-common
 sudo apt-add-repository ppa:git-core/ppa
