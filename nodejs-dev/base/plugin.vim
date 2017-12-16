@@ -13,3 +13,5 @@ Plug 'pangloss/vim-javascript'
 " Add HTML5 support, also enables web components support.
 Plug 'othree/html5.vim'
 
+" Add jsx support for react projects.
+Plug 'mxw/vim-jsx'

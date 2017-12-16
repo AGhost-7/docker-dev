@@ -15,3 +15,6 @@ nnoremap ,n :call g:SendDBCmd('n')<cr>
 nnoremap ,c :call g:SendDBCmd('c')<cr>
 nnoremap ,r :call g:SendDBCmd('r')<cr>
 nnoremap ,R :call g:SendDBCmd('restart')<cr>
+
+" Enable jsx by default as many projects use .js extension for jsx files.
+let g:jsx_ext_required = 0
