@@ -35,6 +35,9 @@ set ruler
 " Display the row numbers (line number)
 set relativenumber
 
+" Make the line number show up in the gutter instead of just '0'.
+set number
+
 " Add a bar on the side which delimits 80 characters.
 set colorcolumn=80
 
