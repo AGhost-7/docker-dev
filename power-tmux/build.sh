@@ -11,7 +11,7 @@ apt-install() {
 }
 
 install-tmux() {
-	local tmuxVersion=2.3
+	local tmuxVersion=2.6
 	local tmuxTar="tmux-$tmuxVersion.tar.gz"
 	pushd /tmp
 	curl -L -o "/tmp/tmux-$tmuxVersion.tar.gz" \
