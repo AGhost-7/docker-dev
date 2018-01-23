@@ -25,10 +25,19 @@ pip install setuptools
 # See readme for how to get the clipboard working.
 apt-install xclip
 
-# For dockerception
-curl -sSL https://get.docker.com/ | sh
+# Download only the docker client as the host already has the daemon.
+apt-get update
+apt-get install -y debsums
+curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION-ce.tgz"
+tar xvf /tmp/docker.tgz -C /tmp
+mv /tmp/docker/docker /usr/local/bin/docker
+rm -rf /tmp/docker*
+[ "$(sha256sum /usr/local/bin/docker | awk '{print $1}')" = "$DOCKER_CLI_SHA256" ]
+apt-get remove -y debsums
+
+# Add proper docker group to our user
+groupadd -g 999 docker
 usermod -aG docker aghost-7
-cat /etc/group
 
 pip install docker-compose
 
