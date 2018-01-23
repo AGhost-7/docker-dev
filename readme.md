@@ -18,6 +18,7 @@ setup (no language-specific plugins in there).
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `boron`
 	- `argon`
+	- `carbon`
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
