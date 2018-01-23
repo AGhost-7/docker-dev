@@ -19,7 +19,7 @@ call plug#end()
 "	~~ General Configurations ~~
 "
 
-" don't convert tabs to spaces!
+" don't convert tabs to spaces
 set noexpandtab
 
 " Set tabs to take two character spaces
