@@ -8,9 +8,9 @@ RUN cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim && \
 	nvim +PlugInstall +qall && \
 	sudo rm /tmp/plugin.vim
 
-# Install openssl to compile against for reqwest and Iron.
+# Install openssl/pkgconf to compile against for reqwest and Iron.
 RUN sudo apt-get update && \
-	sudo apt-get install build-essential libssl-dev --no-install-recommends -y && \
+	sudo apt-get install pkgconf libssl-dev --no-install-recommends -y && \
 	sudo apt-get clean && \
 	sudo rm -rf /var/lib/apt/lists/*
 
