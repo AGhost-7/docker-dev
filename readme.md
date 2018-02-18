@@ -3,7 +3,7 @@ Spin up a container to develop from anywhere!
 
 To run, just:
 ```
-docker run -ti aghost7/nodejs-dev:v0.10.38 tmux new
+docker run -ti aghost7/nodejs-dev:boron tmux new
 ```
 
 ## Images
