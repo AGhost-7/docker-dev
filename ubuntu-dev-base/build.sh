@@ -91,7 +91,7 @@ apt-install git
 sudo apt-get purge -y software-properties-common
 
 # Required for so many languages this will simply be included by default.
-apt-install build-essential
+apt-install build-essential pkgconf
 
 # Mail client for testing
 apt-install swaks
