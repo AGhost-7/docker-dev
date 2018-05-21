@@ -40,7 +40,7 @@ def expand_images_config(images):
 
 
 def parse_image_dependency(image):
-    file = open(path.join(image['path'], 'Dockerfile'), 'r')
+    file = open(path.join('images', image['path'], 'Dockerfile'), 'r')
     contents = file.read()
     file.close()
     baseimage = re.search('\n*\s*FROM\s+(\S+)\n', contents).group(1)
@@ -61,7 +61,7 @@ def changed_images(images, ref):
     for file_name in files_changed(ref):
         normalized = path.normpath(file_name)
         for image in images:
-            if normalized.find(image['path']) == 0:
+            if normalized.find(path.join('images', image['path'])) == 0:
                 changed[image['path']] = image
 
     return changed
@@ -75,9 +75,9 @@ def build_image(image):
             command.append('--build-arg')
             command.append(k + '=' + v)
 
-    command.append(image['path'])
+    command.append(path.join('images', image['path']))
     call(command)
-    test_file = path.join(image['path'], 'test.sh')
+    test_file = path.join('images', image['path'], 'test.sh')
     if path.isfile(test_file):
         call(['bash', '-e', '-x', path.abspath(test_file)])
 
