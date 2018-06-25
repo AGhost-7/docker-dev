@@ -82,7 +82,3 @@ xmap <c-s> <Plug>SlimeRegionSend
 " Make it so that ctrlp ignores files in .gitignore
 let g:ctrlp_user_command = '(git status --short | awk "{ print \$2 }"; git ls-files -- %s) | sort -u'
 
-" Only interested in files in scm when editing source code.
-call denite#custom#var('grep', 'command', ['git', 'grep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('file_rec', 'command', ['git', 'ls-files'])
