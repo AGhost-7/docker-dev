@@ -47,9 +47,6 @@ Plug 'AGhost-7/github-complete.vim', { 'branch': 'feature-force-emoji', 'for': '
 " Better repl integration (sends selections to repl).
 Plug 'jpalardy/vim-slime'
 
-" Dropdown interface framework
-Plug 'Shougo/denite.nvim'
-
 " Allows to diff a visual selection.
 Plug 'AndrewRadev/linediff.vim'
 

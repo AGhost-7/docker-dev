@@ -13,3 +13,4 @@ nvim +PlugInstall +qall
 
 sudo apt-get purge python-dev cmake -y
 sudo apt-get install libpython2.7 -y
+sudo apt-get install editorconfig -y
