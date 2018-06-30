@@ -24,5 +24,9 @@ COPY install-rust.sh /install-rust.sh
 ONBUILD COPY .rust-toolchain $HOME/.rust-toolchain
 ONBUILD RUN /install-rust.sh
 
+# For some reason rustup doesn't work well so I'll only place a volume for the
+# cargo registry.
+VOLUME $HOME/.cargo/registry
+
 CMD ["/bin/bash"]
 

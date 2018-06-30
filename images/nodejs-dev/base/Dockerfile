@@ -18,5 +18,14 @@ COPY ./repl /usr/local/bin/repl
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
+ONBUILD COPY .nodejs-version $HOME/.nodejs-version
+ONBUILD RUN . ~/.nvm/nvm.sh && \
+	nvm install --lts="$(cat $HOME/.nodejs-version)" && \
+	nvm alias default stable
+
+VOLUME $HOME/.npm
+
+VOLUME $HOME/.cache/yarn
+
 CMD ["/bin/bash"]
 

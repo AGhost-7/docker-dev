@@ -25,7 +25,6 @@ images = [
         {'name': 'pg-dev', 'args': {'PG_VERSION': '10'}, 'tag': '10'},
         {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base'},
         {'name': 'nodejs-dev', 'tag': 'boron', 'path': 'nodejs-dev/boron'},
-        {'name': 'nodejs-dev', 'tag': 'argon', 'path': 'nodejs-dev/argon'},
         {'name': 'nodejs-dev', 'tag': 'carbon', 'path': 'nodejs-dev/carbon'}
         ]
 
