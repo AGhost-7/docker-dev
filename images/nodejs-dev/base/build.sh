@@ -10,7 +10,7 @@ for file in plugin post-plugin; do
 done
 
 # Install node version manager
-curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/master/install.sh | bash
+curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | bash
 
 # customize fzf to ignore node_modules
 cat /tmp/bashrc-additions.sh >> ~/.bashrc

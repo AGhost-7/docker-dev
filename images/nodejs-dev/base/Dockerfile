@@ -4,8 +4,6 @@ FROM aghost7/nvim
 
 USER aghost-7
 
-ENV NVM_DIR /home/aghost-7/.nvm
-
 COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
 COPY ./build.sh /tmp/build.sh
@@ -17,6 +15,8 @@ COPY ./post-pluggin.vim /tmp/post-plugin.vim
 COPY ./repl /usr/local/bin/repl
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
+
+ENV NVM_DIR $HOME/.nvm
 
 ONBUILD COPY .nodejs-version $HOME/.nodejs-version
 ONBUILD RUN . ~/.nvm/nvm.sh && \
