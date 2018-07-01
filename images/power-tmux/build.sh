@@ -11,13 +11,12 @@ apt-install() {
 }
 
 install-tmux() {
-	local tmuxVersion=2.6
-	local tmuxTar="tmux-$tmuxVersion.tar.gz"
+	local tmuxTar="tmux-$TMUX_VERSION.tar.gz"
 	pushd /tmp
-	curl -L -o "/tmp/tmux-$tmuxVersion.tar.gz" \
-		"https://github.com/tmux/tmux/releases/download/$tmuxVersion/$tmuxTar"
+	curl -L -o "/tmp/tmux-$TMUX_VERSION.tar.gz" \
+		"https://github.com/tmux/tmux/releases/download/$TMUX_VERSION/$tmuxTar"
 	tar xzf "$tmuxTar"
-	local tmuxSrc="/tmp/tmux-$tmuxVersion"
+	local tmuxSrc="/tmp/tmux-$TMUX_VERSION"
 	pushd "$tmuxSrc"
 	# libevent-2.0-5 is a run-time requirement.
 	apt-install libevent-2.0-5 libevent-dev libncurses-dev
