@@ -7,18 +7,26 @@ docker run -ti aghost7/nodejs-dev:boron tmux new
 ```
 
 ## Images
-- `ubuntu-dev-base`: Ubuntu Trusty image with a few presets such as docker of
+- `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
 Main thing with this image though is that it downgrades from root to a regular
 user. It is also configured to allow passwordless `sudo` just like those
-nice vagrant images.
+nice vagrant images. Tags available:
+	- `latest`: Ubuntu xenial based image.
+	- `bionic`: Experimental Ubuntu Bionic Beaver (18.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
-- `ubuntu-nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
-setup (no language-specific plugins in there).
+Images available:
+	- `latest`
+	- `bionic`
+- `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
+setup (no language-specific plugins in there). Images available:
+	- `latest`
+	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `boron`
 	- `argon`
 	- `carbon`
+	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.

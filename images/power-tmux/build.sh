@@ -11,21 +11,25 @@ apt-install() {
 }
 
 install-tmux() {
-	local tmuxTar="tmux-$TMUX_VERSION.tar.gz"
+	local tmux_tar="tmux-$TMUX_VERSION.tar.gz"
 	pushd /tmp
 	curl -L -o "/tmp/tmux-$TMUX_VERSION.tar.gz" \
-		"https://github.com/tmux/tmux/releases/download/$TMUX_VERSION/$tmuxTar"
-	tar xzf "$tmuxTar"
-	local tmuxSrc="/tmp/tmux-$TMUX_VERSION"
-	pushd "$tmuxSrc"
-	# libevent-2.0-5 is a run-time requirement.
-	apt-install libevent-2.0-5 libevent-dev libncurses-dev
+		"https://github.com/tmux/tmux/releases/download/$TMUX_VERSION/$tmux_tar"
+	tar xzf "$tmux_tar"
+	local tmux_src="/tmp/tmux-$TMUX_VERSION"
+	pushd "$tmux_src"
+	# libevent is a run-time requirement. *-dev are for the header files.
+	local libevent_version=2.0-5
+	if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+		libevent_version=2.1-6
+	fi
+	apt-install "libevent-$libevent_version" libevent-dev libncurses-dev
 	./configure
 	make
 	sudo make install
 	popd
-	rm -rf "$tmuxSrc"
-	rm -rf "$tmuxTar"
+	rm -rf "$tmux_src"
+	rm -rf "$tmux_tar"
 	sudo apt-get purge -y libevent-dev libncurses-dev
 	popd
 }
@@ -42,6 +46,7 @@ install-tmate() {
 	curl -o /tmp/tmate.tar.gz -L https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
 	tar -xzf /tmp/tmate.tar.gz -C /tmp
 	sudo cp /tmp/tmate-2.2.1-static-linux-amd64/tmate /usr/local/bin/tmate
+	rm -rf /tmp/tmate*
 }
 
 sudo apt-get update

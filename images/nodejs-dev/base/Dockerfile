@@ -1,6 +1,8 @@
 # vim: set ft=dockerfile
 
-FROM aghost7/nvim
+ARG BASE_TAG=latest
+
+FROM aghost7/nvim:$BASE_TAG
 
 USER aghost-7
 

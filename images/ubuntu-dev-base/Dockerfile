@@ -1,4 +1,10 @@
-FROM ubuntu:xenial
+ARG UBUNTU_RELEASE=xenial
+
+FROM ubuntu:${UBUNTU_RELEASE}
+
+ARG UBUNTU_RELEASE
+
+ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
 
 # TODO: user name should be customisable?
 RUN apt-get update && \

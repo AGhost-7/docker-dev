@@ -12,9 +12,14 @@ import re
 
 images = [
         {'name': 'ubuntu-dev-base'},
+        {'name': 'ubuntu-dev-base', 'tag': 'bionic',
+            'args': {'UBUNTU_RELEASE': 'bionic'}},
         {'name': 'power-tmux'},
+        {'name': 'power-tmux', 'tag': 'bionic',
+            'args': {'BASE_TAG': 'bionic'}},
         {'name': 'ruby-dev'},
         {'name': 'nvim'},
+        {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
         {'name': 'py-dev', 'tag': '3.5'},
         {'name': 'rust-dev-base', 'path': 'rust-dev/base'},
         {'name': 'rust-dev', 'tag': 'stable', 'path': 'rust-dev/stable'},
@@ -24,6 +29,8 @@ images = [
         {'name': 'pg-dev', 'tag': '9.3'},
         {'name': 'pg-dev', 'args': {'PG_VERSION': '10'}, 'tag': '10'},
         {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base'},
+        {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base', 'tag': 'bionic',
+            'args': {'BASE_TAG': 'bionic'}},
         {'name': 'nodejs-dev', 'tag': 'boron', 'path': 'nodejs-dev/boron'},
         {'name': 'nodejs-dev', 'tag': 'carbon', 'path': 'nodejs-dev/carbon'}
         ]

@@ -18,7 +18,9 @@ apt-install tree curl
 # Going to need this a lot
 apt-install python-pip
 
-pip install --upgrade pip
+if [ "$UBUNTU_RELEASE" == "xenial" ]; then
+	pip install --upgrade pip
+fi
 
 pip install setuptools
 

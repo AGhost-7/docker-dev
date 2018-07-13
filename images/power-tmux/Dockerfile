@@ -1,4 +1,6 @@
-FROM aghost7/ubuntu-dev-base:latest
+ARG BASE_TAG=latest
+
+FROM aghost7/ubuntu-dev-base:$BASE_TAG
 
 USER aghost-7
 

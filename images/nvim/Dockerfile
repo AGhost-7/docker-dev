@@ -1,4 +1,6 @@
-FROM aghost7/power-tmux:latest
+ARG BASE_TAG=latest
+
+FROM aghost7/power-tmux:$BASE_TAG
 
 USER aghost-7
 
