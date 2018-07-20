@@ -12,11 +12,20 @@ apt-install() {
 
 apt-get update
 
+if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+	sudo rm /etc/dpkg/dpkg.cfg.d/excludes
+	dpkg -l | \
+		awk '$1 ~/ii/ { print $2 }' | \
+		xargs sudo apt-get install -y --reinstall
+fi
+
+
 # Super essential tools
 apt-install tree curl
 
 # Going to need this a lot
 apt-install python-pip
+
 
 if [ "$UBUNTU_RELEASE" == "xenial" ]; then
 	pip install --upgrade pip
