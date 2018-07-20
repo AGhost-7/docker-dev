@@ -116,10 +116,11 @@ man git
 ```
 
 To get ssh working, you will need to create a volume to your `~/.ssh`
-directory:
+directory (replace `$DOCKER_USER` with the user name you selected at the
+begining).
 
 ```bash
-docker run --rm -ti --volume ~/.ssh:root/.ssh tutorial bash
+docker run --rm -ti --volume ~/.ssh:/home/$DOCKER_USER/.ssh tutorial bash
 ```
 
 ## 3. Setting up an editor
