@@ -131,25 +131,8 @@ mind that some of the parts in this tutorial will be specifically for Neovim.
 
 ### Install Neovim
 Personally, I've been using the unstable version of neovim. It hasn't been
-prone to issues due to being bleeding edge so I can recommend giving it a spin:
+prone to issues due to being bleeding edge so I can recommend giving it a spin.
 
-```dockerfile
-
-# To add addionnal apt repositories, we will require this package.
-RUN sudo apt-get install -y software-properties-common
-
-# Now add the repository for neovim
-RUN sudo add-apt-repository ppa:neovim-ppa/unstable
-
-# Update the package listing
-RUN sudo apt-get update
-
-# Install the real deal
-RUN sudo apt-get install neovim -y
-
-# Make neovim the default editor for git, etc.
-ENV EDITOR nvim
-```
 
 ### Configuration
 There's a lot of customization which can be done with Neovim, but for now we
