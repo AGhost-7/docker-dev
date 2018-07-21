@@ -55,14 +55,15 @@ def parse_image_dependency(image):
     file.close()
     baseimage = re.search('\n*\s*FROM\s+(\S+)\n', contents).group(1)
 
-    if baseimage.find(':') == -1:
-        return baseimage + ':latest'
-    else:
-        return baseimage
+    # Due to build args, I can't easily determine statically which tag my image
+    # depends on. Will probably implement more accurate algorithm later.
+    return baseimage.split(':')[0]
 
 
 def files_changed(ref):
-    parts = check_output(['git', 'diff', '--name-only', ref]).split('\n')
+    diff = check_output(
+        ['git', 'diff', '--name-only', '{}~1..{}'.format(ref, ref)])
+    parts = str(diff, 'utf-8').split('\n')
     return filter(lambda l: len(l.strip()) > 0, parts)
 
 
@@ -104,7 +105,24 @@ def build_change_tree(building, images, changes):
             build_change_tree(image, images, changes)
 
 
-expand_images_config(images)
-changes = changed_images(images, argv[1])
-for changed in changes.values():
-    build_change_tree(changed, images, changes)
+def find_next(images, changes, image):
+    for change_path in changes.keys():
+        pass
+
+
+
+def build_plan(images, changes):
+    result = []
+    remaining = dict(changes)
+
+    while len(remaining) > 0:
+        pass
+
+    return result
+
+
+if __name__ == "__main__":
+    expand_images_config(images)
+    changes = changed_images(images, argv[1])
+    for image in build_plan(images, changes):
+        build_image(image)
