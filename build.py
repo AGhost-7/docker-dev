@@ -75,7 +75,7 @@ def changed_images(images, ref):
             if normalized.find(path.join('images', image['path'])) == 0:
                 changed[image['path']] = image
 
-    return changed
+    return list(changed.values())
 
 
 def build_image(image):
@@ -95,28 +95,48 @@ def build_image(image):
     call(['docker', 'push', image['full_name']])
 
 
-def build_change_tree(building, images, changes):
-    build_image(building)
-
+def dependent_images(image_name, images):
+    dependents = []
     for image in images:
-        already_scheduled = image['path'] in changes
-        dependent = image['dependency'] == building['full_name']
-        if dependent and not already_scheduled:
-            build_change_tree(image, images, changes)
+        if image['dependency'] == image_name:
+            dependents.append(image)
+            for image in dependent_images(image['name'], images):
+                dependents.append(image)
+    return dependents
 
 
-def find_next(images, changes, image):
-    for change_path in changes.keys():
-        pass
+def image_leaves(images):
+    leaves = []
+    for image in images:
+        leaf = True
+        for image_dependency in images:
+            if image_dependency['name'] == image['dependency']:
+                leaf = False
+        if leaf:
+            leaves.append(image)
 
+    return leaves
+
+
+def build_tree(image_name, images, changes_set, changed, result):
+    for image in images:
+        if image['dependency'] == image_name:
+            if changed or image['name'] in changes_set:
+                changed = True
+                result.append(image)
+            build_tree(image['name'], images, changes_set, changed, result)
 
 
 def build_plan(images, changes):
     result = []
-    remaining = dict(changes)
+    changes_set = set([change['name'] for change in changes])
 
-    while len(remaining) > 0:
-        pass
+    for leaf in image_leaves(images):
+        name = leaf['name']
+        changed = name in changes_set
+        if changed:
+            result.append(leaf)
+        build_tree(name, images, changes_set, changed, result)
 
     return result
 
