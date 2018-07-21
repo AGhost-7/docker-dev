@@ -24,29 +24,6 @@ def test_changed_image():
     assert len(images) == len(contains)
 
 
-def test_dependent_images():
-    images = [
-        {'name': 'ubuntu-dev-base', 'dependency': 'ubuntu'},
-        {'name': 'power-tmux', 'dependency': 'ubuntu-dev-base'},
-        {'name': 'my-dev', 'dependency': 'mysql'}
-        ]
-    dependents = build.dependent_images('ubuntu-dev-base', images)
-
-    assert len(dependents) == 1
-    assert dependents[0]['name'] == 'power-tmux'
-
-    images = [
-        {'name': 'a', 'dependency': 'b'},
-        {'name': 'b', 'dependency': 'd'},
-        {'name': 'c', 'dependency': 'external-a'},
-        {'name': 'e', 'dependency': 'c'}
-        ]
-
-    dependents = build.dependent_images('a', images)
-
-    assert len(dependents) == 0
-
-
 def test_image_leaves():
     images = [
         {'name': 'ubuntu-dev-base', 'dependency': 'ubuntu'},

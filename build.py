@@ -96,16 +96,6 @@ def build_image(image):
     call(['docker', 'push', image['full_name']])
 
 
-def dependent_images(image_name, images):
-    dependents = []
-    for image in images:
-        if image['dependency'] == image_name:
-            dependents.append(image)
-            for image in dependent_images(image['name'], images):
-                dependents.append(image)
-    return dependents
-
-
 def image_leaves(images):
     leaves = []
     for image in images:
