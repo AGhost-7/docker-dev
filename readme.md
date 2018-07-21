@@ -30,8 +30,9 @@ setup (no language-specific plugins in there). Images available:
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
-- `py-dev`: Python configuration with autocomplete for python.
-`aghost7/py-dev:3.5` is the only image available for now.
+- `py-dev`: Python configuration with autocomplete for python and ptpython.
+	- `latest`: Ubuntu 16.04 + Python 3.5
+	- `bionic`: Ubuntu 18.04 + python 3.6
 - `scala-dev`: Scala configuration with ensime server. It is strongly
 recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.
