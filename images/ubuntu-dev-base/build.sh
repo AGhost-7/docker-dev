@@ -76,12 +76,6 @@ apt-install tcpflow
 # Very usefull for finding issues coming from syscalls
 apt-install strace
 
-# Blazing fast search tool.
-apt-install silversearcher-ag
-
-# Install sudo command...
-apt-install sudo
-
 # Install bash tab completion.
 apt-install bash-completion
 
