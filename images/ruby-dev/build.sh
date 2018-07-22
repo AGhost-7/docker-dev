@@ -23,6 +23,9 @@ sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 	autoconf libgmp-dev libgdbm-dev automake libtool bison pkg-config libffi-dev \
 	libgmp-dev libreadline6-dev libssl-dev
 
+# Install pry (improved repl) globally
+sudo gem install pry
+
 # Plugins
 cat - >> ~/.config/nvim/plugin.vim <<PLUGINS
 Plug 'vim-ruby/vim-ruby'
