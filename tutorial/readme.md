@@ -324,3 +324,26 @@ COPY ./.tmux.conf /tmp/.tmux.conf
 RUN cat /tmp/.tmux.conf > ~/.tmux.conf && \
 	sudo rm /tmp/.tmux.conf
 ```
+
+## 5. NodeJS
+I found the best way to install node and manage node versions is to use 
+[Node Version Manager (nvm)](https://github.com/creationix/nvm). First we need 
+to cURL the install script (wget if you did not install cURL), then we set the 
+`NVM_DIR` environment variable for docker and lastly we source nvm.sh, install
+the [node version](https://github.com/creationix/nvm#long-term-support) we want,
+in this case the LTS version.
+```dockerfile
+# get the nvm install script and run it
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+# set the environment variable
+ENV NVM_DIR $HOME/.nvm
+
+# source nvm, install the version we want, alias that version so it always loads
+RUN . "$NVM_DIR/nvm.sh" && nvm install --lts && nvm alias default stable
+```
+To test this build and run the container and try
+```bash
+node --version
+```
+If install correctly you should see your installed version number for node.
