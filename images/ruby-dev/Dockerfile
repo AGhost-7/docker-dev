@@ -11,5 +11,5 @@ COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
 RUN cat /tmp/bashrc-additions.sh >> $HOME/.bashrc && sudo rm /tmp/bashrc-additions.sh
 
-VOLUME $HOME/.rvm/rubies
-VOLUME $HOME/.rvm/gems
+VOLUME /usr/share/rvm/rubies
+VOLUME /usr/share/rvm/gems

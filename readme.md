@@ -37,6 +37,7 @@ setup (no language-specific plugins in there). Images available:
 recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.
 There is only a `latest` tag for the scala image.
+- `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version, with `9.3` and `10` being available.

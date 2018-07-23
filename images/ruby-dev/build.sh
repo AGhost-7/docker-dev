@@ -44,3 +44,5 @@ nvim +PlugInstall +qall
 # Cleanup
 sudo apt-get clean -y
 sudo rm -rf /var/lib/apt/lists/*
+sudo rm /tmp/plugin.vim
+sudo rm /tmp/post-plugin.vim
