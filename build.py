@@ -132,8 +132,20 @@ def build_plan(images, changes):
     return result
 
 
+def print_blue(text):
+    print('\033[1;36m{}\033[0;0m'.format(text))
+
+
+def print_plan(plan):
+    print_blue('Build plan:')
+    for image in plan:
+        print_blue('- {}'.format(image['full_name']))
+
+
 if __name__ == "__main__":
     expand_images_config(images)
     changes = changed_images(images, argv[1])
-    for image in build_plan(images, changes):
+    plan = build_plan(images, changes)
+    print_plan(plan)
+    for image in plan:
         build_image(image)
