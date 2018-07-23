@@ -346,4 +346,4 @@ To test this build and run the container and try
 ```bash
 node --version
 ```
-If installed correctly you should see your installed version number for node.
+If installed correctly you should the version number for node.
