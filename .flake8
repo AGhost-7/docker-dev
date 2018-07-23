@@ -1,0 +1,2 @@
+[flake8]
+exclude = .git,.pytest_cache,.build,env,__pycache__
