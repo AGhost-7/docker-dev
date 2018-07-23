@@ -3,10 +3,12 @@
 set -eo pipefail
 
 # Install rvm for managing different ruby versions.
-gpg --keyserver hkp://keys.gnupg.net --recv-keys \
-	409B6B1796C275462A1703113804BB82D39DC0E3 \
-	7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io | bash -s stable
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends software-properties-common
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update
+sudo apt-get install -y rvm
+sudo apt-get remove -y software-properties-common
 
 # Make rvm completions available
 cat - >> ~/.bashrc <<BASHRC
@@ -16,7 +18,7 @@ BASHRC
 sudo apt-get update
 
 # base ruby distribution
-sudo apt-get install -y ruby
+sudo apt-get install -y ruby ruby-dev
 
 # Install stuff that rvm will install itself if not already present...
 sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
@@ -26,10 +28,15 @@ sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 # Install pry (improved repl) globally
 sudo gem install pry
 
+# semantic completion engine
+sudo gem install solargraph
+
+# proper debugger
+sudo gem install byebug
+
 # Plugins
-cat - >> ~/.config/nvim/plugin.vim <<PLUGINS
-Plug 'vim-ruby/vim-ruby'
-PLUGINS
+cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
+cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 
 # Install plugins ^^
 nvim +PlugInstall +qall
