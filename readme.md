@@ -40,7 +40,10 @@ There is only a `latest` tag for the scala image.
 - `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
-version, with `9.3` and `10` being available.
+version:
+	- `9.3`
+	- `9.6`
+	- `10`
 - `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
 
 ## Vim Configuration
