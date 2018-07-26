@@ -359,11 +359,11 @@ RUN . "$NVM_DIR/nvm.sh" && \
 ```
 #### adding tern completion engine
 To turn on Tern we need a `.tern-config` file. It will contain
-a JSON object. On you host machine:
+a JSON object, on your host machine:
 ```bash
 touch .tern-config
 ```
-and edit the file with your editor of choice
+Edit the file with your editor of choice
 ```json
 {
     "plugins": {
@@ -373,12 +373,14 @@ and edit the file with your editor of choice
 ```
 Now we need to copy and own the file.
 ```dockerfile
+# copy tern completion config
 COPY ./.tern-config "$HOME/.tern-config"
 
+# own it as $USER
 RUN sudo chown "$USER:$USER" "$HOME/.tern-config"
 ```
-This enables tern globally, have the tern server contain a project, you can add a 
-`.tern-project` file with the above `JSON` object to enable NodeJS support
-in the projects root directory. If you add the file with `nvim` running you 
-need to restart the `YouCompleteMe` server with `:YcmComplter RestartServer`
+This enables tern globally, to have the tern server contain a project, you 
+can add a `.tern-project` file with the above `JSON` object in the projects root 
+directory. If you add the file with `nvim` running you need to restart the 
+`YouCompleteMe` server with `:YcmComplter RestartServer`
 
