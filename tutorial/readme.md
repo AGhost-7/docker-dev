@@ -349,7 +349,7 @@ node --version
 If installed correctly you should the version number for node.
 
 ### YouCompleteMe
-YouCompleteMe is a autocomplete tool. To bundle JS with `YouCompleteMe`
+`YouCompleteMe` is a autocomplete tool. To bundle JS with `YouCompleteMe`
 you need to source `nvm.sh` and run the install script with `--js-completer`
 added on.
 ```dockerfile
