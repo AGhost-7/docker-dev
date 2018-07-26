@@ -347,3 +347,13 @@ To test this build and run the container and try
 node --version
 ```
 If installed correctly you should the version number for node.
+
+### YouCompleteMe
+YouCompleteMe is a autocomplete tool. To bundle JS with you complete me
+you need to source `nvm.sh` and run the install script with `--js-completer`
+added on.
+```dockerfile
+RUN . "$NVM_DIR/nvm.sh" && \
+	python3 ~/.config/nvim/plugged/YouCompleteMe/install.py \
+	--js-completer
+```
