@@ -358,7 +358,8 @@ RUN . "$NVM_DIR/nvm.sh" && \
 	--js-completer
 ```
 #### adding tern completion engine
-To turn on Tern we need a `.tern-config` file. It will contain
+To turn on [Tern](http://ternjs.net/)
+we need a `.tern-config` file. It will contain
 a JSON object, on your host machine:
 ```bash
 touch .tern-config
@@ -371,6 +372,8 @@ Edit `.tern-config` with your editor of choice
     }
 }
 ```
+More infor can be found in the 
+[tern documentation](http://ternjs.net/doc/manual.html).
 Now we need to copy and own the file. In the Dockerfile:
 ```dockerfile
 # copy tern completion config
