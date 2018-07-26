@@ -363,7 +363,7 @@ a JSON object, on your host machine:
 ```bash
 touch .tern-config
 ```
-Edit the file with your editor of choice
+Edit `.tern-config` with your editor of choice
 ```json
 {
     "plugins": {
@@ -371,7 +371,7 @@ Edit the file with your editor of choice
     }
 }
 ```
-Now we need to copy and own the file.
+Now we need to copy and own the file. In the Dockerfile:
 ```dockerfile
 # copy tern completion config
 COPY ./.tern-config "$HOME/.tern-config"
@@ -382,5 +382,5 @@ RUN sudo chown "$USER:$USER" "$HOME/.tern-config"
 This enables tern globally, to have the tern server contain a project, you 
 can add a `.tern-project` file with the above `JSON` object in the projects root 
 directory. If you add the file with `nvim` running you need to restart the 
-`YouCompleteMe` server with `:YcmComplter RestartServer`
+`YouCompleteMe` server with `:YcmCompleter RestartServer`
 
