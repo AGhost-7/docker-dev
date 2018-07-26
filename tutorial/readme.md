@@ -357,3 +357,28 @@ RUN . "$NVM_DIR/nvm.sh" && \
 	python3 ~/.config/nvim/plugged/YouCompleteMe/install.py \
 	--js-completer
 ```
+#### adding tern completion engine
+To turn on Tern we need a `.tern-config` file. It will contain
+a JSON object. On you host machine:
+```bash
+touch .tern-config
+```
+and edit the file with your editor of choice
+```json
+{
+    "plugins": {
+        "node": {}
+    }
+}
+```
+Now we need to copy and own the file.
+```dockerfile
+COPY ./.tern-config "$HOME/.tern-config"
+
+RUN sudo chown "$USER:$USER" "$HOME/.tern-config"
+```
+This enables tern globally, have the tern server contain a project, you can add a 
+`.tern-project` file with the above `JSON` object to enable NodeJS support
+in the projects root directory. If you add the file with `nvim` running you 
+need to restart the `YouCompleteMe` server with `:YcmComplter RestartServer`
+
