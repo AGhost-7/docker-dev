@@ -357,7 +357,7 @@ RUN . "$NVM_DIR/nvm.sh" && \
 	python3 ~/.config/nvim/plugged/YouCompleteMe/install.py \
 	--js-completer
 ```
-#### adding tern completion engine
+#### Adding Tern completion engine
 To turn on [Tern](http://ternjs.net/)
 we need a `.tern-config` file. It will contain
 a JSON object, on your host machine:
@@ -372,7 +372,7 @@ Edit `.tern-config` with your editor of choice
     }
 }
 ```
-More infor can be found in the 
+More info can be found in the 
 [tern documentation](http://ternjs.net/doc/manual.html).
 Now we need to copy and own the file. In the Dockerfile:
 ```dockerfile
