@@ -16,10 +16,6 @@ curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | ba
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
-# jq, the greatest command line JSON querier
-sudo apt-get update
-sudo apt-get install jq -y
-
 ycm-install
 
 # Cleanup whats left...

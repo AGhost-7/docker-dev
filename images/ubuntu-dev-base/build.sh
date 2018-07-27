@@ -19,7 +19,6 @@ if [ "$UBUNTU_RELEASE" == "bionic" ]; then
 		xargs sudo apt-get install -y --reinstall
 fi
 
-
 # Super essential tools
 apt-install tree curl
 
@@ -87,6 +86,9 @@ apt-install cloc
 
 # pager better than less...
 apt-install less
+
+# useful for querying json
+apt-install jq
 
 # Install latest git
 apt-install software-properties-common
