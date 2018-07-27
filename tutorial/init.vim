@@ -29,6 +29,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Git commit browser
 Plug 'junegunn/gv.vim'
 
+" AutoComplete
+Plug 'Valloric/YouCompleteMe'
+
 " End the list of vim plugins
 call plug#end()
 
@@ -61,3 +64,7 @@ silent! colorscheme monokai
 
 " Set the theme for vim-airline
 autocmd VimEnter * AirlineTheme powerlineish
+
+" When using `gd`, this will jump to either the definition
+" or declaration (depending on what the cursor is on).
+au FileType javascript nmap gd :YcmCompleter GoTo<CR>
