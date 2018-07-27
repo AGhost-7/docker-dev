@@ -29,6 +29,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Git commit browser
 Plug 'junegunn/gv.vim'
 
+" AutoComplete
+Plug 'Valloric/YouCompleteMe'
+
 " End the list of vim plugins
 call plug#end()
 
