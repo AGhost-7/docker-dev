@@ -14,14 +14,17 @@ RUN . "$NVM_DIR/nvm.sh" && \
 # cmake needed for YMC
 RUN sudo apt-get install -y cmake
 
+# we also need python neovim, so we need to get and update pip3
 RUN sudo apt-get install -y python3-pip && \
 	sudo pip3 install --upgrade pip && \
 	sudo pip3 install neovim
 
+# source nvm and run the python youcompleteme installer with JS
 RUN . "$NVM_DIR/nvm.sh" && \
     python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" \
     --js-completer
 
+# turn on tern
 RUN echo '{"plugins": {"node": {}}}' > ~/.tern-config
 
 
