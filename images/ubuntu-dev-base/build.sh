@@ -46,8 +46,6 @@ rm -rf /tmp/docker*
 [ "$(sha256sum /usr/local/bin/docker | awk '{print $1}')" = "$DOCKER_CLI_SHA256" ]
 apt-get remove -y debsums
 
-# testing!
-
 # Add proper docker group to our user
 groupadd -g 999 docker
 usermod -aG docker aghost-7

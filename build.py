@@ -59,7 +59,12 @@ def parse_image_dependency(image):
 
     # Due to build args, I can't easily determine statically which tag my image
     # depends on. Will probably implement more accurate algorithm later.
-    return baseimage.split(':')[0]
+    untagged = baseimage.split(':')[0]
+    parts = untagged.split('/')
+    if len(parts) != 2:
+        return untagged
+    else:
+        return parts[1]
 
 
 def files_changed(ref):
@@ -110,25 +115,30 @@ def image_leaves(images):
     return leaves
 
 
-def build_tree(image_name, images, changes_set, changed, result):
+def build_tree(image_name, images, changes_set, changed, scheduled, result):
     for image in images:
         if image['dependency'] == image_name:
             if changed or image['name'] in changes_set:
                 changed = True
-                result.append(image)
-            build_tree(image['name'], images, changes_set, changed, result)
+                if image['full_name'] not in scheduled:
+                    result.append(image)
+                scheduled.add(image['full_name'])
+            build_tree(
+                image['name'], images, changes_set, changed, scheduled, result)
 
 
 def build_plan(images, changes):
     result = []
     changes_set = set([change['name'] for change in changes])
+    scheduled = set()
 
     for leaf in image_leaves(images):
         name = leaf['name']
         changed = name in changes_set
         if changed:
             result.append(leaf)
-        build_tree(name, images, changes_set, changed, result)
+            scheduled.add(leaf['full_name'])
+        build_tree(name, images, changes_set, changed, scheduled, result)
 
     return result
 

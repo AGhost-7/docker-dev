@@ -24,6 +24,11 @@ def test_changed_image():
     assert len(images) == len(contains)
 
 
+def test_parse_image_dependency():
+    dependency = build.parse_image_dependency({'path': 'nvim'})
+    assert dependency == 'power-tmux'
+
+
 def test_image_leaves():
     images = [
         {'name': 'ubuntu-dev-base', 'dependency': 'ubuntu'},
@@ -37,11 +42,15 @@ def test_image_leaves():
 
 def test_build_plan():
     images = [
-        {'name': 'ubuntu-dev-base', 'dependency': 'ubuntu'},
-        {'name': 'power-tmux', 'dependency': 'ubuntu-dev-base'},
-        {'name': 'nvim', 'dependency': 'power-tmux'},
-        {'name': 'nodejs-dev', 'dependency': 'nvim'},
-        {'name': 'py-dev', 'dependency': 'nvim'}
+        {'name': 'ubuntu-dev-base', 'full_name': 'aghost7/ubuntu-dev-base',
+            'dependency': 'ubuntu'},
+        {'name': 'power-tmux', 'full_name': 'aghost7/power-tmux',
+            'dependency': 'ubuntu-dev-base'},
+        {'name': 'nvim', 'full_name': 'aghost7/nvim',
+            'dependency': 'power-tmux'},
+        {'name': 'nodejs-dev', 'full_name': 'aghost7/nodejs-dev:boron',
+            'dependency': 'nvim'},
+        {'name': 'py-dev', 'full_name': 'aghost7/py-dev', 'dependency': 'nvim'}
     ]
     changes = [
         {'name': 'power-tmux'},
@@ -52,3 +61,45 @@ def test_build_plan():
     assert plan[1]['name'] == 'nvim'
     assert plan[2]['name'] == 'nodejs-dev' or plan[2]['name'] == 'py-dev'
     assert plan[3]['name'] == 'nodejs-dev' or plan[3]['name'] == 'py-dev'
+    assert len(plan) == 4
+
+
+def test_build_plan_dependents():
+    images = [
+        {'name': 'ubuntu-dev-base', 'full_name': 'aghost7/ubuntu-dev-base',
+            'dependency': 'ubuntu'},
+        {'name': 'ubuntu-dev-base', 'tag': 'bionic',
+            'full_name': 'aghost7/ubuntu-dev-base:bionic',
+            'dependency': 'ubuntu', 'args': {'UBUNTU_RELEASE': 'bionic'}},
+        {'name': 'power-tmux', 'full_name': 'aghost7/power-tmux',
+            'dependency': 'ubuntu-dev-base'},
+        {'name': 'nvim', 'full_name': 'aghost7/nvim',
+            'dependency': 'power-tmux'}
+    ]
+    changes = [
+        {'name': 'ubuntu-dev-base'}
+    ]
+    plan = build.build_plan(images, changes)
+    assert len(plan) == 4
+
+
+def test_build_plan_subdependents():
+    images = [
+        {'name': 'ubuntu-dev-base', 'full_name': 'aghost7/ubuntu-dev-base',
+            'dependency': 'ubuntu'},
+        {'name': 'ubuntu-dev-base', 'tag': 'bionic',
+            'full_name': 'aghost7/ubuntu-dev-base:bionic',
+            'dependency': 'ubuntu'},
+        {'name': 'power-tmux', 'full_name': 'aghost7/power-tmux',
+            'dependency': 'ubuntu-dev-base'},
+        {'name': 'power-tmux', 'tag': 'bionic',
+            'full_name': 'aghost7/power-tmux:bionic',
+            'dependency': 'ubuntu-dev-base'},
+        {'name': 'nvim', 'full_name': 'aghost7/nvim',
+            'dependency': 'power-tmux'}
+    ]
+    changes = [
+        {'name': 'ubuntu-dev-base'}
+    ]
+    plan = build.build_plan(images, changes)
+    assert len(plan) == 5
