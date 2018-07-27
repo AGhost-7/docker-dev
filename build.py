@@ -36,7 +36,9 @@ images = [
         {'name': 'nodejs-dev', 'tag': 'boron', 'path': 'nodejs-dev/boron'},
         {'name': 'nodejs-dev', 'tag': 'carbon', 'path': 'nodejs-dev/carbon'},
         {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
-            'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}}
+            'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}},
+        {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
+            'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}}
 
         ]
 

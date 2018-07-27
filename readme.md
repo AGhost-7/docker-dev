@@ -27,6 +27,7 @@ setup (no language-specific plugins in there). Images available:
 	- `argon`
 	- `carbon`
 	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
+	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
