@@ -326,7 +326,7 @@ RUN cat /tmp/.tmux.conf > ~/.tmux.conf && \
 ```
 
 ## 5. NodeJS
-I found the best way to install node and manage node versions is to use 
+The way we are going to install node and manage node versions is 
 [Node Version Manager (nvm)](https://github.com/creationix/nvm). First we need 
 to cURL the install script (wget if you did not install cURL), then we set the 
 `NVM_DIR` environment variable for docker and lastly we source nvm.sh, install
@@ -337,10 +337,12 @@ in this case the LTS version.
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # set the environment variable
-ENV NVM_DIR $HOME/.nvm
+ENV NVM_DIR /home/$DOCKER_USER/.nvm
 
 # source nvm, install the version we want, alias that version so it always loads
-RUN . "$NVM_DIR/nvm.sh" && nvm install --lts && nvm alias default stable
+RUN . "$NVM_DIR/nvm.sh" && \
+	nvm install --lts && \
+	nvm alias default stable
 ```
 To test this build and run the container and try
 ```bash
@@ -349,41 +351,39 @@ node --version
 If installed correctly you should the version number for node.
 
 ### YouCompleteMe
-`YouCompleteMe` is a autocomplete tool. To bundle JS with `YouCompleteMe`
-you need to source `nvm.sh` and run the install script with `--js-completer`
-added on.
+`YouCompleteMe` is a autocomplete tool. You need the plugin for your editor, in 
+our case vim, add the below to your init.vim if it is not there already.
+```vimscript
+" AutoComplete
+Plug 'Valloric/YouCompleteMe'
+```
+To bundle JS with `YouCompleteMe` you need to source `nvm.sh` and run the 
+install script with `--js-completer` added on. To do that we'll need `cmake`, 
+and `python3-pip` and update `pip`, lastly we'll need python's `neovim` package.
 ```dockerfile
+# cmake needed for YMC
+RUN sudo apt-get install -y cmake
+
+# we also need python neovim, so we need to get and update pip3
+RUN sudo apt-get install -y python3-pip && \
+	sudo pip3 install --upgrade pip && \
+	sudo pip3 install neovim
+
+# source nvm and run the python youcompleteme installer with JS
 RUN . "$NVM_DIR/nvm.sh" && \
-	python3 ~/.config/nvim/plugged/YouCompleteMe/install.py \
-	--js-completer
+    python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" \
+    --js-completer
 ```
 #### Adding Tern completion engine
 To turn on [Tern](http://ternjs.net/)
 we need a `.tern-config` file. It will contain
 a JSON object, on your host machine:
-```bash
-touch .tern-config
-```
-Edit `.tern-config` with your editor of choice
-```json
-{
-    "plugins": {
-        "node": {}
-    }
-}
-```
-More info can be found in the 
-[tern documentation](http://ternjs.net/doc/manual.html).
-Now we need to copy and own the file. In the Dockerfile:
 ```dockerfile
-# copy tern completion config
-COPY ./.tern-config "$HOME/.tern-config"
-
-# own it as $USER
-RUN sudo chown "$USER:$USER" "$HOME/.tern-config"
+RUN echo '{"plugins": {"node": {}}}' > ~/.tern-config
 ```
-This enables tern globally, to have the tern server contain a project, you 
-can add a `.tern-project` file with the above `JSON` object in the projects root 
-directory. If you add the file with `nvim` running you need to restart the 
-`YouCompleteMe` server with `:YcmCompleter RestartServer`
-
+This enables tern globally, to have the tern server contain a project, 
+you can add a `.tern-project` file with the above `JSON` object in the projects 
+root directory. If you add the file with `nvim` running you need to restart the 
+`YouCompleteMe` server with `:YcmCompleter RestartServer`.
+More info can be found in the 
+[tern documentation](http://ternjs.net/doc/manual.html). 
