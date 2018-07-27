@@ -357,6 +357,14 @@ our case vim, add the below to your init.vim if it is not there already.
 " AutoComplete
 Plug 'Valloric/YouCompleteMe'
 ```
+#### optional, GoTo keybind
+A common dev command that is useful to have as a shortcut. After the plugins 
+add to your init.vim (if it is not already there): 
+```vimscript
+" When using `gd`, this will jump to either the definition
+" or declaration (depending on what the cursor is on).
+au FileType javascript nmap gd :YcmCompleter GoTo<CR>
+```
 To bundle JS with `YouCompleteMe` you need to source `nvm.sh` and run the 
 install script with `--js-completer` added on. To do that we'll need `cmake`, 
 and `python3-pip` and update `pip`, lastly we'll need python's `neovim` package.
