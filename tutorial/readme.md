@@ -281,7 +281,7 @@ The only real way to get tmux is to build it from source. Luckily, there are
 plenty of resources showing how to build it on Ubuntu:
 ```dockerfile
 
-ENV TMUX_VERSION 2.6
+ENV TMUX_VERSION 2.7
 
 ENV TMUX_TAR "tmux-$TMUX_VERSION.tar.gz"
 
