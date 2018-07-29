@@ -6,6 +6,12 @@ To run, just:
 docker run -ti aghost7/nodejs-dev:boron tmux new
 ```
 
+Alternatively, if on Linux:
+```
+gem install dev_dock
+dev_dock start aghost7/nodejs-dev:carbon
+```
+
 ## Images
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
