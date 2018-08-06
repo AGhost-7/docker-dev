@@ -55,3 +55,9 @@ Plug 'junegunn/vader.vim'
 
 " Git commit browser
 Plug 'junegunn/gv.vim'
+
+" Terraform is used for infrastructure as code management
+Plug 'hashivim/vim-terraform'
+
+" better support for ansible stuff
+Plug 'pearofducks/ansible-vim'
