@@ -342,7 +342,7 @@ ENV NVM_DIR /home/$DOCKER_USER/.nvm
 # source nvm, install the version we want
 # replace `--lts` with `node` for latest, alias that version so it always loads
 RUN . "$NVM_DIR/nvm.sh" && \
-	nvm install --lts && \ 
+	nvm install --lts && \
 	nvm alias default stable
 ```
 To test this build and run the container and try
