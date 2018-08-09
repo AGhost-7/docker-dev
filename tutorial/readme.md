@@ -395,3 +395,5 @@ This enables tern globally, to have the tern server contain a project,
 you can add a `.tern-project` file with the above `JSON` object in the projects 
 root directory. If you add the file with `nvim` running you need to restart the 
 `YouCompleteMe` server with `:YcmCompleter RestartServer`.
+More info can be found in the 
+[tern documentation](http://ternjs.net/doc/manual.html).
