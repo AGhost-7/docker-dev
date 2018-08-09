@@ -329,7 +329,7 @@ RUN cat /tmp/.tmux.conf > ~/.tmux.conf && \
 The way we are going to install node and manage node versions is 
 [Node Version Manager (nvm)](https://github.com/creationix/nvm). First we need 
 to cURL the install script (wget if you did not install cURL), then we set the 
-`NVM_DIR` environment variable for docker and lastly we source nvm.sh, install
+`NVM_DIR` environment variable for docker and lastly we source nvm.sh and install
 the [node version](https://github.com/creationix/nvm#long-term-support) we want,
 in this case the LTS version.
 ```dockerfile
@@ -339,9 +339,10 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.s
 # set the environment variable
 ENV NVM_DIR /home/$DOCKER_USER/.nvm
 
-# source nvm, install the version we want, alias that version so it always loads
+# source nvm, install the version we want
+# replace `--lts` with `node` for latest, alias that version so it always loads
 RUN . "$NVM_DIR/nvm.sh" && \
-	nvm install --lts && \
+	nvm install --lts && \ 
 	nvm alias default stable
 ```
 To test this build and run the container and try
@@ -357,7 +358,7 @@ our case vim, add the below to your init.vim if it is not there already.
 " AutoComplete
 Plug 'Valloric/YouCompleteMe'
 ```
-#### optional, GoTo keybind
+#### (Optional) GoTo keybind
 A common dev command that is useful to have as a shortcut. After the plugins 
 add to your init.vim (if it is not already there): 
 ```vimscript
@@ -365,6 +366,7 @@ add to your init.vim (if it is not already there):
 " or declaration (depending on what the cursor is on).
 au FileType javascript nmap gd :YcmCompleter GoTo<CR>
 ```
+#### YouCompleteMe with JS integration
 To bundle JS with `YouCompleteMe` you need to source `nvm.sh` and run the 
 install script with `--js-completer` added on. To do that we'll need `cmake`, 
 and `python3-pip` and update `pip`, lastly we'll need python's `neovim` package.
@@ -385,7 +387,7 @@ RUN . "$NVM_DIR/nvm.sh" && \
 #### Adding Tern completion engine
 To turn on [Tern](http://ternjs.net/)
 we need a `.tern-config` file. It will contain
-a JSON object, on your host machine:
+a JSON object:
 ```dockerfile
 RUN echo '{"plugins": {"node": {}}}' > ~/.tern-config
 ```
@@ -393,5 +395,3 @@ This enables tern globally, to have the tern server contain a project,
 you can add a `.tern-project` file with the above `JSON` object in the projects 
 root directory. If you add the file with `nvim` running you need to restart the 
 `YouCompleteMe` server with `:YcmCompleter RestartServer`.
-More info can be found in the 
-[tern documentation](http://ternjs.net/doc/manual.html). 
