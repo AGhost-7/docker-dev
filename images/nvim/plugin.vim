@@ -61,3 +61,6 @@ Plug 'hashivim/vim-terraform'
 
 " better support for ansible stuff
 Plug 'pearofducks/ansible-vim'
+
+" Plugin for terraform configurations
+Plug 'hashivim/vim-terraform'
