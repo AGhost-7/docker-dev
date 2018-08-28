@@ -103,3 +103,34 @@ def test_build_plan_subdependents():
     ]
     plan = build.build_plan(images, changes)
     assert len(plan) == 5
+
+
+def test_build_multiple_parents():
+    images = [
+        {'name': 'nvim', 'full_name': 'aghost7/nvim',
+            'dependency': 'power-tmux'},
+        {'name': 'nvim', 'tag': 'bionic', 'full_name': 'aghost7/nvim:bionic',
+            'dependency': 'power-tmux'},
+        {'name': 'nodejs-dev-base', 'full_name': 'aghost7/nodejs-dev-base',
+            'dependency': 'nvim'},
+        {'name': 'nodejs-dev-base', 'tag': 'bionic',
+            'full_name': 'aghost7/nodejs-dev-base:bionic',
+            'dependency': 'nvim'},
+        {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
+            'full_name': 'aghost7/nodejs-dev:bionic-carbon',
+            'dependency': 'nodejs-dev-base'}
+    ]
+    changes = [
+        {'name': 'nvim'}
+    ]
+    plan_names = [
+        image['full_name'] for image in build.build_plan(images, changes)]
+    expected_plan_names = [
+            'aghost7/nvim',
+            'aghost7/nvim:bionic',
+            'aghost7/nodejs-dev-base',
+            'aghost7/nodejs-dev-base:bionic',
+            'aghost7/nodejs-dev:bionic-carbon'
+    ]
+    for i in range(len(expected_plan_names)):
+        assert expected_plan_names[i] == plan_names[i]

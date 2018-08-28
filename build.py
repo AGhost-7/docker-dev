@@ -117,30 +117,46 @@ def image_leaves(images):
     return leaves
 
 
-def build_tree(image_name, images, changes_set, changed, scheduled, result):
-    for image in images:
+def build_tree(
+        image_name, image_groups, changes_set, changed, scheduled, result):
+    for group_image_name, image_group in image_groups.items():
+        image = image_group[0]
         if image['dependency'] == image_name:
             if changed or image['name'] in changes_set:
                 changed = True
-                if image['full_name'] not in scheduled:
-                    result.append(image)
-                scheduled.add(image['full_name'])
+                if image['name'] not in scheduled:
+                    result.extend(image_group)
+                scheduled.add(image['name'])
             build_tree(
-                image['name'], images, changes_set, changed, scheduled, result)
+                image['name'],
+                image_groups,
+                changes_set,
+                changed,
+                scheduled,
+                result)
+
+
+def group_by_name(images):
+    result = {}
+    for image in images:
+        result.setdefault(image['name'], [])
+        result[image['name']].append(image)
+
+    return result
 
 
 def build_plan(images, changes):
     result = []
     changes_set = set([change['name'] for change in changes])
     scheduled = set()
-
+    image_groups = group_by_name(images)
     for leaf in image_leaves(images):
         name = leaf['name']
         changed = name in changes_set
-        if changed:
-            result.append(leaf)
-            scheduled.add(leaf['full_name'])
-        build_tree(name, images, changes_set, changed, scheduled, result)
+        if changed and name not in scheduled:
+            result.extend(image_groups[leaf['name']])
+            scheduled.add(leaf['name'])
+        build_tree(name, image_groups, changes_set, changed, scheduled, result)
 
     return result
 
