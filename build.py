@@ -96,12 +96,16 @@ def build_image(image):
             command.append(k + '=' + v)
 
     command.append(path.join('images', image['path']))
-    call(command)
+    code = call(command)
+    if code > 0:
+        raise Exception('Build command exited with code {}'.format(code))
     test_file = path.join('images', image['path'], 'test.sh')
     if path.isfile(test_file):
         call(['bash', '-e', '-x', path.abspath(test_file)])
 
-    call(['docker', 'push', image['full_name']])
+    code = call(['docker', 'push', image['full_name']])
+    if code > 0:
+        raise Exception('Push command exited with code {}'.format(code))
 
 
 def image_leaves(images):

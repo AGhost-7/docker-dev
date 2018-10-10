@@ -16,6 +16,7 @@ curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | ba
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
+sudo apt-get update
 ycm-install
 
 # Cleanup whats left...
