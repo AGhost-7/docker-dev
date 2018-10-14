@@ -96,6 +96,9 @@ apt-install inetutils-ping
 # for figuring out routing issues in the network
 apt-install inetutils-traceroute
 
+# To cryptographically sign git commits
+apt-install gpg
+
 # Install latest git
 apt-install software-properties-common
 sudo apt-add-repository ppa:git-core/ppa
