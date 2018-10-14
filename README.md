@@ -45,6 +45,7 @@ recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
 host file system. Ivy is extremely slow at resolving dependencies.
 There is only a `latest` tag for the scala image.
 - `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
+- `c-dev': Ubuntu Bionic image for c development with cquery for completions.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
@@ -52,6 +53,7 @@ version:
 	- `9.6`
 	- `10`
 - `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
+
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
