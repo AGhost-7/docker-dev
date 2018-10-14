@@ -7,7 +7,7 @@
 from __future__ import print_function
 from os import path
 from subprocess import call, check_output
-from sys import argv
+import sys
 import re
 
 images = [
@@ -89,6 +89,7 @@ def changed_images(images, ref):
 
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
+    sys.stdout.flush()
     command = ['docker', 'build', '--tag', image['full_name']]
     if 'args' in image:
         for k, v in image['args'].items():
@@ -173,11 +174,12 @@ def print_plan(plan):
     print_blue('Build plan:')
     for image in plan:
         print_blue('- {}'.format(image['full_name']))
+    sys.stdout.flush()
 
 
 if __name__ == "__main__":
     expand_images_config(images)
-    changes = changed_images(images, argv[1])
+    changes = changed_images(images, sys.argv[1])
     plan = build_plan(images, changes)
     print_plan(plan)
     for image in plan:

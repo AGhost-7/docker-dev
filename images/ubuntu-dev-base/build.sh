@@ -13,6 +13,7 @@ apt-install() {
 apt-get update
 
 if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+	# reinstall stuff to include man pages...
 	sudo rm /etc/dpkg/dpkg.cfg.d/excludes
 	dpkg -l | \
 		awk '$1 ~/ii/ { print $2 }' | \
@@ -25,9 +26,8 @@ apt-install tree curl
 # Going to need this a lot
 apt-install python-pip
 
-
 if [ "$UBUNTU_RELEASE" == "xenial" ]; then
-	pip install --upgrade pip
+	python -m pip install --upgrade pip
 fi
 
 pip install setuptools
@@ -97,7 +97,11 @@ apt-install inetutils-ping
 apt-install inetutils-traceroute
 
 # To cryptographically sign git commits
-apt-install gpg
+if [ "$UBUNTU_RELEASE" == "xenial" ]; then
+	apt-install gpgv2
+else
+	apt-install gpg
+fi
 
 # Install latest git
 apt-install software-properties-common
