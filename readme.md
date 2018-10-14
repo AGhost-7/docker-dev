@@ -8,8 +8,8 @@ docker run -ti aghost7/nodejs-dev:boron tmux new
 
 Alternatively, if on Linux:
 ```
-gem install dev_dock
-dev_dock start aghost7/nodejs-dev:carbon
+python3 -m pip install --user slipway
+slipway start aghost7/nodejs-dev:carbon
 ```
 
 ## Images

@@ -100,7 +100,7 @@ apt-install inetutils-traceroute
 if [ "$UBUNTU_RELEASE" == "xenial" ]; then
 	apt-install gpgv2
 else
-	apt-install gpg
+	apt-install gpg gpg-agent
 fi
 
 # Install latest git
