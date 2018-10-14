@@ -28,5 +28,7 @@ ONBUILD RUN /install-rust.sh
 # cargo registry.
 VOLUME $HOME/.cargo/registry
 
+RUN sudo chown -R $USER:$USER $HOME/.cargo
+
 CMD ["/bin/bash"]
 

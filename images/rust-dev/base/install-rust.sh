@@ -4,6 +4,9 @@ set -e
 
 set -x
 
+sudo chown "$USER":"$USER" $HOME/.rust-toolchain
+sudo chown -R "$USER":"$USER" $HOME/.cargo
+
 toolchain="$(cat ~/.rust-toolchain)"
 curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain "$toolchain"
 
