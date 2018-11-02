@@ -9,6 +9,7 @@ from os import path
 from subprocess import call, check_output
 import sys
 import re
+import os
 
 images = [
         {'name': 'ubuntu-dev-base'},
@@ -87,6 +88,28 @@ def changed_images(images, ref):
     return list(changed.values())
 
 
+def run_sh_tests(sh_dir):
+    for file in os.listdir(sh_dir):
+        abs_path = path.join(sh_dir, file)
+        file_path, extension = path.splitext(file)
+        if path.isfile(abs_path) and extension == '.sh':
+            code = call(['bash', '-e', '-x', abs_path])
+            if code > 0:
+                raise SystemExit(code)
+
+
+def run_tests(image):
+    test_dir = path.join('images', image['path'], 'test')
+    if path.isdir(test_dir):
+        sh_dir = path.join(test_dir, 'sh')
+        if path.isdir(sh_dir):
+            run_sh_tests(sh_dir)
+
+        vader_dir = path.join(test_dir, 'vader')
+        if path.isdir(vader_dir):
+            print('Vader testing not implemented, skipping')
+
+
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
@@ -100,9 +123,8 @@ def build_image(image):
     code = call(command)
     if code > 0:
         raise Exception('Build command exited with code {}'.format(code))
-    test_file = path.join('images', image['path'], 'test.sh')
-    if path.isfile(test_file):
-        call(['bash', '-e', '-x', path.abspath(test_file)])
+
+    run_tests(image)
 
     code = call(['docker', 'push', image['full_name']])
     if code > 0:

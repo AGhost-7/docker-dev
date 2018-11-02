@@ -1,4 +1,6 @@
 import build
+from os import path
+import tempfile
 
 
 def changed_images(ref):
@@ -134,3 +136,30 @@ def test_build_multiple_parents():
     ]
     for i in range(len(expected_plan_names)):
         assert expected_plan_names[i] == plan_names[i]
+
+
+def test_run_sh_tests():
+    exception = False
+    try:
+        tempdir = tempfile.TemporaryDirectory()
+        test_file = path.join(tempdir.name, 'test.sh')
+        with open(test_file, 'w+') as file:
+            file.write('exit 1')
+        build.run_sh_tests(tempdir.name)
+    except SystemExit:
+        exception = True
+    assert exception
+
+    exception = False
+    try:
+        tempdir = tempfile.TemporaryDirectory()
+        test_file = path.join(tempdir.name, 'test.sh')
+        non_test_file = path.join(tempdir.name, 'nope.txt')
+        with open(non_test_file, 'w+') as file:
+            file.write('exit 1')
+        with open(test_file, 'w+') as file:
+            file.write('exit 0')
+        build.run_sh_tests(tempdir.name)
+    except SystemExit:
+        exception = True
+    assert not exception
