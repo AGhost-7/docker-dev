@@ -58,7 +58,7 @@ def parse_image_dependency(image):
     file = open(path.join('images', image['path'], 'Dockerfile'), 'r')
     contents = file.read()
     file.close()
-    baseimage = re.search('\n*\s*FROM\s+(\S+)\n', contents).group(1)
+    baseimage = re.search('\n*\\s*FROM\\s+(\\S+)\n', contents).group(1)
 
     # Due to build args, I can't easily determine statically which tag my image
     # depends on. Will probably implement more accurate algorithm later.
