@@ -39,7 +39,8 @@ images = [
         {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
             'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}},
         {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
-            'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}}
+            'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
+        {'name': 'c-dev', 'tag': 'bionic'}
 
         ]
 
@@ -88,14 +89,36 @@ def changed_images(images, ref):
     return list(changed.values())
 
 
+def list_extensions(base_dir, extension):
+    for root, subdirs, files in os.walk(base_dir):
+        for file in files:
+            abs_path = path.join(root, file)
+            file_base, file_extension = path.splitext(abs_path)
+            if path.isfile(abs_path) and file_extension == extension:
+                yield abs_path
+
+
 def run_sh_tests(sh_dir):
-    for file in os.listdir(sh_dir):
-        abs_path = path.join(sh_dir, file)
-        file_path, extension = path.splitext(file)
-        if path.isfile(abs_path) and extension == '.sh':
-            code = call(['bash', '-e', '-x', abs_path])
-            if code > 0:
-                raise SystemExit(code)
+    for file in list_extensions(sh_dir, '.sh'):
+        code = call(['bash', '-e', '-x', file])
+        if code > 0:
+            raise SystemExit(code)
+
+
+def run_vader_tests(image, vader_dir):
+    for file in list_extensions(vader_dir, '.vader'):
+        code = call([
+            'docker',
+            'run',
+            '--rm',
+            '-t',
+            '-v',
+            path.dirname(file) + ':/home/aghost-7/test',
+            image['name'] + image['tag'],
+            'nvim -c "Vader! ~/test/{}"'.format(path.basename(file))
+            ])
+        if code > 0:
+            raise SystemExit(code)
 
 
 def run_tests(image):
@@ -107,7 +130,7 @@ def run_tests(image):
 
         vader_dir = path.join(test_dir, 'vader')
         if path.isdir(vader_dir):
-            print('Vader testing not implemented, skipping')
+            run_vader_tests(vader_dir)
 
 
 def build_image(image):

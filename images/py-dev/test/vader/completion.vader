@@ -1,0 +1,7 @@
+Given python:
+  import os
+  os.wa
+
+Do:
+  i
+  <ctlr-space>

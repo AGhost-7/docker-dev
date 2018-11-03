@@ -41,7 +41,8 @@ setup (no language-specific plugins in there). Images available:
 	- `latest`: Ubuntu 16.04 + Python 3.5
 	- `bionic`: Ubuntu 18.04 + python 3.6
 - `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
-- `c-dev': Ubuntu Bionic image for c development with cquery for completions.
+- `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
+There is only a `bionic` tag.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
