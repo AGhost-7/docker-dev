@@ -130,7 +130,7 @@ def run_tests(image):
 
         vader_dir = path.join(test_dir, 'vader')
         if path.isdir(vader_dir):
-            run_vader_tests(vader_dir)
+            run_vader_tests(image, vader_dir)
 
 
 def build_image(image):
