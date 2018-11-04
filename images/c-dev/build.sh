@@ -18,12 +18,12 @@ sudo cmake --build . --target install
 sudo cp bin/clang /usr/local/bin
 cd /
 
-# Add plugins and customizations
+# Add plugins and customizations.
 cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 nvim +PlugInstall +qall
 
-# clean up
+# Clean up.
 sudo rm -rf /tmp/cquery
 sudo rm /tmp/post-plugin.vim
 sudo rm /tmp/plugin.vim
