@@ -2,7 +2,7 @@
 let g:LanguageClient_serverCommands = {
 \ 'c': ['/usr/local/bin/cquery',
 \ '--log-file=/tmp/cq.log',
-\ '--init={"cacheDirectory":"~/.cache/cquery"}']
+\ '--init={"cacheDirectory":"' . $HOME . '/.cache/cquery"}']
 \ }
 
 au FileType c nnoremap <silent> <buffer> K :call LanguageClient#textDocument_hover()<CR>
