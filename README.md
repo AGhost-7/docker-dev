@@ -1,6 +1,8 @@
 # Docker Dev
 Spin up a container to develop from anywhere!
 
+![docker-dev](https://raw.githubusercontent.com/AGhost-7/docker-dev/assets/demo.gif)
+
 To run, just:
 ```
 docker run -ti aghost7/nodejs-dev:boron tmux new
