@@ -1,6 +1,6 @@
 
 run-tests() {
-	image="aghost7-ubuntu-dev-base:$1"
+	image="aghost7/ubuntu-dev-base:$1"
 
 	for cmd in ag docker netstat dig socat; do
 		docker run --rm "$image" which "$cmd"
