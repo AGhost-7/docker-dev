@@ -69,6 +69,9 @@ apt-install dnsutils
 # Needed for netstat, etc.
 apt-install net-tools
 
+# cheap reverse proxy
+apt-install socat
+
 # Packet sniffer for debugging.
 apt-install tcpflow
 
