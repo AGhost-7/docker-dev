@@ -59,9 +59,6 @@ sudo chown $USER:$USER ~/.tmate.conf
 # Need to update package cache...
 sudo apt-get update
 
-# We're going to want utf-8 support...
-apt-install language-pack-en-base
-
 install-powerline
 
 install-tmux

@@ -14,7 +14,18 @@ RUN apt-get update && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists
+	rm -rf /var/lib/apt/lists/*
+
+# {{{ lang stuff
+
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+RUN apt-get update && \
+	apt-get install -y language-pack-en-base && \
+	rm -rf /var/lib/apt/lists/*
+
+# }}}
 
 # Required for `clear` command to work, etc.
 ENV TERM screen-256color
