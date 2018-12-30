@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.6"
+git:
+  depth: 9999999
 sudo: required
 services:
   - docker
