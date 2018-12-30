@@ -31,8 +31,6 @@ setup (no language-specific plugins in there). Images available:
 	- `latest`
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `boron`
-	- `argon`
 	- `carbon`
 	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
