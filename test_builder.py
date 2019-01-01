@@ -145,7 +145,7 @@ def test_run_sh_tests():
         test_file = path.join(tempdir.name, 'test.sh')
         with open(test_file, 'w+') as file:
             file.write('exit 1')
-        build.run_sh_tests(tempdir.name)
+        build.run_sh_tests(tempdir.name, 'latest')
     except SystemExit:
         exception = True
     assert exception
@@ -159,7 +159,7 @@ def test_run_sh_tests():
             file.write('exit 1')
         with open(test_file, 'w+') as file:
             file.write('exit 0')
-        build.run_sh_tests(tempdir.name)
+        build.run_sh_tests(tempdir.name, 'latest')
     except SystemExit:
         exception = True
     assert not exception

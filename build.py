@@ -97,9 +97,9 @@ def list_extensions(base_dir, extension):
                 yield abs_path
 
 
-def run_sh_tests(sh_dir):
+def run_sh_tests(sh_dir, tag):
     for file in list_extensions(sh_dir, '.sh'):
-        code = call(['bash', '-e', '-x', file])
+        code = call(['bash', '-e', '-x', file, tag])
         if code > 0:
             raise SystemExit(code)
 
@@ -125,7 +125,7 @@ def run_tests(image):
     if path.isdir(test_dir):
         sh_dir = path.join(test_dir, 'sh')
         if path.isdir(sh_dir):
-            run_sh_tests(sh_dir)
+            run_sh_tests(sh_dir, image['tag'])
 
         vader_dir = path.join(test_dir, 'vader')
         if path.isdir(vader_dir):
