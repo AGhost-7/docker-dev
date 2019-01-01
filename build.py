@@ -113,7 +113,7 @@ def run_vader_tests(image, vader_dir):
             '-t',
             '-v',
             path.dirname(file) + ':/home/aghost-7/test',
-            image['name'] + image['tag'],
+            image['name'] + ':' + image['tag'],
             'nvim -c "Vader! ~/test/{}"'.format(path.basename(file))
             ])
         if code > 0:
