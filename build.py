@@ -104,8 +104,12 @@ def run_sh_tests(sh_dir, tag):
             raise SystemExit(code)
 
 
-def run_vader_tests(image, vader_dir):
+def vader_test_volume(file):
     basedir = path.dirname(__file__)
+    return path.join(basedir, path.dirname(file)) + ':/home/aghost-7/test'
+
+
+def run_vader_tests(image, vader_dir):
     for file in list_extensions(vader_dir, '.vader'):
         code = call([
             'docker',
@@ -113,7 +117,7 @@ def run_vader_tests(image, vader_dir):
             '--rm',
             '-t',
             '-v',
-            path.join(basedir, path.dirname(file)) + ':/home/aghost-7/test',
+            vader_test_volume(file),
             image['full_name'],
             'nvim -c "Vader! ~/test/{}"'.format(path.basename(file))
             ])
