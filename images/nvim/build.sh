@@ -41,19 +41,14 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 # Install all plugins.
 nvim +PlugInstall +qall
 
-# Shellcheck: Grade A shell script linter
-git clone -b v0.4.5 https://github.com/koalaman/shellcheck.git /tmp/shellcheck
-apt-install haskell-platform
-cabal update
-cd /tmp/shellcheck
-cabal install --force-reinstalls
-sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
+# Shellcheck: shell script linter
+apt-install shellcheck
 
 # Install ctags for code jump
 apt-install exuberant-ctags
 
 # Cleanups
-sudo apt-get purge software-properties-common haskell-platform -y
+sudo apt-get purge software-properties-common -y
 sudo apt-get autoremove -y
 sudo apt-get clean
 rm -rf /tmp/shellcheck
