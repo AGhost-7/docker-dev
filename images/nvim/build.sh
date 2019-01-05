@@ -16,7 +16,7 @@ apt-install software-properties-common -y
 sudo chown -R aghost-7:aghost-7 "$HOME/.config/nvim"
 
 # Install neovim
-sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 apt-install neovim -y
 
