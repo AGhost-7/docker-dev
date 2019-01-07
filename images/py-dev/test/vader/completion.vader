@@ -1,7 +1,0 @@
-Given python:
-  import os
-  os.wa
-
-Do:
-  i
-  <ctrl-space>

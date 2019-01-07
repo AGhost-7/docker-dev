@@ -70,3 +70,7 @@ set foldlevelstart=99
 
 " Enable folds that are for the most part placed in the comments.
 set foldmethod=marker
+
+" Let the linter / formatter take care of additional line breaks and the end
+" of the file.
+set nofixendofline
