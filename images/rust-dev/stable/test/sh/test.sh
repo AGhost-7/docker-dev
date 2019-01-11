@@ -1,2 +1,2 @@
 
-docker run --rm aghost7/rust-dev:stable which cargo
+docker run -ti --rm aghost7/rust-dev:stable bash -l -c 'which cargo'
