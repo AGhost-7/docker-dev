@@ -93,4 +93,4 @@ function! g:AnsibleDocs() abort
 	setlocal nomodifiable
 endfunction
 
-autocmd Filetype ansible.yaml nmap <buffer> <C-K> :call g:AnsibleDocs()<CR>
+autocmd Filetype yaml.ansible nmap <buffer> <C-K> :call g:AnsibleDocs()<CR>
