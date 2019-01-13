@@ -40,7 +40,7 @@ images = [
         {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
             'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
         {'name': 'c-dev', 'tag': 'bionic'},
-        {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG':'4.1'}}
+        {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}}
         ]
 
 
