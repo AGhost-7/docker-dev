@@ -23,8 +23,7 @@ ENV NVM_DIR $HOME/.nvm
 ONBUILD COPY .nodejs-version $HOME/.nodejs-version
 ONBUILD RUN . ~/.nvm/nvm.sh && \
 	nvm install "$(cat $HOME/.nodejs-version)" && \
-	nvm alias default stable && \
-	npm install -g yarn
+	nvm alias default stable
 
 VOLUME $HOME/.npm
 
