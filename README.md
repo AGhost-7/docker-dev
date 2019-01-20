@@ -31,7 +31,6 @@ setup (no language-specific plugins in there). Images available:
 	- `latest`
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `carbon`
 	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 

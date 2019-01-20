@@ -30,4 +30,3 @@ VOLUME $HOME/.npm
 VOLUME $HOME/.cache/yarn
 
 CMD ["/bin/bash"]
-
