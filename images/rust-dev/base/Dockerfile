@@ -1,4 +1,4 @@
-FROM aghost7/nvim
+FROM aghost7/nvim:bionic
 
 USER aghost-7
 
