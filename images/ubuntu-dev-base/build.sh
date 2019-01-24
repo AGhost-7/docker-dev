@@ -113,6 +113,11 @@ sudo apt-get update
 apt-install git
 sudo apt-get purge -y software-properties-common
 
+# subcommand which opens the branch you're checked out on github.
+git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
+sudo cp /tmp/git-open/git-open /usr/local/bin
+rm -rf /tmp/git-open
+
 # Required for so many languages this will simply be included by default.
 apt-install build-essential pkgconf
 
