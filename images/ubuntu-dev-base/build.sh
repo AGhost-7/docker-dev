@@ -73,7 +73,7 @@ apt-install net-tools
 apt-install socat
 
 # Packet sniffer for debugging.
-apt-install tcpflow
+apt-install tcpflow tcpdump
 
 # Very usefull for finding issues coming from syscalls
 apt-install strace
