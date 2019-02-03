@@ -64,3 +64,6 @@ Plug 'pearofducks/ansible-vim'
 
 " Plugin for terraform configurations
 Plug 'hashivim/vim-terraform'
+
+" Plugin for jenkinsfile syntax
+Plug 'martinda/Jenkinsfile-vim-syntax'
