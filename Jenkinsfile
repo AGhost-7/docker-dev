@@ -2,6 +2,7 @@ pipeline {
 	agent any
 
 	stage('virtualenv') {
+		// not sure if this is going to work
 		steps {
 			virtualenv env
 			. env/bin/activate
@@ -11,6 +12,7 @@ pipeline {
 
 	stage('lint') {
 		steps {
+			. env/bin/activate
 			flake8
 		}
 	}
