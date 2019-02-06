@@ -45,10 +45,13 @@ var loadDeps = function(dependencyMap) {
 	});
 };
 
-var pkg = require(path.join(cwd, 'package.json'));
+var packagePath = path.join(cwd, 'package.json');
+if(fs.existsSync(packagePath)) {
+	var pkg = require(packagePath);
 
-loadDeps(pkg.devDependencies);
-loadDeps(pkg.dependencies);
+	loadDeps(pkg.devDependencies);
+	loadDeps(pkg.dependencies);
+}
 
 if(ctx.lodash) ctx.L = ctx.lodash;
 
