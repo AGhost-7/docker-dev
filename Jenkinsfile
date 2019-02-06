@@ -1,29 +1,23 @@
 pipeline {
-	agent any
+	agent {
+		dockerfile {
+		 args '-v /run/docker.sock:/run/docker.sock'
+		}
+	}
 
 	stages {
-		stage('virtualenv') {
-			// not sure if this is going to work
+
+		stage('lint') {
 			steps {
-				sh """
-					virtualenv env
-					. env/bin/activate
-					pip install pytest flake8
-					"""
+				sh 'flake8'
 			}
 		}
 
-		//stage('lint') {
+		//stage('test builder') {
 		//	steps {
-		//		. env/bin/activate
-		//		flake8
+		//		sh 'pytest test_builder.py'
 		//	}
 		//}
 
-		//stage('test builder') {
-		//	steps {
-		//		pytest test_builder.py
-		//	}
-		//}
 	}
 }
