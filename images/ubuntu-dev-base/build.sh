@@ -60,9 +60,6 @@ pip install tldr
 # Just gitgud
 pip install gitgud
 
-# cli with autocompletion for docker
-pip install wharfee
-
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop
 
