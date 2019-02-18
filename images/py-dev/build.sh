@@ -3,7 +3,7 @@
 set -e
 set -x
 
-sudo python3 -m pip install flake8 jedi virtualenv ptpython neovim
+sudo python3 -m pip install flake8 jedi virtualenv ptpython neovim pipenv
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends python3-dev 
 
