@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+exec java \
+    -Declipse.application=org.eclipse.jdt.ls.core.id1 \
+    -Dosgi.bundles.defaultStartLevel=4 \
+    -Declipse.product=org.eclipse.jdt.ls.core.product \
+    -noverify \
+    -Xms1G \
+    -jar $JDTLS_HOME/plugins/org.eclipse.equinox.launcher_1.*.jar \
+    -configuration $HOME/.config/jdtls/ \
+    "$@"
