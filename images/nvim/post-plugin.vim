@@ -20,6 +20,9 @@ silent! colorscheme monokai
 " Add a mapping for the NERDTree command, so you can just type :T to open
 command T NERDTree
 
+" abbreviate T to t
+cabbrev t T
+
 " Enable the powerline fonts.
 let g:airline_powerline_fonts = 1
 
