@@ -15,6 +15,8 @@ slipway start aghost7/nodejs-dev:carbon
 ```
 
 ## Images
+
+### Language Images
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
 Main thing with this image though is that it downgrades from root to a regular
@@ -42,6 +44,8 @@ setup (no language-specific plugins in there). Images available:
 - `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
 There is only a `bionic` tag.
+
+### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
@@ -53,6 +57,11 @@ version:
 	- `5.6`
 	- `5.7`
 	- `8.0`
+- `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
+Tags correspond to the mongdb version:
+	- `4.1`
+
+[mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
