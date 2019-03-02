@@ -28,6 +28,8 @@ images = [
         {'name': 'rust-dev', 'tag': 'nightly', 'path': 'rust-dev/nightly'},
         {'name': 'scala-dev'},
         {'name': 'my-dev', 'tag': '5.6'},
+        {'name': 'my-dev', 'tag': '5.7', 'args': {'MYSQL_VERSION': '5.7'}},
+        {'name': 'my-dev', 'tag': '8.0', 'args': {'MYSQL_VERSION': '8.0'}},
         {'name': 'pg-dev', 'tag': '9.3'},
         {'name': 'pg-dev', 'tag': '9.6', 'args': {'PG_VERSION': '9.6'}},
         {'name': 'pg-dev', 'tag': '10', 'args': {'PG_VERSION': '10'}},

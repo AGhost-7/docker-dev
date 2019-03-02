@@ -48,8 +48,11 @@ version:
 	- `9.3`
 	- `9.6`
 	- `10`
-- `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
-
+- `my-dev`: MySql image with mycli utility. Tags correspond to the mysql
+version:
+	- `5.6`
+	- `5.7`
+	- `8.0`
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
