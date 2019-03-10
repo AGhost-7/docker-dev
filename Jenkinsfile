@@ -2,17 +2,28 @@
 void setBuildStatus(String message, String state) {
   step([
       $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/AGhost-7/docker-dev"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build-status"],
-      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
-      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
+      reposSource: [
+				$class: "ManuallyEnteredRepositorySource",
+				url: "https://github.com/AGhost-7/docker-dev"
+			],
+      contextSource: [
+				$class: "ManuallyEnteredCommitContextSource",
+				context: "ci/jenkins/build-status"
+			],
+      errorHandlers: [
+				[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]
+			],
+      statusResultSource: [
+				$class: "ConditionalStatusResultSource",
+				results: [[$class: "AnyBuildResult", message: message, state: state]]
+			]
   ]);
 }
 
 pipeline {
 	agent {
 		dockerfile {
-		 args '-v /run/docker.sock:/run/docker.sock'
+			args '-v /run/docker.sock:/run/docker.sock --group-add ${env.DOCKER_GID}'
 		}
 	}
 

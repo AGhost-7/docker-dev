@@ -38,7 +38,7 @@ apt-install xclip
 # Download only the docker client as the host already has the daemon.
 apt-get update
 apt-get install -y debsums
-curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION-ce.tgz"
+curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
 tar xvf /tmp/docker.tgz -C /tmp
 mv /tmp/docker/docker /usr/local/bin/docker
 rm -rf /tmp/docker*
