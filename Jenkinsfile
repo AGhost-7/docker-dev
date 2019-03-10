@@ -23,7 +23,7 @@ void setBuildStatus(String message, String state) {
 pipeline {
 	agent {
 		dockerfile {
-			args '-v /run/docker.sock:/run/docker.sock --group-add ${env.DOCKER_GID}'
+			args '-v /run/docker.sock:/run/docker.sock --group-add ' + System.getenv()['DOCKER_GID']
 		}
 	}
 
