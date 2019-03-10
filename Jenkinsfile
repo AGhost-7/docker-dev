@@ -3,12 +3,13 @@ void setBuildStatus(String message, String state) {
 	// workaround for: https://issues.jenkins-ci.org/browse/JENKINS-54249
 	withCredentials([string(credentialsId: '2cf70858-43d4-40ad-9dc4-839989a73aa5', variable: 'TOKEN')]) {
 		sh """
-			curl -v \
+			target_url=\"https://jenkins.jonathan-boudreau.com/blue/organizations/jenkins/docker-dev/detail/docker-dev/$BUILD_NUMBER/pipeline\"
+			curl \
 			\"https://api.github.com/repos/AGhost-7/docker-dev/statuses/$GIT_COMMIT?access_token=$TOKEN\" \
 			-H \"Content-Type: application/json\" \
 			-H \"Accept: application/vnd.github.v3+json\" \
 			-XPOST \
-			-d \"{\\\"description\\\": \\\"$message\\\", \\\"state\\\": \\\"$state\\\", \\\"target_url\\\": \\\"$BUILD_URL\\\"}\"
+			-d \"{\\\"description\\\": \\\"$message\\\", \\\"state\\\": \\\"$state\\\", \\\"context\\\": \\\"Jenkins\\\", \\\"target_url\\\": \\\"\$target_url\\\"}\"
 			"""
 	} 
 }
