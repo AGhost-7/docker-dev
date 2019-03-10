@@ -1,7 +1,7 @@
 
 void setBuildStatus(String message, String state) {
 	// workaround for: https://issues.jenkins-ci.org/browse/JENKINS-54249
-	withCredentials([string(credentialsId: 'Github Access Token', variable: 'TOKEN')]) {
+	withCredentials([string(credentialsId: '2cf70858-43d4-40ad-9dc4-839989a73aa5', variable: 'TOKEN')]) {
 		sh """
 			curl -v \
 			\"https://api.github.com/repos/AGhost-7/docker-dev/statuses/$GIT_COMMIT?access_token=$TOKEN\" \
