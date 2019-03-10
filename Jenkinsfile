@@ -31,6 +31,7 @@ pipeline {
 
 		stage('lint') {
 			steps {
+				sh 'ls -la'
 				sh 'flake8'
 			}
 		}
