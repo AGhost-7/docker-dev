@@ -19,6 +19,10 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update
 sudo apt-get install --no-install-recommends -y yarn
 
+curl --create-dirs -o "$HOME/.local/share/bash-completion/yarn" \
+	https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+echo '. ~/.local/share/bash-completion/yarn' >> ~/.bashrc
+
 # customize fzf to ignore node_modules
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
