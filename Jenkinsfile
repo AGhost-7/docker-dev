@@ -42,11 +42,13 @@ pipeline {
 
 		stage('build images') {
 			steps {
+				// For list of options see:
+				// https://jenkins.io/doc/pipeline/steps/credentials-binding/
 				withCredentials(bindings: [
 						usernamePassword(
 							credentialsId: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
 							usernameVariable: 'DOCKERHUB_USERNAME',
-							passportVariable: 'DOCKERHUB_PASSWORD'
+							passwordVariable: 'DOCKERHUB_PASSWORD'
 							)]) {
 					sh 'docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"'
 				}
