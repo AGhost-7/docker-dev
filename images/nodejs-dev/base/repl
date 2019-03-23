@@ -2,55 +2,56 @@
 
 // Repl with preloaded dependencies
 
-var processArgs = function(args, options) {
-	if(args.length === 0) return options;
+const processArgs = (args, options) => {
+	if(args.length === 0) return options
 	switch(args[0]) {
 		case '--exclude':
 		case '-x':
-			options.exclude = new RegExp(args[1]);
-			return processArgs(args.splice(2), options);
+			options.exclude = new RegExp(args[1])
+			return processArgs(args.splice(2), options)
 		default:
-			console.error('Argument %s is invalid', args[0]);
-			process.exit(1);
+			console.error('Argument %s is invalid', args[0])
+			process.exit(1)
 	}
-};
-
-var options = processArgs(process.argv.splice(2), {});
-
-var ctx = require('repl').start({}).context;
-
-var fs = require('fs');
-var cwd = process.cwd();
-var path = require('path');
-
-var loadDeps = function(dependencyMap) {
-	Object.keys(dependencyMap).forEach(function(dependency) {
-		
-		if(options.exclude && options.exclude.test(dependency)) {
-			return;
-		}
-
-		var pkgPath = path.join(cwd, 'node_modules', dependency);
-		if(!fs.existsSync(pkgPath)) {
-			return;
-		}
-
-		var pkg = require(path.join(pkgPath, 'package.json'));
-		var mainPath = path.join(pkgPath, pkg.main || 'index.js');
-		if(!fs.existsSync(mainPath)) {
-			return;
-		}
-
-		ctx[dependency] = require(pkgPath);
-	});
-};
-
-var packagePath = path.join(cwd, 'package.json');
-if(fs.existsSync(packagePath)) {
-	var pkg = require(packagePath);
-
-	loadDeps(pkg.devDependencies);
-	loadDeps(pkg.dependencies);
 }
 
-if(ctx.lodash) ctx.L = ctx.lodash;
+const options = processArgs(process.argv.splice(2), {})
+
+const ctx = require('repl').start({}).context
+
+const fs = require('fs')
+const cwd = process.cwd()
+const path = require('path')
+
+const loadDeps = (dependencyMap) => {
+	if (!dependencyMap) return
+	Object.keys(dependencyMap).forEach((dependency) => {
+		
+		if(options.exclude && options.exclude.test(dependency)) {
+			return
+		}
+
+		const pkgPath = path.join(cwd, 'node_modules', dependency)
+		if(!fs.existsSync(pkgPath)) {
+			return
+		}
+
+		const pkg = require(path.join(pkgPath, 'package.json'))
+		const mainPath = path.join(pkgPath, pkg.main || 'index.js')
+		if(!fs.existsSync(mainPath)) {
+			return
+		}
+
+		ctx[dependency] = require(pkgPath)
+	})
+}
+
+const packagePath = path.join(cwd, 'package.json')
+if(fs.existsSync(packagePath)) {
+	const pkg = require(packagePath)
+
+	loadDeps(pkg.devDependencies)
+	loadDeps(pkg.dependencies)
+}
+
+if(ctx.lodash) ctx.L = ctx.lodash
