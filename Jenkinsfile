@@ -44,7 +44,7 @@ pipeline {
 			steps {
 				withCredentials(bindings: [
 						usernamePassword(
-							credentialsI: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
+							credentialsId: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
 							usernameVariable: 'DOCKERHUB_USERNAME',
 							passportVariable: 'DOCKERHUB_PASSWORD'
 							)]) {
