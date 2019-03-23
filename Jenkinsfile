@@ -41,16 +41,16 @@ pipeline {
 		}
 
 		stage('build images') {
-			withCredentials(bindings: [
-				usernamePasspord(
-					credentialsI: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
-					usernameVariable: 'DOCKERHUB_USERNAME',
-					passportVariable: 'DOCKERHUB_PASSWORD'
-					)]) {
-				steps {
+			steps {
+				withCredentials(bindings: [
+						usernamePasspord(
+							credentialsI: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
+							usernameVariable: 'DOCKERHUB_USERNAME',
+							passportVariable: 'DOCKERHUB_PASSWORD'
+							)]) {
 					sh 'docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"'
-					sh 'python3 build.py HEAD'
 				}
+				sh 'python3 build.py HEAD'
 			}
 		}
 	}
