@@ -51,6 +51,16 @@ usermod -aG docker aghost-7
 
 pip install docker-compose
 
+# Add docker completion
+curl \
+	-L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker \
+	-o /etc/bash_completion.d/docker
+
+# Add docker compose completion
+curl \
+	-L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose \
+	-o /etc/bash_completion.d/docker-compose
+
 # Man pages on base debian image aren't installed...
 apt-install man-db
 
