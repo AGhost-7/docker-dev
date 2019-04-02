@@ -3,7 +3,7 @@
 set -ex
 
 sudo apt-get update
-sudo apt-get install -y cmake
+sudo apt-get install -y cmake gdb
 sudo apt-get install -y --no-install-recommends valgrind
 
 # Download latest clang and build cquery completion engine.
