@@ -6,3 +6,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " Completion frontend
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Snippets plugin. Handy for Java.
+Plug 'Shougo/neosnippet.vim'
