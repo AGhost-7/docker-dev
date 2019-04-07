@@ -18,19 +18,15 @@ slipway start aghost7/nodejs-dev:carbon
 
 ### Language Images
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
-already installed. Might add docker-compose in there eventually. Not decided.
-Main thing with this image though is that it downgrades from root to a regular
-user. It is also configured to allow passwordless `sudo` just like those
-nice vagrant images. Tags available:
+already installed. It is also configured to allow passwordless `sudo` just like
+those vagrant images. Tags available:
 	- `latest`: Ubuntu xenial based image.
-	- `bionic`: Experimental Ubuntu Bionic Beaver (18.04) image.
+	- `bionic`: Ubuntu Bionic Beaver (18.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 Images available:
-	- `latest`
 	- `bionic`
 - `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there). Images available:
-	- `latest`
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
@@ -39,9 +35,9 @@ setup (no language-specific plugins in there). Images available:
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
-	- `latest`: Ubuntu 16.04 + Python 3.5
 	- `bionic`: Ubuntu 18.04 + python 3.6
-- `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
+- `ruby-dev`: Ruby image with language server. Tags:
+	- `bionic`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
 There is only a `bionic` tag.
 

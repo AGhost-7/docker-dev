@@ -1,4 +1,4 @@
-FROM aghost7/nvim
+FROM aghost7/nvim:bionic
 
 COPY ./plugin.vim /tmp/plugin.vim
 COPY ./post-plugin.vim /tmp/post-plugin.vim

@@ -25,6 +25,15 @@ sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 	autoconf libgmp-dev libgdbm-dev automake libtool bison pkg-config libffi-dev \
 	libgmp-dev libreadline6-dev libssl-dev
 
+# typically required for rails projects
+sudo apt-get install -y --no-install-recommends libpq-dev nodejs tzdata
+
+# yarn for webpack stuff
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y yarn
+
 # Install pry (improved repl) globally
 sudo gem install pry
 
