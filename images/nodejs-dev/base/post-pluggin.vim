@@ -18,3 +18,19 @@ au FileType javascript nnoremap <buffer> ,R :call g:SendDBCmd('restart')<cr>
 
 " Enable jsx by default as many projects use .js extension for jsx files.
 let g:jsx_ext_required = 0
+
+let g:deoplete#enable_at_startup = 1
+
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:LanguageClient_serverCommands = {
+		\ 'typescript': ['~/.yarn/bin/javascript-typescript-stdio'],
+		\ 'javascript': ['~/.yarn/bin/javascript-typescript-stdio'],
+		\ 'javascript.jsx': ['~/.yarn/bin/javascript-typescript-stdio'],
+		\ }

@@ -25,3 +25,13 @@ Plug 'nikvdp/ejs-syntax'
 
 " typescript support
 Plug 'leafgarland/typescript-vim'
+
+" Completion backend
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" Completion frontend
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Valloric/YouCompleteMe'
