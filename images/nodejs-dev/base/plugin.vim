@@ -22,3 +22,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Ejs template support
 Plug 'nikvdp/ejs-syntax'
+
+" typescript support
+Plug 'leafgarland/typescript-vim'
