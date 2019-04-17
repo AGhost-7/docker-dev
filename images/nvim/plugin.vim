@@ -67,3 +67,6 @@ Plug 'hashivim/vim-terraform'
 
 " Plugin for jenkinsfile syntax
 Plug 'martinda/Jenkinsfile-vim-syntax'
+
+" Gitlab integration for fugitive
+Plug 'shumphrey/fugitive-gitlab.vim'
