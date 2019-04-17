@@ -29,7 +29,8 @@ sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 # needed for tzdata to install...
 export DEBIAN_FRONTEND=noninteractive
 # typically required for rails projects
-sudo apt-get install -y --no-install-recommends libpq-dev nodejs tzdata
+# TODO: add back tzdata
+sudo apt-get install -y --no-install-recommends libpq-dev nodejs # tzdata
 
 # yarn for webpack stuff
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
