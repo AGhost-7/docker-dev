@@ -25,6 +25,8 @@ sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 	autoconf libgmp-dev libgdbm-dev automake libtool bison pkg-config libffi-dev \
 	libgmp-dev libreadline6-dev libssl-dev
 
+# needed for tzdata to install...
+export DEBIAN_FRONTEND=noninteractive
 # typically required for rails projects
 sudo apt-get install -y --no-install-recommends libpq-dev nodejs tzdata
 
