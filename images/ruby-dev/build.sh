@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -eo pipefail
+set -x
 
 # Install rvm for managing different ruby versions.
 sudo apt-get update
