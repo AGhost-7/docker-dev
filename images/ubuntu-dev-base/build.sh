@@ -12,25 +12,19 @@ apt-install() {
 
 apt-get update
 
-if [ "$UBUNTU_RELEASE" == "bionic" ]; then
-	# reinstall stuff to include man pages...
-	sudo rm /etc/dpkg/dpkg.cfg.d/excludes
-	dpkg -l | \
-		awk '$1 ~/ii/ { print $2 }' | \
-		xargs sudo apt-get install -y --reinstall
-fi
+# reinstall stuff to include man pages...
+sudo rm /etc/dpkg/dpkg.cfg.d/excludes
+dpkg -l | \
+	awk '$1 ~/ii/ { print $2 }' | \
+	xargs sudo apt-get install -y --reinstall
 
 # Super essential tools
 apt-install tree curl
 
 # Going to need this a lot
-apt-install python-pip
+apt-install python3-pip
 
-if [ "$UBUNTU_RELEASE" == "xenial" ]; then
-	python -m pip install --upgrade pip
-fi
-
-pip install setuptools
+pip3 install setuptools
 
 # See readme for how to get the clipboard working.
 apt-install xclip
@@ -49,7 +43,7 @@ apt-get remove -y debsums
 groupadd -g 999 docker
 usermod -aG docker aghost-7
 
-pip install docker-compose
+pip3 install docker-compose
 
 # Add docker completion
 curl --create-dirs -L \
@@ -65,10 +59,10 @@ curl --create-dirs -L \
 apt-install man-db
 
 # tldr for a short form man pages.
-pip install tldr
+pip3 install tldr
 
 # Just gitgud
-pip install gitgud
+pip3 install gitgud
 
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop
@@ -110,11 +104,7 @@ apt-install inetutils-ping
 apt-install inetutils-traceroute
 
 # To cryptographically sign git commits
-if [ "$UBUNTU_RELEASE" == "xenial" ]; then
-	apt-install gpgv2
-else
-	apt-install gpg gpg-agent
-fi
+apt-install gpg gpg-agent
 
 # Install latest git
 apt-install software-properties-common

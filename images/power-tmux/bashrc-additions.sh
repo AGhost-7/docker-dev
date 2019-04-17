@@ -4,7 +4,7 @@ export TERM=screen-256color
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1 \
 POWERLINE_BASH_SELECT=1 \
-	. /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+	. /usr/local/lib/python3.6/dist-packages/powerline/bindings/bash/powerline.sh
 
 export FZF_DEFAULT_OPTS='--color=light,hl:12,hl+:15,info:10,bg+:4'
 

@@ -24,7 +24,7 @@ COPY post-plugin.vim /tmp/post-plugin.vim
 RUN cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim && \
 	cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 
-RUN sudo pip install websocket-client sexpdata
+RUN sudo pip3 install websocket-client sexpdata
 
 RUN nvim +PlugInstall +qall && \
 	nvim +UpdateRemotePlugins +qall

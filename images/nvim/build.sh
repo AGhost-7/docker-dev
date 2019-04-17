@@ -21,7 +21,7 @@ sudo apt-get update
 apt-install neovim -y
 
 # Install neovim python api.
-sudo pip install neovim
+sudo pip3 install neovim
 
 # Python 3 api required for denite.vim
 apt-install python3-pip

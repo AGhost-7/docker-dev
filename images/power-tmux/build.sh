@@ -36,10 +36,10 @@ install-tmux() {
 
 install-powerline() {
 	# POWER TMUX
-	sudo pip install powerline-status
+	sudo pip3 install powerline-status
 
 	# Make git status extra nice :)
-	sudo pip install powerline-gitstatus
+	sudo pip3 install powerline-gitstatus
 }
 
 install-tmate() {
