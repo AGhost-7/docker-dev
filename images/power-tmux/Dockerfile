@@ -1,4 +1,4 @@
-ARG BASE_TAG=latest
+ARG BASE_TAG=bionic
 
 FROM aghost7/ubuntu-dev-base:$BASE_TAG
 

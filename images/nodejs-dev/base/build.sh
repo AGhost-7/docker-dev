@@ -28,7 +28,6 @@ cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
 sudo apt-get update
-yarn global add javascript-typescript-langserver
 
 # Cleanup whats left...
 sudo apt-get autoremove -y
