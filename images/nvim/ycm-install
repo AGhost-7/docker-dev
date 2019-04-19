@@ -9,7 +9,7 @@ echo "Plug 'Valloric/YouCompleteMe'" >> "$HOME/.config/nvim/plugin.vim"
 
 nvim +PlugInstall +qall
 
-"$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
+python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
 
 sudo apt-get purge python3-dev cmake -y
 sudo apt-get install libpython3.6 -y
