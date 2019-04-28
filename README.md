@@ -48,6 +48,7 @@ version:
 	- `9.3`
 	- `9.6`
 	- `10`
+	- `11`
 - `my-dev`: MySql image with mycli utility. Tags correspond to the mysql
 version:
 	- `5.6`
