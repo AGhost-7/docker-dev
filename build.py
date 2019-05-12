@@ -29,6 +29,7 @@ language_images = [
     {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
         'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'c-dev', 'tag': 'bionic'},
+    {'name': 'devops', 'tag': 'bionic'}
 ]
 
 db_images = [
