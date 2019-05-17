@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 # {{{ kubectl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
 	sudo apt-key add -
@@ -26,8 +28,7 @@ sudo apt-get remove -y unzip
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | \
     gpg --dearmor | \
     sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic main" | \
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-get update
 sudo apt-get install azure-cli
