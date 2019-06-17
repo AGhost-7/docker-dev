@@ -4,7 +4,7 @@ let g:EditorConfig_core_mode = 'external_command'
 
 " Buffer delete all others (delete all except current one)
 command Bdo BufOnly
-cabbrev bdo BuffOnly
+cabbrev bdo BufOnly
 
 " Visual diff command.
 command Ldiffthis Linediff
