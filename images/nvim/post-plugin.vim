@@ -1,6 +1,3 @@
-" Use external executable to handle editorconfig files
-let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
-let g:EditorConfig_core_mode = 'external_command'
 
 " Buffer delete all others (delete all except current one)
 command Bdo BufOnly
