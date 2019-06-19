@@ -21,11 +21,6 @@ cargo install cargo-watch
 # required for goto source to work with the standard library
 rustup component add rust-src --toolchain "$toolchain"
 
-# Compiler message prettifier
-git clone https://github.com/ticki/dybuk.git
-cargo install --path dybuk
-rm -rf dybuk
-
 # Install new plugins.
 nvim +PlugInstall +qall
 
