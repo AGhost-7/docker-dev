@@ -106,6 +106,15 @@ apt-install inetutils-traceroute
 # To cryptographically sign git commits
 apt-install gpg gpg-agent
 
+# Expose local servers to the internet. Useful for testing webhooks, oauth,
+# etc.
+curl -o /tmp/ngrok.zip \
+	https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+apt-install unzip
+sudo unzip /tmp/ngrok.zip -d /usr/local/bin
+rm /tmp/ngrok.zip
+apt-get purge -y unzip
+
 # Install latest git
 apt-install software-properties-common
 sudo apt-add-repository ppa:git-core/ppa
