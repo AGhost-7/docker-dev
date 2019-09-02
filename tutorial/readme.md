@@ -27,7 +27,7 @@ vim Dockerfile
 
 This tutorial assumes that you are using this image as your base:
 ```dockerfile
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 ```
 
 ## 1. Setting Up Your User
@@ -301,7 +301,7 @@ WORKDIR "/tmp/tmux-$TMUX_VERSION"
 # Since we're building source code, we will require certain libraries to
 # compiler against (header files) as well as library files which will be
 # linked to the tmux program at runtime.
-RUN sudo apt-get install -y libevent-2.0-5 libevent-dev libncurses-dev
+RUN sudo apt-get install -y libevent-2.1-6 libevent-dev libncurses-dev
 
 # Generate configuration files and make sure all dependencies are present
 RUN ./configure
