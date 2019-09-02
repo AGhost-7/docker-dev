@@ -12,7 +12,7 @@ sudo apt-get install -y kubectl
 # }}}
 
 # {{{ ansible
-sudo pip3 install ansible
+sudo pip3 install ansible ansible-lint
 # }}}
 
 # {{{  terraform
