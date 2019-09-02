@@ -45,7 +45,6 @@ There is only a `bionic` tag.
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
-	- `9.3`
 	- `9.6`
 	- `10`
 	- `11`
