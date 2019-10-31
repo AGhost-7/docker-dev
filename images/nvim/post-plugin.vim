@@ -81,16 +81,3 @@ xmap <c-s> <Plug>SlimeRegionSend
 
 " Make it so that ctrlp ignores files in .gitignore
 let g:ctrlp_user_command = '(git status --short | awk "{ print \$2 }"; git ls-files -- %s) | sort -u'
-
-function! g:AnsibleDocs() abort
-	let word = expand('<cword>')
-	new
-	setlocal buftype=nofile
-	setlocal noswapfile
-	nnoremap <buffer> q :bd<cr>
-	exe 'read ! ansible-doc' word
-	set ft=man
-	setlocal nomodifiable
-endfunction
-
-autocmd Filetype yaml.ansible nmap <buffer> <C-K> :call g:AnsibleDocs()<CR>

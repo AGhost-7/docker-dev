@@ -34,4 +34,13 @@ sudo apt-get update
 sudo apt-get install azure-cli
 # }}}
 
+# {{{ vim additions
+for file in plugin.vim post-plugin.vim; do
+	cat "/tmp/$file" >> "$HOME/.config/nvim/$file"
+	sudo rm -f "$file"
+done
+
+nvim +PlugInstall +qall
+# }}}
+
 sudo rm -rf /var/lib/apt/lists/*
