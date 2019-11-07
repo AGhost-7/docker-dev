@@ -58,3 +58,6 @@ Plug 'junegunn/gv.vim'
 
 " Gitlab integration for fugitive
 Plug 'shumphrey/fugitive-gitlab.vim'
+
+" Automatically clear search highlight
+Plug 'junegunn/vim-slash'
