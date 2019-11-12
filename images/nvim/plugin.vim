@@ -3,7 +3,7 @@
 " plug#end call.
 
 " Download a better colorscheme
-Plug 'crusoexia/vim-monokai'
+Plug 'morhetz/gruvbox'
 
 " Better file system browser
 Plug 'scrooloose/nerdtree'

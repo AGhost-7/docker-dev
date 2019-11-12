@@ -12,7 +12,8 @@ cabbrev ldiffoff LinediffReset
 
 " Load colors! On the initial install this will error out, so make it silent 
 " so it installs without issues.
-silent! colorscheme monokai
+silent! colorscheme gruvbox
+set background=dark
 
 " Add a mapping for the NERDTree command, so you can just type :T to open
 command T NERDTree
@@ -34,7 +35,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Set the theme for vim-airline
-autocmd VimEnter * AirlineTheme powerlineish
+autocmd VimEnter * AirlineTheme gruvbox
 
 let g:NERDTreeMouseMode = 3
 

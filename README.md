@@ -14,6 +14,13 @@ python3 -m pip install --user slipway
 slipway start aghost7/nodejs-dev:carbon
 ```
 
+## Terminal
+Lately, I've been using [alacritty][alacritty]. You can find my configurations
+[here][alacritty_config]. Gnome terminal and/or iTerm2 works fine though.
+
+[alacritty]: https://github.com/jwilm/alacritty
+[alacritty_config]: https://github.com/AGhost-7/dotfiles/tree/master/alacritty
+
 ## Images
 
 ### Language Images
