@@ -27,7 +27,6 @@ Lately, I've been using [alacritty][alacritty]. You can find my configurations
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. It is also configured to allow passwordless `sudo` just like
 those vagrant images. Tags available:
-	- `latest`: Ubuntu xenial based image.
 	- `bionic`: Ubuntu Bionic Beaver (18.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 Images available:
@@ -36,8 +35,8 @@ Images available:
 setup (no language-specific plugins in there). Images available:
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
+	- `bionic-erbium`: Ubuntu 18.04 + NodeJs 12.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
