@@ -29,6 +29,6 @@ fbind () {
 
 fbind -c
 
-alias nyan='nc -v nyancat.dakko.us 23'
+alias nyan=nyancat
 alias parrot='curl parrot.live'
 alias tmate='tmate -f ~/.tmate.conf'

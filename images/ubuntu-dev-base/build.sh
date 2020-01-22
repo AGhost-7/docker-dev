@@ -130,6 +130,14 @@ git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
 sudo cp /tmp/git-open/git-open /usr/local/bin
 rm -rf /tmp/git-open
 
+# yes
+git clone --depth 1 https://github.com/klange/nyancat /tmp/nyancat
+cd /tmp/nyancat
+make
+sudo make install
+cd /
+rm -rf /tmp/nyancat
+
 # Required for so many languages this will simply be included by default.
 apt-install build-essential pkgconf
 
