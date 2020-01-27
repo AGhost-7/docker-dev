@@ -15,7 +15,6 @@ def test_changed_image():
     images = changed_images('4ab36d6817b00a149995733b919de33b8c447ea3')
     contains = [
             'nodejs-dev/base',
-            'nodejs-dev/carbon',
             'power-tmux',
             'nvim',
             'ubuntu-dev-base'
@@ -117,10 +116,7 @@ def test_build_multiple_parents():
             'dependency': 'nvim'},
         {'name': 'nodejs-dev-base', 'tag': 'bionic',
             'full_name': 'aghost7/nodejs-dev-base:bionic',
-            'dependency': 'nvim'},
-        {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
-            'full_name': 'aghost7/nodejs-dev:bionic-carbon',
-            'dependency': 'nodejs-dev-base'}
+            'dependency': 'nvim'}
     ]
     changes = [
         {'name': 'nvim'}
@@ -132,7 +128,6 @@ def test_build_multiple_parents():
             'aghost7/nvim:bionic',
             'aghost7/nodejs-dev-base',
             'aghost7/nodejs-dev-base:bionic',
-            'aghost7/nodejs-dev:bionic-carbon'
     ]
     for i in range(len(expected_plan_names)):
         assert expected_plan_names[i] == plan_names[i]
