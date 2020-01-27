@@ -30,8 +30,8 @@ RUN apt-get update && \
 # Required for `clear` command to work, etc.
 ENV TERM screen-256color
 
-ENV DOCKER_CLI_SHA256 "918372dd8cc56616b32b0f67432e2f6b4b27541728d6f9529543a5d73d955100"
-ENV DOCKER_CLI_VERSION "18.09.3"
+ENV DOCKER_CLI_SHA256 "0a52d21eace395e6077b4c99b8ff96ffb9203ba6be1bdffcfb716bea645f5745"
+ENV DOCKER_CLI_VERSION "19.03.5"
 
 COPY build.sh /tmp/build.sh
 
