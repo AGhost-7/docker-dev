@@ -21,7 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Fuzzy file name searcher
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Adds the ability to close all except the current buffer
 Plug 'vim-scripts/BufOnly.vim'
