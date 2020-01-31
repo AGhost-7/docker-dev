@@ -3,9 +3,9 @@
 set -e
 set -x
 
-sudo python3 -m pip install flake8 jedi virtualenv ptpython neovim pipenv
+sudo python3 -m pip install flake8 jedi virtualenv ptpython neovim pipenv poetry
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends python3-dev 
+sudo apt-get install -y --no-install-recommends python3-dev python3-venv
 
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 sudo rm /tmp/plugin.vim

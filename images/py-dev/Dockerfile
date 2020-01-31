@@ -24,3 +24,5 @@ RUN cat /tmp/bashrc-additions.sh >> ~/.bashrc && \
 
 # directory is used by pipenv
 VOLUME $HOME/.local/share/virtualenvs
+# directory is used by poetry
+VOLUME $HOME/.cache/pypoetry
