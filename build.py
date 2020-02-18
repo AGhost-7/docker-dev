@@ -39,6 +39,7 @@ db_images = [
     {'name': 'pg-dev', 'tag': '9.6', 'args': {'PG_VERSION': '9.6'}},
     {'name': 'pg-dev', 'tag': '10', 'args': {'PG_VERSION': '10'}},
     {'name': 'pg-dev', 'tag': '11', 'args': {'PG_VERSION': '11'}},
+    {'name': 'pg-dev', 'tag': '12', 'args': {'PG_VERSION': '12'}},
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}}
 ]
 
