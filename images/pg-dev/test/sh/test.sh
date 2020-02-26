@@ -1,6 +1,8 @@
 
 for version in 9.6 10 11 12; do
 
+	docker rm pg-dev | true
+
 	docker run --name pg-dev -d aghost7/pg-dev:"$version"
 
 	sleep 10
@@ -10,5 +12,4 @@ for version in 9.6 10 11 12; do
 	docker exec pg-dev bash -c 'which pgcli'
 
 	docker kill pg-dev
-	docker rm pg-dev
 done
