@@ -1,7 +1,8 @@
 
 for version in 9.6 10 11 12; do
 
-	docker rm pg-dev | true
+	docker kill pg-dev || true
+	docker rm pg-dev || true
 
 	docker run --name pg-dev -d aghost7/pg-dev:"$version"
 
