@@ -6,6 +6,7 @@ apt-get update
 
 apt-get install --no-install-recommends curl python-pip python-dev build-essential less -y
 
+pip install setuptools
 pip install mycli
 
 cat > /etc/mysql/conf.d/dev.cnf <<CONFIG
