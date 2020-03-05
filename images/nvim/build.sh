@@ -16,7 +16,9 @@ apt-install software-properties-common -y
 sudo chown -R aghost-7:aghost-7 "$HOME/.config/nvim"
 
 # Install neovim
-sudo add-apt-repository ppa:neovim-ppa/stable
+if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+	sudo add-apt-repository ppa:neovim-ppa/stable
+fi
 sudo apt-get update
 apt-install neovim -y
 
