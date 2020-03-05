@@ -3,7 +3,7 @@
 # If one command exits with an error, stop the script immediately.
 set -eo pipefail
 
-# Print every line executed to the terminal
+# Print every line executed to the terminal.
 set -x
 
 apt-install() {

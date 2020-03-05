@@ -14,9 +14,13 @@ import os
 language_images = [
     {'name': 'ubuntu-dev-base', 'tag': 'bionic',
         'args': {'UBUNTU_RELEASE': 'bionic'}},
+    {'name': 'ubuntu-dev-base', 'tag': 'eoan',
+        'args': {'UBUNTU_RELEASE': 'eoan'}},
     {'name': 'power-tmux', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
+    {'name': 'power-tmux', 'tag': 'eoan', 'args': {'BASE_TAG': 'eoan'}},
     {'name': 'ruby-dev', 'tag': 'bionic'},
     {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
+    {'name': 'nvim', 'tag': 'eoan', 'args': {'BASE_TAG': 'eoan'}},
     {'name': 'py-dev', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'rust-dev-base', 'path': 'rust-dev/base'},
     {'name': 'rust-dev', 'tag': 'bionic-stable', 'path': 'rust-dev/stable'},
