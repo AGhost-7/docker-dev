@@ -13,3 +13,5 @@ RUN cat /tmp/bashrc-additions.sh >> $HOME/.bashrc && sudo rm /tmp/bashrc-additio
 
 VOLUME /usr/share/rvm/rubies
 VOLUME /usr/share/rvm/gems
+VOLUME $HOME/.rvm/gems
+VOLUME $HOME/.bundle
