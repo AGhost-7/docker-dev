@@ -30,6 +30,8 @@ if [ ! -d "/usr/local/etc/bash_completion.d" ]; then
 fi
 
 sudo "$HOME/.deno/bin/deno" completions bash > "/usr/local/etc/bash_completion.d/deno.bash"
+
+# add source for completions
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
