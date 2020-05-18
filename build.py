@@ -43,7 +43,7 @@ language_images = [
     {'name': 'deno-dev', 'tag': 'v0.42.0', 'path': 'deno-dev/v0.42.0'},
     {'name': 'deno-dev', 'tag': 'bionic-v0.42.0',
         'path': 'deno-dev/v0.42.0', 'args': {'BASE_TAG': 'bionic'}}
-    ]
+]
 
 db_images = [
     {'name': 'my-dev', 'tag': '5.6'},
