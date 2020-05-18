@@ -13,6 +13,9 @@ sudo apt-get install -y kubectl
 
 # {{{ ansible
 sudo pip3 install ansible ansible-lint
+# some older dynamic inventory scripts reference `python`, they still work
+# on python3 though.
+sudo ln -s /usr/bin/python3 /usr/bin/python
 # }}}
 
 # {{{  terraform
