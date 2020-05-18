@@ -12,7 +12,7 @@ COPY ./build.sh /tmp/build.sh
 
 COPY ./plugin.vim /tmp/plugin.vim
 
-COPY ./post-pluggin.vim /tmp/post-plugin.vim
+COPY ./post-plugin.vim /tmp/post-plugin.vim
 
 ONBUILD COPY .deno-version $HOME/.deno-version
 
