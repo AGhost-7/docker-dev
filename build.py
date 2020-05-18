@@ -58,6 +58,7 @@ db_images = [
 
 images = [*language_images, *db_images]
 
+
 def expand_images_config(images):
     for image in images:
         if 'path' not in image:
