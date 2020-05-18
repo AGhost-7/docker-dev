@@ -29,7 +29,7 @@ if [ ! -d "/usr/local/etc/bash_completion.d" ]; then
 	sudo chown "$USER:$USER" "/usr/local/etc/bash_completion.d"
 fi
 
-sudo "$HOME/.deno/bin.deno" completions bash > "/usr/local/etc/bash_completion.d/deno.bash"
+sudo "$HOME/.deno/bin/deno" completions bash > "/usr/local/etc/bash_completion.d/deno.bash"
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
