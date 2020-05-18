@@ -16,6 +16,7 @@ sudo apt-get install unzip -y
 # Install Deno 🦕
 deno_version_file="$HOME/.deno-version"
 deno_install_args=
+
 if [ -f "$deno_version_file" ]; then
 	deno_install_args="-s $(cat "$deno_version_file")"
 if
@@ -41,3 +42,4 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Install vim plugins
 nvim +PlugInstall +qall
+
