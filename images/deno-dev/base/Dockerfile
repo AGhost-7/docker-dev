@@ -18,7 +18,7 @@ ONBUILD COPY .deno-version $HOME/.deno-version
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
-ENV DENO_INSTALL="/$HOME/.deno"
+ENV DENO_INSTALL="$HOME/.deno"
 
 ENV PATH="$DENO_INSTALL/bin:$PATH"
 
