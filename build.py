@@ -34,7 +34,7 @@ language_images = [
         'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'c-dev', 'tag': 'bionic'},
     {'name': 'devops', 'tag': 'bionic'},
-    {'name': 'deno-dev', 'tag': 'v1.0', 'path': 'deno-dev/v1.0',
+    {'name': 'deno-dev', 'tag': 'bionic', 'path': 'deno-dev/v1.0',
         'args': {'BASE_TAG': 'bionic'}}
 ]
 

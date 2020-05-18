@@ -48,7 +48,7 @@ setup (no language-specific plugins in there). Images available:
 There is only a `bionic` tag.
 - `deno-dev`: Ubuntu Bionic image for deno development with bash completions.
 Tags Available:
-	- `v1.0`: Ubuntu 18.4 + Deno v1.0 
+	- `bionic`: Ubuntu 18.4 + Deno v1.0 
 	
 
 ### Database Images
