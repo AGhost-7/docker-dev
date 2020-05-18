@@ -41,4 +41,3 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Install vim plugins
 nvim +PlugInstall +qall
-
