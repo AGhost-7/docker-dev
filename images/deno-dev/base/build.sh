@@ -33,7 +33,7 @@ sudo "$HOME/.deno/bin/deno" completions bash > "/usr/local/etc/bash_completion.d
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
-ycm-install --ts-completer
+ycm-install
 
 # Cleanup whats left...
 sudo apt-get purge unzip -y
