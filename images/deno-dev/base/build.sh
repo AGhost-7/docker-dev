@@ -23,7 +23,7 @@ fi
 
 curl -fsSL https://deno.land/x/install/install.sh | sh $deno_install_args
 
-# add Deno bash completion
+# add Deno bash completion, need to own the folder
 if [ ! -d "/usr/local/etc/bash_completion.d" ]; then
 	sudo mkdir -p "/usr/local/etc/bash_completion.d"
 	sudo chown "$USER:$USER" "/usr/local/etc/bash_completion.d"
