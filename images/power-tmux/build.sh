@@ -19,11 +19,7 @@ install-tmux() {
 	local tmux_src="/tmp/tmux-$TMUX_VERSION"
 	pushd "$tmux_src"
 	# libevent is a run-time requirement. *-dev are for the header files.
-	local libevent_version=2.0-5
-	if [ "$UBUNTU_RELEASE" == "bionic" ]; then
-		libevent_version=2.1-6
-	fi
-	apt-install "libevent-$libevent_version" libevent-dev libncurses-dev
+	apt-install libevent-2.1-6 libevent-dev libncurses-dev
 	./configure
 	make
 	sudo make install
@@ -36,10 +32,10 @@ install-tmux() {
 
 install-powerline() {
 	# POWER TMUX
-	sudo pip install powerline-status
+	sudo pip3 install powerline-status
 
 	# Make git status extra nice :)
-	sudo pip install powerline-gitstatus
+	sudo pip3 install powerline-gitstatus
 }
 
 install-tmate() {
@@ -58,9 +54,6 @@ sudo chown $USER:$USER ~/.tmate.conf
 
 # Need to update package cache...
 sudo apt-get update
-
-# We're going to want utf-8 support...
-apt-install language-pack-en-base
 
 install-powerline
 

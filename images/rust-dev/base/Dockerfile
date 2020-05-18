@@ -1,4 +1,4 @@
-FROM aghost7/nvim
+FROM aghost7/nvim:bionic
 
 USER aghost-7
 
@@ -27,6 +27,8 @@ ONBUILD RUN /install-rust.sh
 # For some reason rustup doesn't work well so I'll only place a volume for the
 # cargo registry.
 VOLUME $HOME/.cargo/registry
+
+RUN sudo chown -R $USER:$USER $HOME/.cargo
 
 CMD ["/bin/bash"]
 

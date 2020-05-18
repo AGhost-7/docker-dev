@@ -1,4 +1,4 @@
-ARG BASE_TAG=latest
+ARG BASE_TAG=bionic
 
 FROM aghost7/power-tmux:$BASE_TAG
 

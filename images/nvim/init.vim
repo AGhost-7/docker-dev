@@ -47,7 +47,7 @@ autocmd Filetype gitcommit setl colorcolumn=72
 " Will search the file as you type your query
 set incsearch
 
-set t_Co=256
+set termguicolors
 
 " This will close the current buffer without closing the window
 command Bd bp|bd #
@@ -70,3 +70,7 @@ set foldlevelstart=99
 
 " Enable folds that are for the most part placed in the comments.
 set foldmethod=marker
+
+" Let the linter / formatter take care of additional line breaks and the end
+" of the file.
+set nofixendofline

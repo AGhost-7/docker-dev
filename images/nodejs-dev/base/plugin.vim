@@ -15,3 +15,13 @@ Plug 'othree/html5.vim'
 
 " Add jsx support for react projects.
 Plug 'mxw/vim-jsx'
+
+" For changing indentation based on project. Had issues with certain
+" languages, will add to other images later on.
+Plug 'editorconfig/editorconfig-vim'
+
+" Ejs template support
+Plug 'nikvdp/ejs-syntax'
+
+" typescript support
+Plug 'leafgarland/typescript-vim'

@@ -3,7 +3,7 @@
 " plug#end call.
 
 " Download a better colorscheme
-Plug 'crusoexia/vim-monokai'
+Plug 'morhetz/gruvbox'
 
 " Better file system browser
 Plug 'scrooloose/nerdtree'
@@ -21,7 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Fuzzy file name searcher
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Adds the ability to close all except the current buffer
 Plug 'vim-scripts/BufOnly.vim'
@@ -56,8 +56,8 @@ Plug 'junegunn/vader.vim'
 " Git commit browser
 Plug 'junegunn/gv.vim'
 
-" Terraform is used for infrastructure as code management
-Plug 'hashivim/vim-terraform'
+" Gitlab integration for fugitive
+Plug 'shumphrey/fugitive-gitlab.vim'
 
-" better support for ansible stuff
-Plug 'pearofducks/ansible-vim'
+" Automatically clear search highlight
+Plug 'junegunn/vim-slash'

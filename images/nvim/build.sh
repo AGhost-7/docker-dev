@@ -16,12 +16,14 @@ apt-install software-properties-common -y
 sudo chown -R aghost-7:aghost-7 "$HOME/.config/nvim"
 
 # Install neovim
-sudo add-apt-repository ppa:neovim-ppa/unstable
+if [ "$UBUNTU_RELEASE" == "bionic" ]; then
+	sudo add-apt-repository ppa:neovim-ppa/stable
+fi
 sudo apt-get update
 apt-install neovim -y
 
 # Install neovim python api.
-sudo pip install neovim
+sudo pip3 install neovim
 
 # Python 3 api required for denite.vim
 apt-install python3-pip
@@ -41,19 +43,14 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 # Install all plugins.
 nvim +PlugInstall +qall
 
-# Shellcheck: Grade A shell script linter
-git clone -b v0.4.5 https://github.com/koalaman/shellcheck.git /tmp/shellcheck
-apt-install haskell-platform
-cabal update
-cd /tmp/shellcheck
-cabal install --force-reinstalls
-sudo cp ~/.cabal/bin/shellcheck /usr/local/bin/shellcheck
+# Shellcheck: shell script linter
+apt-install shellcheck
 
 # Install ctags for code jump
 apt-install exuberant-ctags
 
 # Cleanups
-sudo apt-get purge software-properties-common haskell-platform -y
+sudo apt-get purge software-properties-common -y
 sudo apt-get autoremove -y
 sudo apt-get clean
 rm -rf /tmp/shellcheck

@@ -15,6 +15,12 @@
 			},
 			{
 				"function": "powerline.segments.common.net.internal_ip"
+			},
+			{
+				"function": "powerline.segments.tmux.attached_clients",
+				"args": {
+					"minimum": 2
+				}
 			}
 		]
 	}

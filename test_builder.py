@@ -1,4 +1,6 @@
 import build
+from os import path
+import tempfile
 
 
 def changed_images(ref):
@@ -13,7 +15,6 @@ def test_changed_image():
     images = changed_images('4ab36d6817b00a149995733b919de33b8c447ea3')
     contains = [
             'nodejs-dev/base',
-            'nodejs-dev/carbon',
             'power-tmux',
             'nvim',
             'ubuntu-dev-base'
@@ -103,3 +104,57 @@ def test_build_plan_subdependents():
     ]
     plan = build.build_plan(images, changes)
     assert len(plan) == 5
+
+
+def test_build_multiple_parents():
+    images = [
+        {'name': 'nvim', 'full_name': 'aghost7/nvim',
+            'dependency': 'power-tmux'},
+        {'name': 'nvim', 'tag': 'bionic', 'full_name': 'aghost7/nvim:bionic',
+            'dependency': 'power-tmux'},
+        {'name': 'nodejs-dev-base', 'full_name': 'aghost7/nodejs-dev-base',
+            'dependency': 'nvim'},
+        {'name': 'nodejs-dev-base', 'tag': 'bionic',
+            'full_name': 'aghost7/nodejs-dev-base:bionic',
+            'dependency': 'nvim'}
+    ]
+    changes = [
+        {'name': 'nvim'}
+    ]
+    plan_names = [
+        image['full_name'] for image in build.build_plan(images, changes)]
+    expected_plan_names = [
+            'aghost7/nvim',
+            'aghost7/nvim:bionic',
+            'aghost7/nodejs-dev-base',
+            'aghost7/nodejs-dev-base:bionic',
+    ]
+    for i in range(len(expected_plan_names)):
+        assert expected_plan_names[i] == plan_names[i]
+
+
+def test_run_sh_tests():
+    exception = False
+    try:
+        tempdir = tempfile.TemporaryDirectory()
+        test_file = path.join(tempdir.name, 'test.sh')
+        with open(test_file, 'w+') as file:
+            file.write('exit 1')
+        build.run_sh_tests(tempdir.name, 'latest')
+    except SystemExit:
+        exception = True
+    assert exception
+
+    exception = False
+    try:
+        tempdir = tempfile.TemporaryDirectory()
+        test_file = path.join(tempdir.name, 'test.sh')
+        non_test_file = path.join(tempdir.name, 'nope.txt')
+        with open(non_test_file, 'w+') as file:
+            file.write('exit 1')
+        with open(test_file, 'w+') as file:
+            file.write('exit 0')
+        build.run_sh_tests(tempdir.name, 'latest')
+    except SystemExit:
+        exception = True
+    assert not exception

@@ -1,6 +1,8 @@
 # Docker Dev
 Spin up a container to develop from anywhere!
 
+![docker-dev](https://raw.githubusercontent.com/AGhost-7/docker-dev/assets/demo.gif)
+
 To run, just:
 ```
 docker run -ti aghost7/nodejs-dev:boron tmux new
@@ -8,50 +10,60 @@ docker run -ti aghost7/nodejs-dev:boron tmux new
 
 Alternatively, if on Linux:
 ```
-gem install dev_dock
-dev_dock start aghost7/nodejs-dev:carbon
+python3 -m pip install --user slipway
+slipway start aghost7/nodejs-dev:carbon
 ```
 
+## Terminal
+Lately, I've been using [alacritty][alacritty]. You can find my configurations
+[here][alacritty_config]. Gnome terminal and/or iTerm2 works fine though.
+
+[alacritty]: https://github.com/jwilm/alacritty
+[alacritty_config]: https://github.com/AGhost-7/dotfiles/tree/master/alacritty
+
 ## Images
+
+### Language Images
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
-already installed. Might add docker-compose in there eventually. Not decided.
-Main thing with this image though is that it downgrades from root to a regular
-user. It is also configured to allow passwordless `sudo` just like those
-nice vagrant images. Tags available:
-	- `latest`: Ubuntu xenial based image.
-	- `bionic`: Experimental Ubuntu Bionic Beaver (18.04) image.
+already installed. It is also configured to allow passwordless `sudo` just like
+those vagrant images. Tags available:
+	- `bionic`: Ubuntu Bionic Beaver (18.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 Images available:
-	- `latest`
 	- `bionic`
 - `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there). Images available:
-	- `latest`
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `boron`
-	- `argon`
-	- `carbon`
-	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
+	- `bionic-erbium`: Ubuntu 18.04 + NodeJs 12.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
-	- `latest`: Ubuntu 16.04 + Python 3.5
 	- `bionic`: Ubuntu 18.04 + python 3.6
-- `scala-dev`: Scala configuration with ensime server. It is strongly
-recommended to keep the ivy cache somewhere (`~/.iv2/cache`) on your
-host file system. Ivy is extremely slow at resolving dependencies.
-There is only a `latest` tag for the scala image.
-- `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
+- `ruby-dev`: Ruby image with language server. Tags:
+	- `bionic`: Ruby 2.3 pre-installed.
+- `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
+There is only a `bionic` tag.
+
+### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
-	- `9.3`
 	- `9.6`
 	- `10`
-- `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
+	- `11`
+- `my-dev`: MySql image with mycli utility. Tags correspond to the mysql
+version:
+	- `5.6`
+	- `5.7`
+	- `8.0`
+- `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
+Tags correspond to the mongdb version:
+	- `4.1`
+
+[mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
@@ -111,7 +123,5 @@ xhost +si:localuser:$USER > /dev/null
 
 Source: http://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers
 
-## Complete Example Startup Script
-This is what I use on my current machine to get it working with everything.
-
-https://github.com/AGhost-7/dotfiles/blob/master/bin/dev
+## Build your own
+There is a tutorial which can be found [here](tutorial/readme.md).

@@ -1,6 +1,11 @@
+" Completion backend
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-" Get deoplete for completion
-Plug 'Shougo/deoplete.nvim'
+" Completion frontend
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" And now the remote plugin for deoplete java completion
-Plug 'artur-shaik/vim-javacomplete2'
+" Snippets plugin. Handy for Java.
+Plug 'Shougo/neosnippet.vim'

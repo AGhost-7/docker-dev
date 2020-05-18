@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+set -eo pipefail
 
 set -x
+
+sudo chown "$USER":"$USER" $HOME/.rust-toolchain
+sudo chown -R "$USER":"$USER" $HOME/.cargo
 
 toolchain="$(cat ~/.rust-toolchain)"
 curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain "$toolchain"
@@ -17,11 +20,6 @@ cargo install cargo-watch
 
 # required for goto source to work with the standard library
 rustup component add rust-src --toolchain "$toolchain"
-
-# Compiler message prettifier
-git clone https://github.com/ticki/dybuk.git
-cargo install --path dybuk
-rm -rf dybuk
 
 # Install new plugins.
 nvim +PlugInstall +qall

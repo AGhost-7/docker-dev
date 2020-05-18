@@ -1,4 +1,4 @@
-ARG BASE_TAG=latest
+ARG BASE_TAG=bionic
 
 FROM aghost7/ubuntu-dev-base:$BASE_TAG
 
@@ -14,16 +14,12 @@ COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
 COPY ./.tmate.conf "$HOME/.tmate.conf"
 
-ENV TMUX_VERSION 2.7
+ENV TMUX_VERSION 3.0a
 
 COPY ./build.sh /tmp/build.sh
 
 RUN bash /tmp/build.sh && \
 	sudo rm /tmp/build.sh
-
-ENV LC_ALL=en_US.UTF-8
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US.UTF-8
 
 CMD ["bin/bash"]
 

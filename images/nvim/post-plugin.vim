@@ -1,10 +1,7 @@
-" Use external executable to handle editorconfig files
-let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
-let g:EditorConfig_core_mode = 'external_command'
 
 " Buffer delete all others (delete all except current one)
 command Bdo BufOnly
-cabbrev bdo BuffOnly
+cabbrev bdo BufOnly
 
 " Visual diff command.
 command Ldiffthis Linediff
@@ -15,10 +12,14 @@ cabbrev ldiffoff LinediffReset
 
 " Load colors! On the initial install this will error out, so make it silent 
 " so it installs without issues.
-silent! colorscheme monokai
+silent! colorscheme gruvbox
+set background=dark
 
 " Add a mapping for the NERDTree command, so you can just type :T to open
 command T NERDTree
+
+" abbreviate T to t
+cabbrev t T
 
 " Enable the powerline fonts.
 let g:airline_powerline_fonts = 1
@@ -34,7 +35,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Set the theme for vim-airline
-autocmd VimEnter * AirlineTheme powerlineish
+autocmd VimEnter * AirlineTheme gruvbox
 
 let g:NERDTreeMouseMode = 3
 
@@ -81,4 +82,3 @@ xmap <c-s> <Plug>SlimeRegionSend
 
 " Make it so that ctrlp ignores files in .gitignore
 let g:ctrlp_user_command = '(git status --short | awk "{ print \$2 }"; git ls-files -- %s) | sort -u'
-
