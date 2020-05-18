@@ -42,9 +42,10 @@ images = [
         {'name': 'deno-dev-base', 'path': 'deno-dev/base'},
         {'name': 'deno-dev-base', 'path': 'deno-dev/base', 'tag': 'bionic',
             'args': {'BASE_TAG': 'bionic'}},
-        {'name': 'deno-dev', 'tag': 'v1.0', 'path': 'deno-dev/v1.0',
+        {'name': 'deno-dev', 'tag': 'v0.10.38', 'path': 'deno-dev/v1.0',
+            'args': {'BASE_TAG': 'bionic'}},
+        {'name': 'deno-dev', 'tag': 'v0.10.38', 'path': 'deno-dev/v1.0',
             'args': {'BASE_TAG': 'bionic'}}
-
         ]
 
 
