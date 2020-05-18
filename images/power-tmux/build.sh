@@ -13,7 +13,7 @@ apt-install() {
 install-tmux() {
 	local tmux_tar="tmux-$TMUX_VERSION.tar.gz"
 	pushd /tmp
-	curl -L -o "/tmp/tmux-$TMUX_VERSION.tar.gz" \
+	curl -L -o "/tmp/$tmux_tar" \
 		"https://github.com/tmux/tmux/releases/download/$TMUX_VERSION/$tmux_tar"
 	tar xzf "$tmux_tar"
 	local tmux_src="/tmp/tmux-$TMUX_VERSION"
