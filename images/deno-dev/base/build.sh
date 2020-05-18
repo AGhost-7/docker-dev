@@ -10,6 +10,7 @@ for file in plugin post-plugin; do
 done
 
 # used in the install.sh https://github.com/denoland/deno_install#unzip-is-required
+sudu apte-get update
 sudo apt-get install unzip -y
 
 # Install Deno 🦕
