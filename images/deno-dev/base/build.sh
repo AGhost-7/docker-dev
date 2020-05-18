@@ -19,7 +19,7 @@ deno_install_args=
 
 if [ -f "$deno_version_file" ]; then
 	deno_install_args="-s $(cat "$deno_version_file")"
-if
+fi
 
 curl -fsSL https://deno.land/x/install/install.sh | sh $deno_install_args
 
@@ -28,6 +28,7 @@ if [ ! -d "/usr/local/etc/bash_completion.d" ]; then
 	sudo mkdir -p "/usr/local/etc/bash_completion.d"
 	sudo chown "$USER:$USER" "/usr/local/etc/bash_completion.d"
 fi
+
 sudo "$HOME/.deno/bin.deno" completions bash > "/usr/local/etc/bash_completion.d/deno.bash"
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
@@ -42,4 +43,3 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Install vim plugins
 nvim +PlugInstall +qall
-
