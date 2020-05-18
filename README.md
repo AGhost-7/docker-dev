@@ -46,6 +46,10 @@ setup (no language-specific plugins in there). Images available:
 	- `bionic`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
 There is only a `bionic` tag.
+- `deno-dev`: Ubuntu Bionic image for deno development with bash completions.
+Tags Available:
+	- `bionic`: Ubuntu 18.4 + Deno v1.0 
+	
 
 ### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
