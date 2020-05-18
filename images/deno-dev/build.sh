@@ -14,14 +14,7 @@ sudo apt-get update
 sudo apt-get install unzip -y
 
 # Install Deno 🦕
-deno_version_file="$HOME/.deno-version"
-deno_install_args=
-
-if [ -f "$deno_version_file" ]; then
-	deno_install_args="-s $(cat "$deno_version_file")"
-fi
-
-curl -fsSL https://deno.land/x/install/install.sh | sh $deno_install_args
+curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # add Deno bash completion
 if [ ! -d "/usr/local/etc/bash_completion.d" ]; then

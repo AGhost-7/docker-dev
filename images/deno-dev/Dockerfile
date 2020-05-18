@@ -14,8 +14,6 @@ COPY ./plugin.vim /tmp/plugin.vim
 
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 
-ONBUILD COPY .deno-version $HOME/.deno-version
-
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 ENV DENO_INSTALL="$HOME/.deno"
