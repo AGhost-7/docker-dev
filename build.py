@@ -38,7 +38,12 @@ images = [
         {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
             'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}},
         {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
-            'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}}
+            'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
+        {'name': 'deno-dev-base', 'path': 'deno-dev/base'},
+        {'name': 'deno-dev-base', 'path': 'deno-dev/base', 'tag': 'bionic',
+            'args': {'BASE_TAG': 'bionic'}},
+        {'name': 'deno-dev', 'tag': 'v1.0', 'path': 'deno-dev/v1.0',
+            'args': {'BASE_TAG': 'bionic'}}
 
         ]
 
