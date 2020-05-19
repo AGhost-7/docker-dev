@@ -67,7 +67,10 @@ pip3 install gitgud
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop
 
-# For dig, etc.
+# For dig, etc. On ubuntu focal, tzdata is also getting installed, so gotta
+# work around that.
+export DEBIAN_FRONTEND=noninteractive
+echo 'Etc/UTC' | sudo tee /etc/timezone
 apt-install dnsutils
 
 # Needed for netstat, etc.

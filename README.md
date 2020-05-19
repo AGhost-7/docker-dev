@@ -28,15 +28,19 @@ Lately, I've been using [alacritty][alacritty]. You can find my configurations
 already installed. It is also configured to allow passwordless `sudo` just like
 those vagrant images. Tags available:
 	- `bionic`: Ubuntu Bionic Beaver (18.04) image.
+	- `focal`: Ubuntu Focal Fossa (20.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 Images available:
 	- `bionic`
+	- `focal`
 - `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there). Images available:
 	- `bionic`
+	- `focal`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
 	- `bionic-erbium`: Ubuntu 18.04 + NodeJs 12.
+	- `focal-erbium`: Ubuntu 20.04 + NodeJs 12.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `nightly` uses rust nightly with deoplete backed by RLS.
@@ -45,12 +49,11 @@ setup (no language-specific plugins in there). Images available:
 - `ruby-dev`: Ruby image with language server. Tags:
 	- `bionic`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
-There is only a `bionic` tag.
+	- `focal`: Ubuntu 20.04 + clangd
 - `deno-dev`: Ubuntu Bionic image for deno development with bash completions.
 Tags Available:
 	- `bionic`: Ubuntu 18.4 + Deno v1.0 
 	
-
 ### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql

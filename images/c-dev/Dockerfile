@@ -1,4 +1,4 @@
-FROM aghost7/nvim:eoan
+FROM aghost7/nvim:focal
 
 COPY /build.sh /tmp/build.sh
 

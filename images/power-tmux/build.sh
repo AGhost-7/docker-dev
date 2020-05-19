@@ -18,8 +18,13 @@ install-tmux() {
 	tar xzf "$tmux_tar"
 	local tmux_src="/tmp/tmux-$TMUX_VERSION"
 	pushd "$tmux_src"
+	local libevent="libevent-2.1.6" libevent_dev="libevent-dev"
+	if [ "$UBUNTU_RELEASE" = "focal" ]; then
+		libevent="libevent-2.1-7"
+		libevent_dev="libevent-dev"
+	fi
 	# libevent is a run-time requirement. *-dev are for the header files.
-	apt-install libevent-2.1-6 libevent-dev libncurses-dev
+	apt-install "$libevent_dev" "$libevent" libncurses-dev
 	./configure
 	make
 	sudo make install
