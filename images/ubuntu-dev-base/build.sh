@@ -12,11 +12,21 @@ apt-install() {
 
 apt-get update
 
-# reinstall stuff to include man pages...
-sudo rm /etc/dpkg/dpkg.cfg.d/excludes
-dpkg -l | \
-	awk '$1 ~/ii/ { print $2 }' | \
-	xargs sudo apt-get install -y --reinstall
+if [ "$UBUNTU_RELEASE" = "focal" ]; then
+	# fixes issue in newer releases:
+	# https://github.com/sudo-project/sudo/issues/42#issuecomment-609079906
+	echo "Set disable_coredump false" >> /etc/sudo.conf
+fi
+
+if [ "$UBUNTU_RELEASE" = "bionic" ]; then
+	# reinstall stuff to include man pages...
+	rm /etc/dpkg/dpkg.cfg.d/excludes
+	dpkg -l | \
+		awk '$1 ~/ii/ { print $2 }' | \
+		xargs apt-get install -y --reinstall
+else
+	yes | unminimize
+fi
 
 # Super essential tools
 apt-install tree curl
