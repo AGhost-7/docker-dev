@@ -39,31 +39,43 @@ pip3 install setuptools
 # See readme for how to get the clipboard working.
 apt-install xclip
 
-# Download only the docker client as the host already has the daemon.
-apt-get update
-apt-get install -y --no-install-recommends debsums
-curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
-tar xvf /tmp/docker.tgz -C /tmp
-mv /tmp/docker/docker /usr/local/bin/docker
-rm -rf /tmp/docker*
-[ "$(sha256sum /usr/local/bin/docker | awk '{print $1}')" = "$DOCKER_CLI_SHA256" ]
-apt-get remove -y debsums
+# To cryptographically sign git commits
+apt-install gpg gpg-agent
 
-# Add proper docker group to our user
-groupadd -g 999 docker
-usermod -aG docker aghost-7
+if [ "$UBUNTU_RELEASE" = "bionic" ]; then
+	# Download only the docker client as the host already has the daemon.
+	apt-get update
+	apt-get install -y --no-install-recommends debsums
+	curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
+	tar xvf /tmp/docker.tgz -C /tmp
+	mv /tmp/docker/docker /usr/local/bin/docker
+	rm -rf /tmp/docker*
+	[ "$(sha256sum /usr/local/bin/docker | awk '{print $1}')" = "$DOCKER_CLI_SHA256" ]
+	apt-get remove -y debsums
 
-pip3 install docker-compose
+	# Add proper docker group to our user
+	groupadd -g 999 docker
+	usermod -aG docker aghost-7
 
-# Add docker completion
-curl --create-dirs -L \
-	-L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker \
-	-o /etc/bash_completion.d/docker
+	pip3 install docker-compose
 
-# Add docker compose completion
-curl --create-dirs -L \
-	https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose \
-	-o /etc/bash_completion.d/docker-compose
+	# Add docker completion
+	curl --create-dirs -L \
+		-L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker \
+		-o /etc/bash_completion.d/docker
+
+	# Add docker compose completion
+	curl --create-dirs -L \
+		https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose \
+		-o /etc/bash_completion.d/docker-compose
+else
+	. /etc/os-release
+	# install podman on newer releases
+	echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+	curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
+	apt-get update
+	apt-install podman
+fi
 
 # Man pages on base debian image aren't installed...
 apt-install man-db
@@ -116,9 +128,6 @@ apt-install inetutils-ping
 # for figuring out routing issues in the network
 apt-install inetutils-traceroute
 
-# To cryptographically sign git commits
-apt-install gpg gpg-agent
-
 # replacement for ifconfig
 apt-install iproute2
 
@@ -132,11 +141,13 @@ rm /tmp/ngrok.zip
 apt-get purge -y unzip
 
 # Install latest git
-apt-install software-properties-common
-sudo apt-add-repository ppa:git-core/ppa
-sudo apt-get update
-apt-install git
-sudo apt-get purge -y software-properties-common
+if [ "$UBUNTU_RELEASE" = "bionic" ]; then
+	apt-install software-properties-common
+	sudo apt-add-repository ppa:git-core/ppa
+	sudo apt-get update
+	apt-install git
+	sudo apt-get purge -y software-properties-common
+fi
 
 # subcommand which opens the branch you're checked out on github.
 git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
