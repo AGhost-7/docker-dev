@@ -145,9 +145,10 @@ if [ "$UBUNTU_RELEASE" = "bionic" ]; then
 	apt-install software-properties-common
 	sudo apt-add-repository ppa:git-core/ppa
 	sudo apt-get update
-	apt-install git
 	sudo apt-get purge -y software-properties-common
 fi
+
+apt-install git
 
 # subcommand which opens the branch you're checked out on github.
 git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
