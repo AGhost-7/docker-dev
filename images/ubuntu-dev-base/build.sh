@@ -25,7 +25,7 @@ if [ "$UBUNTU_RELEASE" = "bionic" ]; then
 		awk '$1 ~/ii/ { print $2 }' | \
 		xargs apt-get install -y --reinstall
 else
-	yes | unminimize
+	yes | unminimize || true
 fi
 
 # Super essential tools
