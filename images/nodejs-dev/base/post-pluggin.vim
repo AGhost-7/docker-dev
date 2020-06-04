@@ -18,3 +18,8 @@ au FileType javascript nnoremap <buffer> ,R :call g:SendDBCmd('restart')<cr>
 
 " Enable jsx by default as many projects use .js extension for jsx files.
 let g:jsx_ext_required = 0
+
+" revert changes done in:
+" https://github.com/vim/vim/issues/4830
+au BufNewFile,BufRead *.jsx	set ft=javscript
+au BufNewFile,BufRead *.tsx set ft=typescript
