@@ -52,7 +52,7 @@ sudo gem install byebug
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim
 
-# Install plugins ^^
+# Install plugins
 nvim +PlugInstall +qall
 
 # Cleanup
