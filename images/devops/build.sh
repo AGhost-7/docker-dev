@@ -46,4 +46,8 @@ done
 nvim +PlugInstall +qall
 # }}}
 
+# {{{ firewall tool
+sudo apt-get install --no-install-recommends -y nmap
+# }}}
+
 sudo rm -rf /var/lib/apt/lists/*
