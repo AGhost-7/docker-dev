@@ -11,6 +11,15 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 # }}}
 
+# {{{ command line dashboard for kubernetes
+curl -L -o /tmp/k9s.tar.gz \
+	https://github.com/derailed/k9s/releases/download/v0.21.7/k9s_Linux_x86_64.tar.gz
+mkdir -p /tmp/k9s
+tar xvf /tmp/k9s.tar.gz -C /tmp/k9s
+sudo mv /tmp/k9s/k9s /usr/local/bin
+rm -rf /tmp/k9s
+# }}}
+
 # {{{ ansible
 sudo pip3 install ansible ansible-lint
 # some older dynamic inventory scripts reference `python`, they still work
