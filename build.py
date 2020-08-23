@@ -126,7 +126,7 @@ def vader_test_volume(file):
 def run_vader_tests(image, vader_dir):
     for file in list_extensions(vader_dir, '.vader'):
         code = call([
-            'docker',
+            'podman',
             'run',
             '--rm',
             '-t',
@@ -154,7 +154,7 @@ def run_tests(image):
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
-    command = ['docker', 'build', '--pull', '--tag', image['full_name']]
+    command = ['buildah', 'bud', '--pull', '--tag', image['full_name']]
     if 'args' in image:
         for k, v in image['args'].items():
             command.append('--build-arg')
@@ -165,9 +165,9 @@ def build_image(image):
     if code > 0:
         raise Exception('Build command exited with code {}'.format(code))
 
-    run_tests(image)
+    # run_tests(image)
 
-    code = call(['docker', 'push', image['full_name']])
+    code = call(['buildah', 'push', image['full_name']])
     if code > 0:
         raise Exception('Push command exited with code {}'.format(code))
 

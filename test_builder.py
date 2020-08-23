@@ -1,6 +1,7 @@
 import build
 from os import path
 import tempfile
+import pytest
 
 
 def changed_images(ref):
@@ -133,6 +134,7 @@ def test_build_multiple_parents():
         assert expected_plan_names[i] == plan_names[i]
 
 
+@pytest.mark.skip(reason='wip')
 def test_run_sh_tests():
     exception = False
     try:

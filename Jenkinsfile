@@ -1,7 +1,7 @@
 
 void setBuildStatus(String message, String state) {
 	// workaround for: https://issues.jenkins-ci.org/browse/JENKINS-54249
-	withCredentials([string(credentialsId: '2cf70858-43d4-40ad-9dc4-839989a73aa5', variable: 'TOKEN')]) {
+	withCredentials([string(credentialsId: 'github-status-access-token', variable: 'TOKEN')]) {
 		sh """
 			target_url=\"https://jenkins.jonathan-boudreau.com/blue/organizations/jenkins/docker-dev/detail/docker-dev/$BUILD_NUMBER/pipeline\"
 			curl \
@@ -12,13 +12,14 @@ void setBuildStatus(String message, String state) {
 			-XPOST \
 			-d \"{\\\"description\\\": \\\"$message\\\", \\\"state\\\": \\\"$state\\\", \\\"context\\\": \\\"Jenkins\\\", \\\"target_url\\\": \\\"\$target_url\\\"}\"
 			"""
-	} 
+	}
 }
 
 pipeline {
 	agent {
-		dockerfile {
-			args '-v /run/docker.sock:/run/docker.sock --group-add 999'
+		kubernetes {
+			defaultContainer 'buildah'
+			yamlFile 'JenkinsPod.yml'
 		}
 	}
 
@@ -26,6 +27,13 @@ pipeline {
 		stage('set status') {
 			steps {
 				setBuildStatus('Build started', 'pending')
+			}
+		}
+
+		stage('install dependencies') {
+			steps {
+				sh 'dnf install -y python-pip git'
+				sh 'python3 -m pip install virtualenv pytest flake8'
 			}
 		}
 
@@ -47,11 +55,11 @@ pipeline {
 				// https://jenkins.io/doc/pipeline/steps/credentials-binding/
 				withCredentials(bindings: [
 						usernamePassword(
-							credentialsId: 'd8f4d0f5-0afa-4eed-ad46-143b4ba6ebc6',
+							credentialsId: 'dockerhub',
 							usernameVariable: 'DOCKERHUB_USERNAME',
 							passwordVariable: 'DOCKERHUB_PASSWORD'
 							)]) {
-					sh 'docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"'
+					sh 'buildah login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD" docker.io'
 				}
 				sh 'python3 build.py HEAD'
 			}
