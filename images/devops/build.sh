@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+sudo apt-get install -y unzip
+
 # {{{ kubectl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
 	sudo apt-key add -
@@ -30,10 +32,8 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 # {{{  terraform
 curl -L -o /tmp/terraform.zip \
 	"https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
-sudo apt-get install -y unzip
 unzip /tmp/terraform.zip
 sudo mv "$PWD/terraform" /usr/local/bin
-sudo apt-get remove -y unzip
 # }}}
 
 # {{{ azure cli
@@ -44,6 +44,12 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic ma
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-get update
 sudo apt-get install azure-cli
+# }}}
+
+# {{{ aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 # }}}
 
 # {{{ vim additions
@@ -59,4 +65,5 @@ nvim +PlugInstall +qall
 sudo apt-get install --no-install-recommends -y nmap
 # }}}
 
+sudo apt-get purge -y unzip
 sudo rm -rf /var/lib/apt/lists/*
