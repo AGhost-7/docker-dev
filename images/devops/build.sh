@@ -3,7 +3,6 @@
 set -eo pipefail
 
 sudo apt-get update
-sudo apt-get install -y unzip
 
 # {{{ kubectl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
@@ -66,5 +65,4 @@ nvim +PlugInstall +qall
 sudo apt-get install --no-install-recommends -y nmap
 # }}}
 
-sudo apt-get purge -y unzip
 sudo rm -rf /var/lib/apt/lists/*

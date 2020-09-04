@@ -11,7 +11,6 @@ done
 
 # used in the install.sh https://github.com/denoland/deno_install#unzip-is-required
 sudo apt-get update
-sudo apt-get install unzip -y
 
 # Install Deno 🦕
 curl -fsSL https://deno.land/x/install/install.sh | sh
@@ -31,7 +30,6 @@ sudo rm /tmp/bashrc-additions.sh
 ycm-install
 
 # Cleanup whats left...
-sudo apt-get purge unzip -y
 sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*

@@ -132,14 +132,15 @@ apt-install inetutils-traceroute
 # replacement for ifconfig
 apt-install iproute2
 
+# used all the time
+apt-install -y zip unzip
+
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
 curl -o /tmp/ngrok.zip \
 	https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-apt-install unzip
 sudo unzip /tmp/ngrok.zip -d /usr/local/bin
 rm /tmp/ngrok.zip
-apt-get purge -y unzip
 
 # Install latest git
 if [ "$UBUNTU_RELEASE" = "bionic" ]; then
