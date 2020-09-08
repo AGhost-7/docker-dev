@@ -28,7 +28,7 @@ cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
 sudo apt-get update
-ycm-install
+ycm-install --ts-completer
 
 # Cleanup whats left...
 sudo apt-get autoremove -y

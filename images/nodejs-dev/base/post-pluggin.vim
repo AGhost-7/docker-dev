@@ -19,7 +19,16 @@ au FileType javascript nnoremap <buffer> ,R :call g:SendDBCmd('restart')<cr>
 " Enable jsx by default as many projects use .js extension for jsx files.
 let g:jsx_ext_required = 0
 
+nnoremap <silent> K :YcmCompleter GetDoc<CR>
+nnoremap <silent> gd :YcmCompleter GoTo<CR>
+
 " revert changes done in:
 " https://github.com/vim/vim/issues/4830
 au BufNewFile,BufRead *.jsx	set ft=javscript
 au BufNewFile,BufRead *.tsx set ft=typescript
+
+" add keybinds for YouCompleteMe
+autocmd Filetype javascript nnoremap <buffer> gd :YcmCompleter GoTo<CR>
+autocmd Filetype javascript nnoremap <buffer> K :YcmCompleter GetDoc<CR>
+autocmd Filetype typescript nnoremap <buffer> gd :YcmCompleter GoTo<CR>
+autocmd Filetype typescript nnoremap <buffer> K :YcmCompleter GetDoc<CR>
