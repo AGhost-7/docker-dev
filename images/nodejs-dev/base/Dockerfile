@@ -20,12 +20,7 @@ RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 ENV NVM_DIR $HOME/.nvm
 
-ONBUILD COPY .nodejs-version $HOME/.nodejs-version
-ONBUILD RUN . ~/.nvm/nvm.sh && \
-	nvm install "$(cat $HOME/.nodejs-version)" && \
-	nvm alias default stable && \
-	yarn global add flip-table javascript-typescript-langserver && \
-	yarn cache clean
+COPY ./nodejs-install.sh /usr/local/bin/nodejs-install.sh
 
 VOLUME $HOME/.npm
 
