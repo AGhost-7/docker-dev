@@ -38,12 +38,10 @@ setup (no language-specific plugins in there). Images available:
 	- `bionic`
 	- `focal`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
-	- `bionic-erbium`: Ubuntu 18.04 + NodeJs 12.
 	- `focal-erbium`: Ubuntu 20.04 + NodeJs 12.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
-	- `stable` uses rust stable with YouCompleteMe backed by only racer.
-	- `nightly` uses rust nightly with deoplete backed by RLS.
+	- `focal-stable` uses rust stable with YouCompleteMe backed by only racer.
+	- `focal-nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
 	- `bionic`: Ubuntu 18.04 + python 3.6
 - `ruby-dev`: Ruby image with language server. Tags:

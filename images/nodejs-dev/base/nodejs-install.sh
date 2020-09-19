@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
-set -e
 
 . ~/.nvm/nvm.sh
 
+set -e
+
 nvm install "$1"
 nvm alias default stable
-npm install	-g npm@6 # needed to work around bug in npm
+
+# needed to work around bug in npm
+npm install	-g npm@6 || true
+sudo chown -R $USER:$USER ~/.npm
+npm install -g npm@6
+rm -rf ~/.npm/*
+npm -v
+
 yarn global add flip-table
 sudo apt-get update
 ycm-install --ts-completer
-rm -rf /var/lib/apt/lists/*
+sudo rm -rf /var/lib/apt/lists/*
 yarn cache clean
