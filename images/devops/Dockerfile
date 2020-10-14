@@ -7,7 +7,7 @@ COPY ./build.sh /tmp/build.sh
 COPY ./plugin.vim /tmp/plugin.vim
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 
-ENV TERRAFORM_VERSION=0.12.29
+ENV TERRAFORM_VERSION=0.13.4
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
