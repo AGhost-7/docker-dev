@@ -136,6 +136,11 @@ apt-install iproute2
 # used all the time
 apt-install -y zip unzip
 
+# create magic docker ssh mountpoint and set permissions
+mkdir -p /run/host-services
+touch /run/host-services/ssh-auth.sock
+chown aghost-7: /run/host-services/ssh-auth.sock
+
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
 curl -o /tmp/ngrok.zip \
