@@ -136,6 +136,9 @@ apt-install iproute2
 # used all the time
 apt-install -y zip unzip
 
+# magically detects file type without extension
+apt-install file
+
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
 curl -o /tmp/ngrok.zip \
