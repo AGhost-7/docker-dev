@@ -34,6 +34,7 @@ curl -L -o /tmp/terraform.zip \
 	"https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
 unzip /tmp/terraform.zip
 sudo mv "$PWD/terraform" /usr/local/bin
+rm /tmp/terraform.zip
 # }}}
 
 # {{{ azure cli
