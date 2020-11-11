@@ -86,5 +86,5 @@ let g:ctrlp_user_command = '(git status --short | awk "{ print \$2 }"; git ls-fi
 " Make custom github domains configurable
 let g:fugitive_github_domains = ['github.com']
 if ! empty($GITHUB_ENTERPRISE_DOMAINS)
-	extend(g:fugitive_github_domains, split($GITHUB_ENTERPRISE_DOMAINS, ','))
+	call extend(g:fugitive_github_domains, split($GITHUB_ENTERPRISE_DOMAINS, ','))
 end
