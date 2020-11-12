@@ -7,3 +7,6 @@ Plug 'pearofducks/ansible-vim'
 
 " Plugin for jenkinsfile syntax
 Plug 'martinda/Jenkinsfile-vim-syntax'
+
+" Powershell syntax
+Plug 'PProvost/vim-ps1'
