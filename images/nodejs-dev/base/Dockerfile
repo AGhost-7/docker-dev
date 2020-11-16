@@ -22,8 +22,10 @@ ENV NVM_DIR $HOME/.nvm
 
 COPY ./nodejs-install.sh /usr/local/bin/nodejs-install.sh
 
+RUN mkdir -p $HOME/.npm
 VOLUME $HOME/.npm
 
+RUN mkdir -p $HOME/.cache/yarn
 VOLUME $HOME/.cache/yarn
 
 CMD ["/bin/bash"]

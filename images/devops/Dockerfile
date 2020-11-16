@@ -12,4 +12,5 @@ ENV TERRAFORM_VERSION=0.13.5
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 # store session and stuff
+RUN mkdir -p $HOME/.azure
 VOLUME $HOME/.azure

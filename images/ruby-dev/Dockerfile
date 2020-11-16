@@ -15,6 +15,8 @@ VOLUME /usr/share/rvm/rubies
 
 VOLUME /usr/share/rvm/gems
 
+RUN mkdir -p $HOME/.rvm/gems
 VOLUME $HOME/.rvm/gems
 
+RUN mkdir -p $HOME/.bundle
 VOLUME $HOME/.bundle

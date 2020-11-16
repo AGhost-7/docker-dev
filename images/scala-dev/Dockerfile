@@ -6,7 +6,6 @@ RUN sudo apt-get update && \
 	sudo apt-get install openjdk-8-jdk-headless -y
 
 RUN mkdir -p ~/.ivy2/cache
-
 VOLUME "$HOME/.ivy2/cache"
 
 RUN curl -L -o /tmp/sbt.deb https://dl.bintray.com/sbt/debian/sbt-0.13.11.deb && \

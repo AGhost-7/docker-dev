@@ -23,6 +23,7 @@ COPY rust-install.sh /usr/local/bin/rust-install.sh
 
 # For some reason rustup doesn't work well so I'll only place a volume for the
 # cargo registry.
+RUN mkdir -p $HOME/.cargo/registry
 VOLUME $HOME/.cargo/registry
 
 RUN sudo chown -R $USER:$USER $HOME/.cargo
