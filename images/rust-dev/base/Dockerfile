@@ -2,6 +2,8 @@ FROM aghost7/nvim:focal
 
 USER aghost-7
 
+ENV IMAGE_CLASS rust
+
 # Install openssl/pkgconf to compile against for reqwest and warp.
 RUN sudo apt-get update && \
 	sudo apt-get install pkgconf libssl-dev --no-install-recommends -y && \

@@ -2,6 +2,8 @@ FROM aghost7/nvim
 
 USER aghost-7
 
+ENV IMAGE_CLASS scala
+
 RUN sudo apt-get update && \
 	sudo apt-get install openjdk-8-jdk-headless -y
 

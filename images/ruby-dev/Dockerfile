@@ -2,6 +2,8 @@ ARG BASE_TAG=focal
 
 FROM aghost7/nvim:$BASE_TAG
 
+ENV IMAGE_CLASS ruby
+
 COPY ./plugin.vim /tmp/plugin.vim
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 

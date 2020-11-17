@@ -1,5 +1,7 @@
 FROM aghost7/nvim:focal
 
+ENV IMAGE_CLASS c
+
 COPY /build.sh /tmp/build.sh
 
 COPY /post-plugin.vim /tmp/post-plugin.vim

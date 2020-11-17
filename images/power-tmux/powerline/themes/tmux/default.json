@@ -11,7 +11,10 @@
 				"priority": 50
 			},
 			{
-				"function": "powerline.segments.common.net.hostname"
+				"function": "powerline.segments.common.env.environment",
+				"args": {
+					"variable": "IMAGE_CLASS"
+				}
 			},
 			{
 				"function": "powerline.segments.common.net.internal_ip"

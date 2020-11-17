@@ -1,5 +1,7 @@
 FROM aghost7/nvim:bionic
 
+ENV IMAGE_CLASS java
+
 ENV JDTLS_HOME /usr/local/share/jdtls
 
 RUN sudo apt-get update && \

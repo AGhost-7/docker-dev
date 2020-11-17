@@ -4,6 +4,8 @@ FROM aghost7/nvim:$BASE_TAG
 
 USER aghost-7
 
+ENV IMAGE_CLASS python
+
 COPY ./plugin.vim /tmp/plugin.vim
 
 COPY ./post-plugin.vim /tmp/post-plugin.vim

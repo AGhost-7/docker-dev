@@ -6,6 +6,8 @@ FROM aghost7/nvim:$BASE_TAG
 
 USER aghost-7
 
+ENV IMAGE_CLASS node-js
+
 COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
 COPY ./build.sh /tmp/build.sh

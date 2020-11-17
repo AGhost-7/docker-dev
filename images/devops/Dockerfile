@@ -2,6 +2,8 @@ ARG BASE_TAG=bionic
 
 FROM aghost7/py-dev:$BASE_TAG
 
+ENV IMAGE_CLASS devops
+
 COPY ./build.sh /tmp/build.sh
 
 COPY ./plugin.vim /tmp/plugin.vim
