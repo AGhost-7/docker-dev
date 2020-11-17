@@ -1,4 +1,6 @@
-FROM aghost7/nvim:bionic
+ARG BASE_TAG=focal
+
+FROM aghost7/nvim:$BASE_TAG
 
 COPY ./plugin.vim /tmp/plugin.vim
 COPY ./post-plugin.vim /tmp/post-plugin.vim

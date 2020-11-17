@@ -18,7 +18,7 @@ language_images = [
         'args': {'UBUNTU_RELEASE': 'focal'}},
     {'name': 'power-tmux', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'power-tmux', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'ruby-dev', 'tag': 'bionic'},
+    {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'nvim', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'py-dev', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
