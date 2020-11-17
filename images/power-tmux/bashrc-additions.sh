@@ -31,4 +31,3 @@ fbind -c
 
 alias nyan=nyancat
 alias parrot='curl parrot.live'
-alias tmate='tmate -f ~/.tmate.conf'

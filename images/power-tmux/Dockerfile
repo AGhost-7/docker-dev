@@ -12,8 +12,6 @@ COPY ./.tmux.conf "$HOME/.tmux.conf"
 
 COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
-COPY ./.tmate.conf "$HOME/.tmate.conf"
-
 ENV TMUX_VERSION 3.0a
 
 COPY ./build.sh /tmp/build.sh
