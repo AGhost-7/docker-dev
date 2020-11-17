@@ -43,14 +43,17 @@ setup (no language-specific plugins in there). Images available:
 	- `focal-stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `focal-nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
-	- `bionic`: Ubuntu 18.04 + python 3.6
+	- `focal`: Ubuntu 20.04 + python 3.6
 - `ruby-dev`: Ruby image with language server. Tags:
-	- `bionic`: Ruby 2.3 pre-installed.
+	- `focal`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
 	- `focal`: Ubuntu 20.04 + clangd
 - `deno-dev`: Ubuntu Bionic image for deno development with bash completions.
 Tags Available:
 	- `bionic`: Ubuntu 18.4 + Deno v1.0 
+- `devops`: Python image with additional tools (e.g., terraform) for devops
+related tasks. Images available:
+	- `focal`
 	
 ### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with

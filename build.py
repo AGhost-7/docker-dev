@@ -21,7 +21,6 @@ language_images = [
     {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'nvim', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'py-dev', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'py-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},
     {'name': 'rust-dev', 'tag': 'focal-stable', 'path': 'rust-dev/stable'},
@@ -32,7 +31,6 @@ language_images = [
     {'name': 'nodejs-dev', 'tag': 'focal-erbium',
         'path': 'nodejs-dev/erbium', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'c-dev', 'tag': 'focal'},
-    {'name': 'devops', 'tag': 'bionic'},
     {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'deno-dev', 'tag': 'bionic',
         'args': {'BASE_TAG': 'bionic'}}
