@@ -164,6 +164,13 @@ def build_image(image):
         raise Exception('Push command exited with code {}'.format(code))
 
 
+def remove_image(image):
+    code = call(['buildah', 'rmi', image['full_name']])
+    if code > 0:
+        raise Exception(
+            'Failed to clean up image {}'.format(image['full_name']))
+
+
 def image_leaves(images):
     leaves = []
     for image in images:
@@ -173,6 +180,7 @@ def image_leaves(images):
                 leaf = False
         if leaf:
             leaves.append(image)
+        image['leaf'] = leaf
 
     return leaves
 
@@ -239,3 +247,5 @@ if __name__ == "__main__":
     print_plan(plan)
     for image in plan:
         build_image(image)
+        if image['leaf']:
+            remove_image(image)
