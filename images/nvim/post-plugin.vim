@@ -42,6 +42,9 @@ let g:NERDTreeMouseMode = 3
 " Use spaces instead just for yaml
 autocmd Filetype yaml setl expandtab
 
+" Enable spell checking for markdown files
+autocmd Filetype markdown setl spell
+
 " Highlighting on top of the error gutter is a bit overkill...
 let g:ale_set_highlights = 0
 
