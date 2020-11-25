@@ -19,4 +19,4 @@ yarn global add flip-table
 sudo apt-get update
 ycm-install --ts-completer
 sudo rm -rf /var/lib/apt/lists/*
-yarn cache clean
+sudo rm -rf ~/.cache/yarn/*
