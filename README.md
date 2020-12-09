@@ -70,7 +70,8 @@ version:
 - `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
 Tags correspond to the mongdb version:
 	- `4.1`
-- `redis-dev`: Redis image with [iredis][iredis] included.
+- `redis-dev`: Redis image with [iredis][iredis] included. Tags available:
+	- `6`
 
 [mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
 [iredis]: https://github.com/laixintao/iredis
