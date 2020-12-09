@@ -70,8 +70,10 @@ version:
 - `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
 Tags correspond to the mongdb version:
 	- `4.1`
+- `redis-dev`: Redis image with [iredis][iredis] included.
 
 [mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
+[iredis]: https://github.com/laixintao/iredis
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:
