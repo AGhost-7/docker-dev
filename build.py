@@ -32,7 +32,7 @@ language_images = [
         'path': 'nodejs-dev/erbium', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'c-dev', 'tag': 'focal'},
     {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'deno-dev', 'tag': 'bionic', 'args': {'BASE_TAG': 'focal'}},
+    {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
 ]
 
 db_images = [
