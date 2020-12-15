@@ -9,7 +9,6 @@ for file in plugin post-plugin; do
 	sudo rm "/tmp/$file.vim"
 done
 
-# used in the install.sh https://github.com/denoland/deno_install#unzip-is-required
 sudo apt-get update
 
 # Install Deno 🦕
@@ -27,12 +26,9 @@ sudo "$HOME/.deno/bin/deno" completions bash > "/usr/local/etc/bash_completion.d
 cat /tmp/bashrc-additions.sh >> ~/.bashrc
 sudo rm /tmp/bashrc-additions.sh
 
-ycm-install
+ycm-install --ts-completer
 
 # Cleanup whats left...
 sudo apt-get autoremove -y
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
-
-# Install vim plugins
-nvim +PlugInstall +qall
