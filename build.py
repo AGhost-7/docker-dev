@@ -32,6 +32,7 @@ language_images = [
         'path': 'nodejs-dev/erbium', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'c-dev', 'tag': 'focal'},
     {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
+    {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
 ]
 
 db_images = [
@@ -43,7 +44,7 @@ db_images = [
     {'name': 'pg-dev', 'tag': '11', 'args': {'PG_VERSION': '11'}},
     {'name': 'pg-dev', 'tag': '12', 'args': {'PG_VERSION': '12'}},
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}},
-    {'name': 'redis-dev', 'tag': '6'}
+    {'name': 'redis-dev', 'tag': '6'},
 ]
 
 images = [*language_images, *db_images]
