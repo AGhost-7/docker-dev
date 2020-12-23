@@ -57,7 +57,9 @@ def expand_images_config(images):
         if 'tag' not in image:
             image['tag'] = 'latest'
         image['dependency'] = parse_image_dependency(image)
-        image['full_name'] = 'docker.io/aghost7/' + image['name'] + ':' + image['tag']
+        image['full_name'] = (
+            'docker.io/aghost7/' + image['name'] + ':' + image['tag']
+        )
 
 
 def parse_image_dependency(image):
