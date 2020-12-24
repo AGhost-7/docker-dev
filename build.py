@@ -12,20 +12,15 @@ import re
 import os
 
 language_images = [
-    {'name': 'ubuntu-dev-base', 'tag': 'bionic',
-        'args': {'UBUNTU_RELEASE': 'bionic'}},
     {'name': 'ubuntu-dev-base', 'tag': 'focal',
         'args': {'UBUNTU_RELEASE': 'focal'}},
-    {'name': 'power-tmux', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'power-tmux', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'nvim', 'tag': 'bionic', 'args': {'BASE_TAG': 'bionic'}},
     {'name': 'nvim', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'py-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},
     {'name': 'rust-dev', 'tag': 'focal-stable', 'path': 'rust-dev/stable'},
     {'name': 'rust-dev', 'tag': 'focal-nightly', 'path': 'rust-dev/nightly'},
-    {'name': 'java-dev', 'tag': 'bionic'},
     {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base', 'tag': 'focal',
         'args': {'BASE_TAG': 'focal'}},
     {'name': 'nodejs-dev', 'tag': 'focal-erbium',

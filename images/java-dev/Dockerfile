@@ -1,4 +1,4 @@
-FROM aghost7/nvim:bionic
+FROM aghost7/nvim:focal
 
 ENV IMAGE_CLASS java
 
