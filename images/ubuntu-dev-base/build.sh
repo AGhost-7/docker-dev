@@ -184,6 +184,10 @@ git config --system alias.tree "log --all --graph --decorate=short --color --for
 # silence new message from git
 git config --system pull.rebase false
 
+# set the hooks path to be global instead of local to a project
+git config --system core.hooksPath '/home/aghost-7/.config/git/hooks'
+su aghost-7 -c 'mkdir -p ~/.config/git/hooks'
+
 # cache is useless to keep
 apt-get autoremove -y
 apt-get clean

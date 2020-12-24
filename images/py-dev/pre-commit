@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+import subprocess
+import tomlkit
+from pathlib import Path
+import sys
+
+toplevel = str(subprocess.check_output(
+    ['git', 'rev-parse', '--show-toplevel']).strip(), 'utf8')
+pyproject_path = Path(toplevel) / 'pyproject.toml'
+
+if pyproject_path.exists():
+    with open(str(pyproject_path)) as file:
+        pyproject = tomlkit.parse(file.read())
+    dev_dependencies = pyproject['tool']['poetry'].get('dev-dependencies')
+
+    if dev_dependencies is not None:
+        if 'mypy' in dev_dependencies:
+            print('Running mypy 🐍')
+            code = subprocess.call(
+                ['poetry', 'run', 'mypy', toplevel])
+            if code > 0:
+                sys.exit(code)
+        if 'black' in dev_dependencies:
+            print('Running black 🐍')
+            staged_output = subprocess.check_output(
+                ['git', 'diff', '--name-only', '--cached']).strip()
+            files_staged = [
+                str(Path(toplevel) / file_staged)
+                for file_staged in str(staged_output, 'utf8').split('\n')
+                if Path(file_staged).suffix == '.py'
+            ]
+            code = subprocess.call(
+                ['poetry', 'run', 'black'] + files_staged
+            )
+            if code > 0:
+                sys.exit(code)
+            code  = subprocess.call(['git', 'add'] + files_staged)

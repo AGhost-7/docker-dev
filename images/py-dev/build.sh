@@ -17,3 +17,6 @@ nvim +PlugInstall +qall
 python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py"
 sudo apt-get purge cmake -y
 sudo rm -rf /var/lib/apt/lists/*
+
+# needed for the pre-commit hook to read from the pyproject.toml file
+pip install --user tomlkit
