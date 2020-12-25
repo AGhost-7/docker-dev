@@ -27,7 +27,7 @@ vim Dockerfile
 
 This tutorial assumes that you are using this image as your base:
 ```dockerfile
-FROM ubuntu:bionic
+FROM ubuntu:focal
 ```
 
 ## 1. Setting Up Your User

@@ -1,4 +1,4 @@
-ARG BASE_TAG=bionic
+ARG BASE_TAG=focal
 
 FROM aghost7/ubuntu-dev-base:$BASE_TAG
 

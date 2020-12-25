@@ -2,9 +2,6 @@
 image="aghost7/ubuntu-dev-base:$1"
 
 container_cli=podman
-if [ "$1" = "bionic" ]; then
-	container_cli=docker
-fi
 
 docker run --rm "$image" which "$container_cli"
 

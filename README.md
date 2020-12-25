@@ -27,15 +27,12 @@ Lately, I've been using [alacritty][alacritty]. You can find my configurations
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. It is also configured to allow passwordless `sudo` just like
 those vagrant images. Tags available:
-	- `bionic`: Ubuntu Bionic Beaver (18.04) image.
 	- `focal`: Ubuntu Focal Fossa (20.04) image.
 - `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
 Images available:
-	- `bionic`
 	- `focal`
 - `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
 setup (no language-specific plugins in there). Images available:
-	- `bionic`
 	- `focal`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `focal-erbium`: Ubuntu 20.04 + NodeJs 12.
