@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+top_level="$(git rev-parse --show-toplevel)"
+
+package="$top_level/package.json"
+
+modules_bin="$top_level/node_modules/.bin"
+
+if [ -x "$modules_bin/pretty-quick" ]; then
+	echo 'Running prettier ⚡'
+	"$modules_bin/pretty-quick"
+fi
+
+if [ -x "$modules_bin/eslint" ]; then
+	echo 'Running eslint ⚡'
+	git diff --cached --name-only --diff-filter=d | \
+		grep -E '[.](ts|js|svelte|jsx|mjs)$' | \
+		awk "{ print \"$top_level/\"\$0 }" | \
+		xargs "$modules_bin/eslint"
+fi
