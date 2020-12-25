@@ -30,4 +30,8 @@ VOLUME $HOME/.npm
 RUN mkdir -p $HOME/.cache/yarn
 VOLUME $HOME/.cache/yarn
 
+COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
+
+RUN sudo chown $USER:$USER $HOME/.config/git/hooks/pre-commit
+
 CMD ["/bin/bash"]
