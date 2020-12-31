@@ -35,4 +35,4 @@ VOLUME $HOME/.cache/pypoetry
 COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
 COPY ./global.py $HOME/.config/ycm/global.py
-RUN sudo chmod $USER:$USER $HOME/.config/ycm/global.py
+RUN sudo chown $USER:$USER $HOME/.config/ycm/global.py
