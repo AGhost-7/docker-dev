@@ -8,7 +8,8 @@ def load_virtualenv(sys_path, virtualenv):
     with open(virtualenv / 'pyvenv.cfg') as config_file:
         config = ConfigParser()
         config.read_string('[DEFAULT]\n' + config_file.read())
-        python_version = '.'.join(config.get('DEFAULT', 'version').split('.')[0:2])
+        python_version = '.'.join(
+            config.get('DEFAULT', 'version').split('.')[0:2])
         packages_path = (
             virtualenv / 'lib' / f"python{python_version}" / 'site-packages'
         )
