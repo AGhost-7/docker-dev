@@ -1,9 +1,7 @@
 from configparser import ConfigParser
-import sys
 import subprocess
 from pathlib import Path
 import os
-from os import environ
 
 
 def load_virtualenv(sys_path, virtualenv):
