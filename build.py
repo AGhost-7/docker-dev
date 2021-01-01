@@ -52,6 +52,7 @@ class BuildException(Exception):
         self.stage = stage
         self.code = code
 
+
 def expand_images_config(images):
     for image in images:
         if 'path' not in image:
@@ -267,4 +268,4 @@ if __name__ == "__main__":
             remove_image(image)
 
     if last_error is not None:
-        error_exit(error)
+        error_exit(last_error)
