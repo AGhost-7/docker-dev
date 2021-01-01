@@ -45,6 +45,13 @@ db_images = [
 images = [*language_images, *db_images]
 
 
+class BuildException(Exception):
+    def __init__(self, image, stage, code):
+        super().__init__()
+        self.image = image
+        self.stage = stage
+        self.code = code
+
 def expand_images_config(images):
     for image in images:
         if 'path' not in image:
@@ -104,7 +111,7 @@ def run_sh_tests(sh_dir, tag):
     for file in list_extensions(sh_dir, '.sh'):
         code = call(['bash', '-e', '-x', file, tag])
         if code > 0:
-            raise SystemExit(code)
+            raise BuildException(tag, 'Shell tests', code)
 
 
 def vader_test_volume(file):
@@ -125,7 +132,7 @@ def run_vader_tests(image, vader_dir):
             'nvim -c "Vader! ~/test/{}"'.format(path.basename(file))
             ])
         if code > 0:
-            raise SystemExit(code)
+            raise BuildException(image['full_name'], 'Vader tests', code)
 
 
 def run_tests(image):
@@ -152,20 +159,19 @@ def build_image(image):
     command.append(path.join('images', image['path']))
     code = call(command)
     if code > 0:
-        raise Exception('Build command exited with code {}'.format(code))
+        raise BuildException(image['full_name'], 'Build', code)
 
-    # run_tests(image)
+    run_tests(image)
 
     code = call(['buildah', 'push', image['full_name']])
     if code > 0:
-        raise Exception('Push command exited with code {}'.format(code))
+        raise BuildException(image['full_name'], 'Push', code)
 
 
 def remove_image(image):
     code = call(['buildah', 'rmi', image['full_name']])
     if code > 0:
-        raise Exception(
-            'Failed to clean up image {}'.format(image['full_name']))
+        raise BuildException(image['full_name'], 'Cleanup', code)
 
 
 def image_leaves(images):
@@ -237,12 +243,28 @@ def print_plan(plan):
     sys.stdout.flush()
 
 
+def error_exit(error):
+    print(
+        f"Failed to complete step \"{error.stage}\" for image {error.image}",
+        file=sys.stderr)
+    sys.exit(error.code)
+
+
 if __name__ == "__main__":
     expand_images_config(images)
     changes = changed_images(images, sys.argv[1])
     plan = build_plan(images, changes)
     print_plan(plan)
+    last_error = None
     for image in plan:
-        build_image(image)
+        try:
+            build_image(image)
+        except BuildException as error:
+            last_error = error
+            if not image['leaf']:
+                error_exit(error)
         if image['leaf']:
             remove_image(image)
+
+    if last_error is not None:
+        error_exit(error)
