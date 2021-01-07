@@ -153,7 +153,7 @@ def run_tests(image):
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
-    command = ['buildah', 'bud', '--pull', '--tag', image['full_name']]
+    command = ['podman', 'build', '--pull', '--tag', image['full_name']]
     if 'args' in image:
         for k, v in image['args'].items():
             command.append('--build-arg')
@@ -166,13 +166,13 @@ def build_image(image):
 
     run_tests(image)
 
-    code = call(['buildah', 'push', image['full_name']])
+    code = call(['podman', 'push', image['full_name']])
     if code > 0:
         raise BuildException(image['full_name'], 'Push', code)
 
 
 def remove_image(image):
-    code = call(['buildah', 'rmi', image['full_name']])
+    code = call(['podman', 'rmi', image['full_name']])
     if code > 0:
         raise BuildException(image['full_name'], 'Cleanup', code)
 

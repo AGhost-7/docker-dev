@@ -18,7 +18,7 @@ void setBuildStatus(String message, String state) {
 pipeline {
 	agent {
 		kubernetes {
-			defaultContainer 'buildah'
+			defaultContainer 'podman'
 			yamlFile 'JenkinsPod.yml'
 		}
 	}
@@ -59,9 +59,8 @@ pipeline {
 							usernameVariable: 'DOCKERHUB_USERNAME',
 							passwordVariable: 'DOCKERHUB_PASSWORD'
 							)]) {
-					sh 'buildah login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD" docker.io'
+					sh 'podman login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD" docker.io'
 				}
-				sh 'echo $PATH; which podman'
 				sh 'python3 build.py HEAD'
 			}
 		}

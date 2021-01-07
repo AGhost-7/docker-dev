@@ -6,8 +6,8 @@ metadata:
     job: jenkins-test
 spec:
   containers:
-  - name: buildah
-    image: quay.io/buildah/stable
+  - name: podman
+    image: quay.io/podman/stable
     tty: true
     command:
       - sleep
