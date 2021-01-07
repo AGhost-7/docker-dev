@@ -108,11 +108,13 @@ def list_extensions(base_dir, extension):
                 yield abs_path
 
 
-def run_sh_tests(sh_dir, tag):
+def run_sh_tests(sh_dir, image):
     for file in list_extensions(sh_dir, '.sh'):
-        code = call(['bash', '-e', '-x', file, tag])
+        env = os.environ.copy()
+        env['IMAGE'] = image['full_name']
+        code = call(['bash', '-e', '-x', file], env=env)
         if code > 0:
-            raise BuildException(tag, 'Shell tests', code)
+            raise BuildException(image['full_name'], 'Shell tests', code)
 
 
 def vader_test_volume(file):
@@ -141,7 +143,7 @@ def run_tests(image):
     if path.isdir(test_dir):
         sh_dir = path.join(test_dir, 'sh')
         if path.isdir(sh_dir):
-            run_sh_tests(sh_dir, image['tag'])
+            run_sh_tests(sh_dir, image)
 
         vader_dir = path.join(test_dir, 'vader')
         if path.isdir(vader_dir):
