@@ -40,7 +40,6 @@ COPY build.sh /tmp/build.sh
 RUN bash /tmp/build.sh && \
 	rm /tmp/build.sh
 
-# For some reason, this environment variable isn't set by docker.
 ENV USER aghost-7
 
 ENV HOME /home/aghost-7
