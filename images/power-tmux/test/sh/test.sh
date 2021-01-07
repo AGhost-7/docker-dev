@@ -1,5 +1,6 @@
 
-echo "PATH: $PATH"
+podman --help
+
 podman run --rm "$IMAGE" which powerline-daemon
 
 files="$(podman run --rm "$IMAGE" find /home/aghost-7 -group root)"
