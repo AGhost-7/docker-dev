@@ -1,6 +1,4 @@
-ARG BASE_TAG=focal
-
-FROM aghost7/nvim:$BASE_TAG
+FROM aghost7/nodejs-dev:$BASE_TAG
 
 ENV IMAGE_CLASS ruby
 

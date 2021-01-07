@@ -31,13 +31,7 @@ export DEBIAN_FRONTEND=noninteractive
 # typically required for rails projects
 echo 'Etc/UTC' | sudo tee /etc/timezone
 sudo -E apt-get install -y tzdata
-sudo apt-get install -y --no-install-recommends libpq-dev nodejs
-
-# yarn for webpack stuff
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update
-sudo apt-get install --no-install-recommends -y yarn
+sudo apt-get install -y --no-install-recommends libpq-dev
 
 # Install pry (improved repl) globally
 sudo gem install pry
