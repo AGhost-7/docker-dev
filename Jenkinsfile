@@ -61,6 +61,7 @@ pipeline {
 							)]) {
 					sh 'buildah login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD" docker.io'
 				}
+				sh 'echo $PATH; which podman'
 				sh 'python3 build.py HEAD'
 			}
 		}
