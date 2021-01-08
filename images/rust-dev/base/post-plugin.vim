@@ -7,13 +7,4 @@ let g:ycm_rust_src_path = $HOME . '/.rustup/toolchains/' . $RUST_DEFAULT_TOOLCHA
 " both variables for now.
 let g:rust_src_path = g:ycm_rust_src_path
 
-" When using `gd`, this will jump to either the definition
-" or declaration (depending on what the cursor is on).
-au FileType rust nmap <buffer> gd :YcmCompleter GoTo<CR>
-
-" Inverse of jumping to the declaration, jumps to everything referencing it
-" instead.
-au FileType rust nmap <buffer> gD :YcmCompleter GoToReferences<cr>
-
-" Fetch documentation when using `\gd`.
-au FileType rust nmap <buffer> K :YcmCompleter GetDoc<CR>
+call g:YcmKeybindings('rust')

@@ -25,9 +25,5 @@ au BufNewFile,BufRead *.jsx	set ft=javscript
 au BufNewFile,BufRead *.tsx set ft=typescript
 
 " add keybinds for YouCompleteMe
-au Filetype javascript nnoremap <buffer> gd :YcmCompleter GoTo<CR>
-au FileType javascript nnoremap <buffer> gD :YcmCompleter GoToReferences<cr>
-au Filetype javascript nnoremap <buffer> K :YcmCompleter GetDoc<CR>
-au Filetype typescript nnoremap <buffer> gd :YcmCompleter GoTo<CR>
-au FileType typescript nnoremap <buffer> gD :YcmCompleter GoToReferences<cr>
-au Filetype typescript nnoremap <buffer> K :YcmCompleter GetDoc<CR>
+call g:YcmKeybindings('typescript')
+call g:YcmKeybindings('javascript')

@@ -91,3 +91,14 @@ let g:fugitive_github_domains = ['github.com']
 if ! empty($GITHUB_ENTERPRISE_DOMAINS)
 	call extend(g:fugitive_github_domains, split($GITHUB_ENTERPRISE_DOMAINS, ','))
 end
+
+fu! g:YcmKeybindings(filetype) abort
+	" When using `gd`, this will jump to either the definition
+	" or declaration (depending on what the cursor is on).
+	exec 'au FileType ' . a:filetype . ' nnoremap <buffer> gd :YcmCompleter GoTo<CR>'
+	" Inverse of jumping to the declaration, jumps to everything referencing it
+	" instead.
+	exec 'au FileType ' . a:filetype . ' nnoremap <buffer> gD :YcmCompleter GoToReferences<CR>'
+	" Fetch documentation when using `\gd`.
+	exec 'au FileType ' . a:filetype . ' nnoremap <buffer> K :YcmCompleter GetDoc<CR>'
+endfu
