@@ -1,3 +1,5 @@
+ARG BASE_TAG
+
 FROM aghost7/nodejs-dev:$BASE_TAG
 
 ENV IMAGE_CLASS ruby
