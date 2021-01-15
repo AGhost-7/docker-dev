@@ -11,12 +11,9 @@ apt-install() {
 }
 
 install-tmux() {
-	local tmux_tar="tmux-$TMUX_VERSION.tar.gz"
 	pushd /tmp
-	curl -L -o "/tmp/tmux-$TMUX_VERSION.tar.gz" \
-		"https://github.com/tmux/tmux/releases/download/$TMUX_VERSION/$tmux_tar"
-	tar xzf "$tmux_tar"
-	local tmux_src="/tmp/tmux-$TMUX_VERSION"
+	local tmux_src="/tmp/tmux"
+	git clone --branch "$TMUX_VERSION" --depth 1 https://github.com/tmux/tmux.git "$tmux_src"
 	pushd "$tmux_src"
 	local libevent="libevent-2.1.6" libevent_dev="libevent-dev"
 	if [ "$UBUNTU_RELEASE" = "focal" ]; then
@@ -24,14 +21,14 @@ install-tmux() {
 		libevent_dev="libevent-dev"
 	fi
 	# libevent is a run-time requirement. *-dev are for the header files.
-	apt-install "$libevent_dev" "$libevent" libncurses-dev
+	apt-install "$libevent_dev" "$libevent" libncurses-dev autoconf automake pkg-config bison
+	sh autogen.sh
 	./configure
 	make
 	sudo make install
 	popd
 	rm -rf "$tmux_src"
-	rm -rf "$tmux_tar"
-	sudo apt-get purge -y libevent-dev libncurses-dev
+	sudo apt-get purge -y libevent-dev libncurses-dev autoconf automake pkg-config bison
 	popd
 }
 
@@ -48,7 +45,7 @@ sudo apt-get update
 
 # Fix file permissions from the copy
 sudo chown -R aghost-7:aghost-7 "$HOME/.config"
-sudo chown aghost-7:aghost-7 /home/aghost-7/.tmux.conf
+sudo chown aghost-7:aghost-7 /home/aghost-7/.config/tmux/tmux.conf
 
 # Need to update package cache...
 sudo apt-get update
