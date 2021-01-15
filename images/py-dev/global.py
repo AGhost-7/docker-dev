@@ -1,19 +1,13 @@
-from configparser import ConfigParser
+from glob import glob
 import subprocess
 from pathlib import Path
 import os
 
 
 def load_virtualenv(sys_path, virtualenv):
-    with open(virtualenv / 'pyvenv.cfg') as config_file:
-        config = ConfigParser()
-        config.read_string('[DEFAULT]\n' + config_file.read())
-        python_version = '.'.join(
-            config.get('DEFAULT', 'version').split('.')[0:2])
-        packages_path = (
-            virtualenv / 'lib' / f"python{python_version}" / 'site-packages'
-        )
-        sys_path.append(str(packages_path))
+    virtualenv_path = Path(virtualenv) / 'lib' / 'python*' / 'site-packages'
+    for site_packages in glob(str(virtualenv_path)):
+        sys_path.append(site_packages)
 
 
 def PythonSysPath(**kwargs):
@@ -27,7 +21,8 @@ def PythonSysPath(**kwargs):
             load_virtualenv(sys_path, Path(virtualenv))
         elif (cwd / 'env').exists():
             load_virtualenv(sys_path, cwd / 'env')
-    except Exception:
-        pass
+    except Exception as err:
+        with open('/tmp/ycm-global-err.log', 'w') as file:
+            print(err, file=file)
 
     return sys_path
