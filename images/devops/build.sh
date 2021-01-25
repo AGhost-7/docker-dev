@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+. /etc/os-release
+
 sudo apt-get update
 
 # {{{ kubectl
@@ -37,11 +39,21 @@ sudo mv "$PWD/terraform" /usr/local/bin
 rm /tmp/terraform.zip
 # }}}
 
+# {{{ install hashicorp vault
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+echo "deb [arch=amd64] https://apt.releases.hashicorp.com $VERSION_CODENAME main" | \
+	sudo tee /etc/apt/sources.list.d/vault.list
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends vault
+# https://github.com/hashicorp/vault/issues/10048#issuecomment-706315167
+sudo setcap cap_ipc_lock= /usr/bin/vault
+# }}}
+
 # {{{ azure cli
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | \
     gpg --dearmor | \
     sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic main" | \
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $VERSION_CODENAME main" | \
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-get update
 sudo apt-get install azure-cli
