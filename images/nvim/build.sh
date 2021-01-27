@@ -11,7 +11,9 @@ apt-install () {
 apt-install software-properties-common -y
 
 # Fix the permissions from the copy...
-sudo chown -R aghost-7:aghost-7 "$HOME/.config/nvim"
+sudo chown -R "$USER:$USER" "$HOME/.config/nvim"
+
+sudo chown "$USER:$USER" "$HOME/.editorconfig"
 
 # Install neovim
 sudo apt-get update
@@ -43,6 +45,9 @@ apt-install shellcheck
 
 # Install ctags for code jump
 apt-install exuberant-ctags
+
+# Install editorconfig cli needed for vim plugin
+apt-install editorconfig
 
 # Cleanups
 sudo apt-get purge software-properties-common -y

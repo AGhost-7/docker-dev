@@ -19,16 +19,6 @@ call plug#end()
 "	~~ General Configurations ~~
 "
 
-" don't convert tabs to spaces
-set noexpandtab
-
-" Set tabs to take two character spaces
-set tabstop=2
-
-" Set how many characters indentation should be. This will ensure that you're
-" using tabs, not spaces.
-set shiftwidth=2
-
 " Add the column number
 set ruler
 

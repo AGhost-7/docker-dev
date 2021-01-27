@@ -18,5 +18,3 @@ if [ "$UBUNTU_RELEASE" = "focal" ]; then
 fi
 
 sudo apt-get install "$libpython" -y
-
-sudo apt-get install editorconfig -y

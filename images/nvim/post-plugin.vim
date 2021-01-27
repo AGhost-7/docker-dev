@@ -102,3 +102,9 @@ fu! g:YcmKeybindings(filetype) abort
 	" Fetch documentation when using `\gd`.
 	exec 'au FileType ' . a:filetype . ' nnoremap <buffer> K :YcmCompleter GetDoc<CR>'
 endfu
+
+" skip certain file types
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" point to c implementation of editorconfig
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'

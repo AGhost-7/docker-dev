@@ -61,3 +61,6 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 
 " Automatically clear search highlight
 Plug 'junegunn/vim-slash'
+
+" Handle indentation for all projects
+Plug 'editorconfig/editorconfig-vim'
