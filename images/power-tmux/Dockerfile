@@ -19,5 +19,4 @@ COPY ./build.sh /tmp/build.sh
 RUN bash /tmp/build.sh && \
 	sudo rm /tmp/build.sh
 
-CMD ["bin/bash"]
-
+CMD ["/usr/local/bin/tmux", "new"]
