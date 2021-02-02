@@ -9,8 +9,9 @@ if [ "$files" != "" ]; then
 fi
 
 tmuxVersion="$(podman run --rm "$IMAGE" tmux -V)"
-if [[ "$tmuxVersion" != "tmux 3.0a" ]]; then
-	echo Version $tmuxVersion is not equal 3.0a
+expectedVersion=3.1-rc
+if [[ "$tmuxVersion" != "$expectedVersion" ]]; then
+	echo Version $tmuxVersion is not equal $expectedVersion
 	exit 1
 fi
 
