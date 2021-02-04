@@ -36,3 +36,5 @@ COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
 COPY ./global.py $HOME/.config/ycm/global.py
 RUN sudo chown $USER:$USER $HOME/.config/ycm/global.py
+
+COPY ./ale-poetry-shim $HOME/.local/bin/ale-poetry-shim

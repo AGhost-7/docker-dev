@@ -3,7 +3,7 @@
 set -e
 set -x
 
-sudo python3 -m pip install flake8 jedi virtualenv ptpython neovim pipenv poetry
+sudo python3 -m pip install jedi virtualenv ptpython neovim pipenv poetry
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends python3-dev python3-venv
 
@@ -20,3 +20,9 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # needed for the pre-commit hook to read from the pyproject.toml file
 pip install --user tomlkit
+
+# add shims for ale to work with poetry virtualenvs
+sudo chown "$HOME/.local/bin/ale-poetry-shim"
+for program in flake8 mypy bandit black; do
+	ln -s "$HOME/.local/bin/ale-poetry-shim" "$HOME/.local/bin/$program"
+done

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -f pyproject.toml ]; then
+    env_path="$(poetry env info --path)"
+    program_name="$(basename "$0")"
+    if [ -x "$env_path/bin/$program_name" ]; then
+        . "$env_path/bin/activate"
+        exec "$program_name" ${@:1}
+    fi
+fi
