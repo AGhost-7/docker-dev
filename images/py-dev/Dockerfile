@@ -10,6 +10,8 @@ COPY ./plugin.vim /tmp/plugin.vim
 
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 
+COPY ./ale-poetry-shim $HOME/.local/bin/ale-poetry-shim
+
 COPY ./build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && \
@@ -36,5 +38,3 @@ COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
 COPY ./global.py $HOME/.config/ycm/global.py
 RUN sudo chown $USER:$USER $HOME/.config/ycm/global.py
-
-COPY ./ale-poetry-shim $HOME/.local/bin/ale-poetry-shim
