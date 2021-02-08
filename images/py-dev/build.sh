@@ -22,7 +22,7 @@ sudo rm -rf /var/lib/apt/lists/*
 pip install --user tomlkit
 
 # add shims for ale to work with poetry virtualenvs
-sudo chown -R "$USER:$USER" "$HOME/.local/bin"
+sudo chown -R "$USER:$USER" "$HOME/.local"
 for program in flake8 mypy bandit black; do
 	ln -s "$HOME/.local/bin/ale-poetry-shim" "$HOME/.local/bin/$program"
 done
