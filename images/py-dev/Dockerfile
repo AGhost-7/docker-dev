@@ -1,4 +1,4 @@
-ARG BASE_TAG=latest
+ARG BASE_TAG=focal
 
 FROM aghost7/nvim:$BASE_TAG
 
