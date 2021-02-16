@@ -142,7 +142,7 @@ git config --system alias.tree "log --all --graph --decorate=short --color --for
 git config --system pull.rebase false
 
 # set the hooks path to be global instead of local to a project
-git config --system core.hooksPath '/home/aghost-7/.config/git/hooks'
+git config --system core.hooksPath '~/.config/git/hooks'
 su aghost-7 -c 'mkdir -p ~/.config/git/hooks'
 
 # cache is useless to keep
