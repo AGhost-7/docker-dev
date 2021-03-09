@@ -79,9 +79,6 @@ apt-install bash-completion
 # ssh
 apt-install openssh-client
 
-# get lines of code in a directory
-apt-install cloc
-
 # pager better than less...
 apt-install less
 
@@ -131,6 +128,12 @@ rm -rf /tmp/nyancat
 
 # Mail client for testing
 apt-install swaks
+
+# get lines of code in a directory
+curl -L -o ~/tokei.tar.gz https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
+tar xvf ~/tokei.tar.gz -C ~/
+mv ~/tokei ~/.local/bin
+rm ~/tokei.tar.gz
 
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
