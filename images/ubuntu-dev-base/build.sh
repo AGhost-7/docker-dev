@@ -132,7 +132,7 @@ apt-install swaks
 # get lines of code in a directory
 curl -L -o ~/tokei.tar.gz https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
 tar xvf ~/tokei.tar.gz -C ~/
-mv ~/tokei ~/.local/bin
+mv ~/tokei /usr/local/bin
 rm ~/tokei.tar.gz
 
 # Add timestamp to history.
