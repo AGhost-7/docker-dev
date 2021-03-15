@@ -22,6 +22,7 @@ mkdir -p /tmp/k9s
 tar xvf /tmp/k9s.tar.gz -C /tmp/k9s
 sudo mv /tmp/k9s/k9s /usr/local/bin
 rm -rf /tmp/k9s
+rm /tmp/k9s.tar.gz
 # }}}
 
 # {{{ ansible
@@ -63,6 +64,7 @@ sudo apt-get install azure-cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+rm -rf ~/{awscliv2.zip,aws}
 # }}}
 
 # {{{ vim additions

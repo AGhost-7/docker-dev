@@ -34,6 +34,10 @@ VOLUME $HOME/.local/share/virtualenvs
 RUN mkdir -p $HOME/.cache/pypoetry
 VOLUME $HOME/.cache/pypoetry
 
+# pre-commit directory for installing plugins
+RUN mkdir -p $HOME/.cache/pre-commit
+VOLUME $HOME/.cache/pre-commit
+
 COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
 COPY ./global.py $HOME/.config/ycm/global.py
