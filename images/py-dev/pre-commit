@@ -15,6 +15,12 @@ if pyproject_path.exists():
     dev_dependencies = pyproject['tool']['poetry'].get('dev-dependencies')
 
     if dev_dependencies is not None:
+        if 'pre-commit' in dev_dependencies:
+            print('Running pre-commit 🐍')
+            code = subprocess.call(
+                ['poetry', 'run', 'pre-commit', 'run'])
+            if code > 0:
+                sys.exit(code)
         if 'mypy' in dev_dependencies:
             print('Running mypy 🐍')
             code = subprocess.call(
