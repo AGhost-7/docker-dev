@@ -2,7 +2,7 @@ ARG UBUNTU_RELEASE=focal
 
 FROM ubuntu:${UBUNTU_RELEASE}
 
-LABEL MAINTAINER jonathan.boudreau.92@gmail.com
+LABEL MAINTAINER jonathan-boudreau@protonmail.com
 
 ARG UBUNTU_RELEASE
 
