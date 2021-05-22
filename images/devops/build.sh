@@ -25,6 +25,13 @@ rm -rf /tmp/k9s
 rm /tmp/k9s.tar.gz
 # }}}
 
+# {{{ install helm
+curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz
+tar xvf /tmp/helm.tar.gz -C /tmp 
+mv /tmp/linux-amd64/helm ~/.local/bin/helm
+rm -rf /tmp/{helm.tar.gz,linux-amd64}
+# }}}
+
 # {{{ ansible
 sudo pip3 install ansible ansible-lint
 # some older dynamic inventory scripts reference `python`, they still work
