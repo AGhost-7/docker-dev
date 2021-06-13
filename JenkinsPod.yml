@@ -16,5 +16,5 @@ spec:
       privileged: true
     resources:
       requests:
-        cpu: "800m"
-        memory: "600Mi"
+        cpu: "600m"
+        memory: "400Mi"
