@@ -25,6 +25,8 @@ language_images = [
         'args': {'BASE_TAG': 'focal'}},
     {'name': 'nodejs-dev', 'tag': 'focal-erbium',
         'path': 'nodejs-dev/erbium', 'args': {'BASE_TAG': 'focal'}},
+    {'name': 'nodejs-dev', 'tag': 'focal-fermium',
+        'path': 'nodejs-dev/fermium', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'c-dev', 'tag': 'focal'},
     {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
