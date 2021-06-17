@@ -39,20 +39,12 @@ sudo pip3 install ansible ansible-lint
 sudo ln -s /usr/bin/python3 /usr/bin/python
 # }}}
 
-# {{{  terraform
-curl -L -o /tmp/terraform.zip \
-	"https://releases.hashicorp.com/terraform/$TERRAFORM_VERSION/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
-unzip /tmp/terraform.zip
-sudo mv "$PWD/terraform" /usr/local/bin
-rm /tmp/terraform.zip
-# }}}
-
-# {{{ install hashicorp vault
+# {{{ install hashicorp vault/terraform
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 echo "deb [arch=amd64] https://apt.releases.hashicorp.com $VERSION_CODENAME main" | \
 	sudo tee /etc/apt/sources.list.d/vault.list
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends vault
+sudo apt-get install -y --no-install-recommends vault terraform
 # https://github.com/hashicorp/vault/issues/10048#issuecomment-706315167
 sudo setcap cap_ipc_lock= /usr/bin/vault
 # }}}

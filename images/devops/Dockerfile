@@ -9,8 +9,6 @@ COPY ./build.sh /tmp/build.sh
 COPY ./plugin.vim /tmp/plugin.vim
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 
-ENV TERRAFORM_VERSION=1.0.0
-
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 # store session and stuff
