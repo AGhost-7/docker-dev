@@ -36,11 +36,12 @@ setup (no language-specific plugins in there). Images available:
 	- `focal`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
 	- `focal-erbium`: Ubuntu 20.04 + NodeJs 12.
+    - `focal-fermium`: Ubuntu 20.04 + NodeJs 14.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
 	- `focal-stable` uses rust stable with YouCompleteMe backed by only racer.
 	- `focal-nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
-	- `focal`: Ubuntu 20.04 + python 3.6
+	- `focal`: Ubuntu 20.04 + python 3.8
 - `ruby-dev`: Ruby image with language server. Tags:
 	- `focal`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.

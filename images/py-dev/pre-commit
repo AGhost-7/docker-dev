@@ -41,4 +41,4 @@ if pyproject_path.exists():
             )
             if code > 0:
                 sys.exit(code)
-            code  = subprocess.call(['git', 'add'] + files_staged)
+            code = subprocess.call(['git', 'add'] + files_staged)

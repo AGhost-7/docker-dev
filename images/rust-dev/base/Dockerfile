@@ -4,9 +4,11 @@ USER aghost-7
 
 ENV IMAGE_CLASS rust
 
-# Install openssl/pkgconf to compile against for reqwest and warp.
+# Install
+# - openssl/pkgconf to compile against for reqwest and warp.
+# - gdb-multiarch, minicom, openocd for embeded
 RUN sudo apt-get update && \
-	sudo apt-get install pkgconf libssl-dev --no-install-recommends -y && \
+	sudo apt-get install pkgconf libssl-dev gdb-multiarch minicom openocd bluez rfkill --no-install-recommends -y && \
 	sudo apt-get clean && \
 	sudo rm -rf /var/lib/apt/lists/*
 

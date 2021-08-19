@@ -20,7 +20,6 @@ language_images = [
     {'name': 'py-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},
     {'name': 'rust-dev', 'tag': 'focal-stable', 'path': 'rust-dev/stable'},
-    {'name': 'rust-dev', 'tag': 'focal-nightly', 'path': 'rust-dev/nightly'},
     {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base', 'tag': 'focal',
         'args': {'BASE_TAG': 'focal'}},
     {'name': 'nodejs-dev', 'tag': 'focal-erbium',
