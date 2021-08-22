@@ -34,6 +34,9 @@ pipeline {
 			steps {
 				sh 'dnf install -y python-pip git'
 				sh 'python3 -m pip install virtualenv pytest flake8'
+                sh """
+                sed -i 's#unqualified-search-registries.*#unqualified-search-registries = ["docker.io"]#' /etc/containers/registries.conf
+                """
 			}
 		}
 
