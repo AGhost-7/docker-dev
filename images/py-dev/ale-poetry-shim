@@ -8,3 +8,5 @@ if [ -f pyproject.toml ]; then
         exec "$program_name" ${@:1}
     fi
 fi
+
+exit 127
