@@ -45,6 +45,19 @@ pipeline {
 				sh 'flake8'
 			}
 		}
+        stage('retry') {
+            steps {
+                retry (3) {
+                    sh("""
+                        set -exo pipefail
+                        if [ ! -f ~/.retry ]; then
+                            touch ~/.retry
+                            exit 1
+                        fi
+                    """)
+                }
+            }
+        }
 
 		stage('test builder') {
 			steps {

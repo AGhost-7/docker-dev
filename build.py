@@ -154,7 +154,7 @@ def run_tests(image):
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
-    command = ['podman', 'build', '--pull', '--tag', image['full_name']]
+    command = ['podman', 'build', '--tag', image['full_name']]
     if 'args' in image:
         for k, v in image['args'].items():
             command.append('--build-arg')
