@@ -6,7 +6,7 @@ void setBuildStatus(String message, String state) {
 			target_url=\"https://jenkins.jonathan-boudreau.com/blue/organizations/jenkins/docker-dev/detail/docker-dev/$BUILD_NUMBER/pipeline\"
 			curl \
 			\"https://api.github.com/repos/AGhost-7/docker-dev/statuses/$GIT_COMMIT\" \
-			-H \"Authorization: token $TOKEN\" \
+			-H \"Authorization: token \$TOKEN\" \
 			-H \"Content-Type: application/json\" \
 			-H \"Accept: application/vnd.github.v3+json\" \
 			-XPOST \
