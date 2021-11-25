@@ -1,6 +1,5 @@
 # vim: set ft=dockerfile
 
-ARG NODEJS_VERSION
 ARG BASE_TAG=focal
 
 FROM aghost7/nvim:$BASE_TAG
@@ -23,8 +22,6 @@ RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 ENV NVM_DIR $HOME/.nvm
 
-COPY ./nodejs-install.sh /usr/local/bin/nodejs-install.sh
-
 RUN mkdir -p $HOME/.npm
 VOLUME $HOME/.npm
 
@@ -34,5 +31,3 @@ VOLUME $HOME/.cache/yarn
 COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
 RUN sudo chown $USER:$USER $HOME/.config/git/hooks/pre-commit
-
-RUN nodejs-install.sh $NODEJS_VERSION

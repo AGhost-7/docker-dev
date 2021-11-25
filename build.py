@@ -5,7 +5,7 @@
 # images.
 
 from __future__ import print_function
-from os import path
+from os import path, environ
 from subprocess import call, check_output
 import sys
 import re
@@ -39,6 +39,11 @@ db_images = [
 ]
 
 images = [*language_images, *db_images]
+
+
+def debug(*args):
+    if environ.get('DEBUG') == '1':
+        print(*['\033[1;32m', *args, '\033[0;0m'])
 
 
 class BuildException(Exception):
@@ -87,9 +92,11 @@ def files_changed(ref):
 def changed_images(images, ref):
     changed = {}
     for file_name in files_changed(ref):
+        debug('file changed', file_name)
         normalized = path.normpath(file_name)
         for image in images:
             if normalized.find(path.join('images', image['path'])) == 0:
+                debug('file used by', image['name'])
                 changed[image['path']] = image
 
     return list(changed.values())
@@ -156,6 +163,7 @@ def build_image(image):
             command.append(k + '=' + v)
 
     command.append(path.join('images', image['path']))
+    debug('build command', command)
     code = call(command)
     if code > 0:
         raise BuildException(image['full_name'], 'Build', code)
@@ -192,18 +200,22 @@ def build_tree(
     for group_image_name, image_group in image_groups.items():
         image = image_group[0]
         if image['dependency'] == image_name:
+            dependent_changed = False
             if changed or image['name'] in changes_set:
-                changed = True
+                debug('changed for real')
+                dependent_changed = True
                 if image['name'] not in scheduled:
                     result.extend(image_group)
                 scheduled.add(image['name'])
+            debug('stepping to depending image', image['name'], 'changed?', changed)
             build_tree(
                 image['name'],
                 image_groups,
                 changes_set,
-                changed,
+                dependent_changed,
                 scheduled,
                 result)
+            debug('stepping out')
 
 
 def group_by_name(images):
@@ -218,6 +230,7 @@ def group_by_name(images):
 def build_plan(images, changes):
     result = []
     changes_set = set([change['name'] for change in changes])
+    debug('CHANGES_SET', changes_set)
     scheduled = set()
     image_groups = group_by_name(images)
     for leaf in image_leaves(images):
@@ -226,6 +239,7 @@ def build_plan(images, changes):
         if changed and name not in scheduled:
             result.extend(image_groups[leaf['name']])
             scheduled.add(leaf['name'])
+        debug('building tree for image', leaf['name'], 'changed?', changed)
         build_tree(name, image_groups, changes_set, changed, scheduled, result)
 
     return result

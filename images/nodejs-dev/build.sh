@@ -34,3 +34,15 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Install vim plugins
 nvim +PlugInstall +qall
+
+
+. ~/.nvm/nvm.sh
+
+nvm install 16
+nvm alias default stable
+
+yarn global add flip-table
+sudo apt-get update
+ycm-install --ts-completer
+sudo rm -rf /var/lib/apt/lists/*
+sudo rm -rf ~/.cache/yarn/*

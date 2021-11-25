@@ -77,7 +77,7 @@ pipeline {
 							)]) {
 					sh 'podman login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD" docker.io'
 				}
-				sh 'python3 build.py HEAD'
+				sh 'DEBUG=1 python3 build.py HEAD'
 			}
 		}
 	}

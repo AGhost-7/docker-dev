@@ -66,6 +66,20 @@ def test_build_plan():
     assert len(plan) == 4
 
 
+def test_sibling_build_plan():
+    images = [
+        {'name': 'nvim', 'full_name': 'aghost7/nvim:focal', 'dependency': 'power-tmux'},
+        {'name': 'ruby-dev', 'full_name': 'aghost7/ruby-dev:focal', 'dependency': 'nvim'},
+        {'name': 'nodejs-dev', 'full_name': 'aghost7/nodejs-dev:boron',
+            'dependency': 'nvim'},
+        {'name': 'py-dev', 'full_name': 'aghost7/py-dev', 'dependency': 'nvim'}
+    ]
+    changes = [{'name': 'nodejs-dev'}]
+    plan = build.build_plan(images, changes)
+    assert plan[0]['name'] == 'nodejs-dev'
+    assert len(plan) == 1
+
+
 def test_build_plan_dependents():
     images = [
         {'name': 'ubuntu-dev-base', 'full_name': 'aghost7/ubuntu-dev-base',
