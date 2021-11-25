@@ -15,8 +15,18 @@ sudo chown -R "$USER:$USER" "$HOME/.config/nvim"
 
 sudo chown "$USER:$USER" "$HOME/.editorconfig"
 
-# Install neovim
 sudo apt-get update
+
+# Install neovim
+curl -o /tmp/neovim.appimage -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
+chmod +x /tmp/nvim.appimage
+/tmp/nvim.appimage --appimage-extract
+pushd /tmp/squashfs-root
+find . -type f -path './usr/*' | sed 's#./##' | while read line; do
+	sudo mkdir -p "$(dirname "/$line")"
+	sudo mv "$line" "/$line"
+done
+
 apt-install neovim -y
 
 # Install neovim python api.
