@@ -43,6 +43,13 @@ apt-get update
 apt-install podman
 apt-install buildah
 
+# Download only the docker client as the host already has the daemon.
+curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
+tar xvf /tmp/docker.tgz -C /tmp
+mv /tmp/docker/docker /usr/local/bin/docker
+rm -rf /tmp/docker*
+pip install --no-cache-dir docker-compose
+
 # Man pages on base debian image aren't installed...
 apt-install man-db
 
