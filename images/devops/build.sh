@@ -39,24 +39,28 @@ sudo pip3 install ansible ansible-lint
 sudo ln -s /usr/bin/python3 /usr/bin/python
 # }}}
 
-# {{{ install hashicorp vault/terraform
+# {{{ install hashicorp vault
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 echo "deb [arch=amd64] https://apt.releases.hashicorp.com $VERSION_CODENAME main" | \
 	sudo tee /etc/apt/sources.list.d/vault.list
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends vault terraform
+sudo apt-get install -y --no-install-recommends vault
 # https://github.com/hashicorp/vault/issues/10048#issuecomment-706315167
 sudo setcap cap_ipc_lock= /usr/bin/vault
+
+# }}}
+
+# {{{ install terraform switcher
+echo 'bin = "/home/aghost-7/.local/bin/terraform"' > ~/.tfswitch.toml
+mkdir -p ~/.terraform.versions /tmp/tfswitch
+curl -Lo /tmp/tfswitch/tfswitch.tar.gz https://github.com/warrensbox/terraform-switcher/releases/download/0.13.1201/terraform-switcher_0.13.1201_linux_amd64.tar.gz
+tar xvf /tmp/tfswitch/tfswitch.tar.gz -C /tmp/tfswitch
+mv /tmp/tfswitch/tfswitch ~/.local/bin/tfswitch
+rm -rf /tmp/tfswitch
 # }}}
 
 # {{{ azure cli
-curl -sL https://packages.microsoft.com/keys/microsoft.asc | \
-    gpg --dearmor | \
-    sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $VERSION_CODENAME main" | \
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
-sudo apt-get update
-sudo apt-get install azure-cli
+pip install azure-cli==2.29
 # }}}
 
 # {{{ aws cli
@@ -69,7 +73,7 @@ rm -rf ~/{awscliv2.zip,aws}
 # {{{ vim additions
 for file in plugin.vim post-plugin.vim; do
 	cat "/tmp/$file" >> "$HOME/.config/nvim/$file"
-	sudo rm -f "$file"
+	sudo rm -f "/tmp/$file"
 done
 
 nvim +PlugInstall +qall

@@ -14,3 +14,4 @@ RUN /tmp/build.sh && sudo rm /tmp/build.sh
 # store session and stuff
 RUN mkdir -p $HOME/.azure
 VOLUME $HOME/.azure
+VOLUME $HOME/.terraform.versions
