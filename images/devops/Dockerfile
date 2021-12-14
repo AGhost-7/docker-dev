@@ -12,6 +12,7 @@ COPY ./post-plugin.vim /tmp/post-plugin.vim
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 # store session and stuff
-RUN mkdir -p $HOME/.azure
+RUN mkdir -p $HOME/.azure $HOME/.kube
 VOLUME $HOME/.azure
+VOLUME $HOME/.kube
 VOLUME $HOME/.terraform.versions
