@@ -15,7 +15,7 @@ language_images = [
     {'name': 'ubuntu-dev-base', 'tag': 'focal',
         'args': {'UBUNTU_RELEASE': 'focal'}},
     {'name': 'power-tmux', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal-erbium'}},
+    {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'nvim', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'py-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},

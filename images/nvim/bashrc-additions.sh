@@ -1,6 +1,5 @@
 alias vim='nvim'
 export EDITOR=nvim
-export PATH=$PATH:/root/.local/bin
 
 gc() {
 	local commit='EDITOR=nvim git commit || bash' 
