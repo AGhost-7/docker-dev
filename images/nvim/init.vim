@@ -64,3 +64,7 @@ set foldmethod=marker
 " Let the linter / formatter take care of additional line breaks and the end
 " of the file.
 set nofixendofline
+
+" use `:set list` to show whitespace and other. handy for debugging file
+" format issues
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
