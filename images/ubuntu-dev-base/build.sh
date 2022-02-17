@@ -107,8 +107,13 @@ curl -o /tmp/ngrok.zip \
 sudo unzip /tmp/ngrok.zip -d /usr/local/bin
 rm /tmp/ngrok.zip
 
-# Install latest git
+# Install git
 apt-install git
+
+# install lf with the `migrate import --above` feature
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get update
+apt-install git-lfs
 
 # subcommand which opens the branch you're checked out on github.
 git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
