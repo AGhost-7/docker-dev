@@ -24,6 +24,7 @@ language_images = [
     {'name': 'c-dev', 'tag': 'focal'},
     {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
+    {'name': 'java-dev', 'tag': 'focal'},
 ]
 
 db_images = [
