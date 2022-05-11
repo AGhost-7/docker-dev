@@ -12,3 +12,11 @@ function! g:AnsibleDocs() abort
 endfunction
 
 autocmd Filetype yaml.ansible nmap <buffer> <C-K> :call g:AnsibleDocs()<CR>
+
+let g:ycm_language_server = [
+    \   {
+    \     'name': 'terraform',
+    \     'cmdline': [ 'terraform-ls', 'serve' ],
+    \     'filetypes': [ 'tf' ]
+    \   },
+    \ ]

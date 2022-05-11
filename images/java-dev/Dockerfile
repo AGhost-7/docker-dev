@@ -4,30 +4,16 @@ ENV IMAGE_CLASS java
 
 ENV JDTLS_HOME /usr/local/share/jdtls
 
-RUN sudo apt-get update && \
-	sudo apt-get install -y openjdk-11-jdk-headless maven gradle && \
-	sudo rm -rf /var/lib/apt/lists/*
-
-RUN curl -L -o /tmp/jdtls.tar.gz https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.5.0-202109201721.tar.gz && \
-	sudo mkdir $JDTLS_HOME && \
-	sudo tar xvf /tmp/jdtls.tar.gz -C $JDTLS_HOME && \
-	rm /tmp/jdtls.tar.gz && \
-	cp -r $JDTLS_HOME/config_linux $HOME/.config/jdtls
-
 COPY ./jdtls /usr/local/bin/jdtls
-
-RUN sudo chmod +x /usr/local/bin/jdtls
 
 COPY ./post-plugin.vim /tmp/post-plugin.vim
 COPY ./plugin.vim /tmp/plugin.vim
 
 RUN mkdir -p $HOME/.m2/repository
 VOLUME $HOME/.m2/repository
+COPY ./build.sh /tmp/build.sh
 
-RUN set -e; \
-	for file in post-plugin.vim plugin.vim; do \
-		cat "/tmp/$file" >> "$HOME/.config/nvim/$file"; \
-		sudo rm "/tmp/$file"; \
-	done
+RUN /tmp/build.sh && sudo rm /tmp/build.sh
+COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
 
-RUN nvim +PlugInstall +qall
+RUN cat /tmp/bashrc-additions.sh >> ~/.bashrc && sudo rm /tmp/bashrc-additions.sh

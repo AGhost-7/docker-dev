@@ -47,7 +47,10 @@ sudo apt-get update
 sudo apt-get install -y --no-install-recommends vault
 # https://github.com/hashicorp/vault/issues/10048#issuecomment-706315167
 sudo setcap cap_ipc_lock= /usr/bin/vault
+# }}}
 
+# {{{ lsp server
+sudo apt-get install -y --no-install-recommends terraform-ls
 # }}}
 
 # {{{ install terraform switcher
