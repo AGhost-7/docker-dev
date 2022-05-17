@@ -46,6 +46,18 @@ command Bd bp|bd #
 " make host clipboard accessible by the container.
 set clipboard+=unnamedplus
 
+let g:clipboard = {
+    \   "name": "xclip",
+    \   "copy": {
+    \      "+": ["xclip", "-selection", "clipboard"],
+    \      "*": ["xclip", "-selection", "clipboard"],
+    \   },
+    \   "paste": {
+    \      "+": ["xclip", "-selection", "clipboard", "-o"],
+    \      "*": ["xclip", "-selection", "clipboard", "-o"],
+    \   },
+    \ }
+
 " Using the blazing fast ag search tool for lgrep calls instead.
 set grepprg=ag\ --nogroup\ --nocolor
 
