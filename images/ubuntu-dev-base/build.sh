@@ -21,7 +21,7 @@ fi
 yes | unminimize || true
 
 # Super essential tools
-apt-install tree curl
+apt-install tree curl ca-certificates
 
 # Going to need this a lot
 apt-install python3-pip
@@ -33,15 +33,6 @@ apt-install xclip
 
 # To cryptographically sign git commits
 apt-install gpg gpg-agent
-
-. /etc/os-release
-
-# install podman / buildah on newer releases
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
-apt-get update
-apt-install podman
-apt-install buildah
 
 # Man pages on base debian image aren't installed...
 apt-install man-db
