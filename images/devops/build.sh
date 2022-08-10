@@ -56,8 +56,7 @@ sudo apt-get install -y --no-install-recommends terraform-ls
 # {{{ install terraform switcher
 echo 'bin = "/home/aghost-7/.local/bin/terraform"' > ~/.tfswitch.toml
 mkdir -p ~/.terraform.versions /tmp/tfswitch
-curl -Lo /tmp/tfswitch/tfswitch.tar.gz https://github.com/warrensbox/terraform-switcher/releases/download/0.13.1221/terraform-switcher_0.13.1221_linux_amd64.tar.gz
-#https://github.com/warrensbox/terraform-switcher/releases/download/0.13.1201/terraform-switcher_0.13.1201_linux_amd64.tar.gz
+curl -Lo /tmp/tfswitch/tfswitch.tar.gz https://github.com/warrensbox/terraform-switcher/releases/download/0.13.1288/terraform-switcher_0.13.1288_linux_amd64.tar.gz
 tar xvf /tmp/tfswitch/tfswitch.tar.gz -C /tmp/tfswitch
 mv /tmp/tfswitch/tfswitch ~/.local/bin/tfswitch
 rm -rf /tmp/tfswitch

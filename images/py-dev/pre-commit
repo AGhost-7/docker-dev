@@ -40,6 +40,10 @@ if pyproject_path.exists():
                     for file_staged in str(staged_output, 'utf8').split('\n')
                     if Path(file_staged).suffix == '.py'
                 ]
+
+                if len(files_staged) == 0:
+                    sys.exit(0)
+
                 code = subprocess.call(
                     ['poetry', 'run', 'black'] + files_staged
                 )
