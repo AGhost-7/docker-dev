@@ -15,13 +15,8 @@ install-tmux() {
 	local tmux_src="/tmp/tmux"
 	git clone --branch "$TMUX_VERSION" --depth 1 https://github.com/tmux/tmux.git "$tmux_src"
 	pushd "$tmux_src"
-	local libevent="libevent-2.1.6" libevent_dev="libevent-dev"
-	if [ "$UBUNTU_RELEASE" = "focal" ]; then
-		libevent="libevent-2.1-7"
-		libevent_dev="libevent-dev"
-	fi
 	# libevent is a run-time requirement. *-dev are for the header files.
-	apt-install "$libevent_dev" "$libevent" libncurses-dev autoconf automake pkg-config bison
+	apt-install libevent-2.1-7 libevent-dev libncurses-dev autoconf automake pkg-config bison
 	sh autogen.sh
 	./configure
 	make
