@@ -1,4 +1,6 @@
-FROM aghost7/nvim:focal
+ARG BASE_TAG=focal
+
+FROM aghost7/nvim:$BASE_TAG
 
 ENV IMAGE_CLASS java
 

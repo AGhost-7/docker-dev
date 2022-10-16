@@ -12,9 +12,6 @@ nvim +PlugInstall +qall
 python3 "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" "$@"
 
 sudo apt-get purge python3-dev cmake -y
-libpython="libpython3.6"
-if [ "$UBUNTU_RELEASE" = "focal" ]; then
-	libpython="libpython3.8"
-fi
+libpython="libpython3.$(python3 --version | cut -d . -f 2)"
 
 sudo apt-get install "$libpython" -y

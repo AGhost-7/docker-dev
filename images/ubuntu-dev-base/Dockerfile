@@ -32,8 +32,6 @@ RUN apt-get update && \
 # Required for `clear` command to work, etc.
 ENV TERM screen-256color
 
-ENV DOCKER_CLI_VERSION "20.10.9"
-
 COPY build.sh /tmp/build.sh
 
 RUN bash /tmp/build.sh && \

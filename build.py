@@ -90,7 +90,7 @@ def parse_image_dependency(image):
 
 def files_changed(ref):
     diff = check_output(
-        ['git', 'diff', '--name-only', '{}~1..{}'.format(ref, ref)])
+        ['git', 'diff', '--name-only', ref])
     parts = str(diff, 'utf-8').split('\n')
     return filter(lambda l: len(l.strip()) > 0, parts)
 
