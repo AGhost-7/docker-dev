@@ -1,7 +1,4 @@
 
-container_cli=podman
-
-podman run --rm "$IMAGE" which "$container_cli"
 
 for cmd in netstat dig socat tree tcpflow ssh; do
 	podman run --rm -i "$IMAGE" which "$cmd"

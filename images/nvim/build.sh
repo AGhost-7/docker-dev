@@ -18,14 +18,10 @@ sudo chown "$USER:$USER" "$HOME/.editorconfig"
 sudo apt-get update
 
 # Install neovim
-curl -o /tmp/nvim.appimage -L https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
-chmod +x /tmp/nvim.appimage
-cd /tmp
-/tmp/nvim.appimage --appimage-extract
-cd /tmp/squashfs-root
-find . -type f -path './usr/*' | sed 's#./##' | while read line; do sudo mkdir -p "$(dirname "/$line")"; sudo mv "$line" "/$line"; done
-rm -rf /tmp/{nvim.appimage,squashfs-root}
-cd ~/
+curl -Lo /tmp/nvim.deb https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.deb
+sudo dpkg -i /tmp/nvim.deb
+rm -rf /tmp/nvim.deb
+
 
 # Install neovim python api.
 sudo pip3 install neovim
