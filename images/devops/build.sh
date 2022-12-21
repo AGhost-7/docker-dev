@@ -66,6 +66,15 @@ rm -rf /tmp/tfswitch
 pip install azure-cli==2.29
 # }}}
 
+# {{{ azure aks authentication
+curl -L -o /tmp/kubelogin.zip https://github.com/Azure/kubelogin/releases/download/v0.0.25/kubelogin-linux-amd64.zip
+cd /tmp
+unzip /tmp/kubelogin.zip
+mv bin/linux_amd64/kubelogin ~/.local/bin
+rm -rf /tmp/{bin,kubelogin.zip}
+cd -
+# }}}
+
 # {{{ aws cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
