@@ -25,21 +25,19 @@ language_images = [
     {'name': 'py-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
     {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},
     {'name': 'rust-dev', 'tag': 'focal-stable', 'path': 'rust-dev/stable'},
-    {'name': 'nodejs-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal', 'NODEJS_VERSION': '16'}},
+    {'name': 'nodejs-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy', 'NODEJS_VERSION': '16'}},
     {'name': 'c-dev', 'tag': 'focal'},
-    {'name': 'devops', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
+    {'name': 'devops', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
     {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'java-dev', 'tag': 'focal'},
+    {'name': 'java-dev', 'tag': 'jammy'},
 ]
 
 db_images = [
     {'name': 'my-dev', 'tag': '5.6'},
     {'name': 'my-dev', 'tag': '5.7', 'args': {'MYSQL_VERSION': '5.7'}},
     {'name': 'my-dev', 'tag': '8.0', 'args': {'MYSQL_VERSION': '8.0'}},
-    {'name': 'pg-dev', 'tag': '9.6', 'args': {'PG_VERSION': '9.6'}},
-    {'name': 'pg-dev', 'tag': '10', 'args': {'PG_VERSION': '10'}},
-    {'name': 'pg-dev', 'tag': '11', 'args': {'PG_VERSION': '11'}},
     {'name': 'pg-dev', 'tag': '12', 'args': {'PG_VERSION': '12'}},
+    {'name': 'pg-dev', 'tag': '15', 'args': {'PG_VERSION': '15'}},
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}},
     {'name': 'redis-dev', 'tag': '6'},
 ]

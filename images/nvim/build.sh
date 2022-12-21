@@ -23,14 +23,8 @@ sudo dpkg -i /tmp/nvim.deb
 rm -rf /tmp/nvim.deb
 
 
-# Install neovim python api.
-sudo pip3 install neovim
-
-# Python 3 api required for denite.vim
-apt-install python3-pip
-sudo pip3 install --upgrade pip
-sudo pip3 install setuptools
-sudo pip3 install neovim
+# needed by various plugins
+sudo pip3 install pynvim
 
 # Add environment variables and `vim` alias.
 cat /tmp/bashrc-additions.sh >> "$HOME/.bashrc"
