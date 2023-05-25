@@ -1,4 +1,4 @@
-ARG BASE_TAG=focal
+ARG BASE_TAG=jammy
 
 FROM aghost7/py-dev:$BASE_TAG
 
