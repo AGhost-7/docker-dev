@@ -26,10 +26,14 @@ rm /tmp/k9s.tar.gz
 # }}}
 
 # {{{ install helm
-curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.7.2-linux-amd64.tar.gz
+curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.12.0-linux-amd64.tar.gz
 tar xvf /tmp/helm.tar.gz -C /tmp
 mv /tmp/linux-amd64/helm ~/.local/bin/helm
 rm -rf /tmp/{helm.tar.gz,linux-amd64}
+# }}}
+
+# {{{ install helm diff
+~/.local/bin/helm plugin install https://github.com/databus23/helm-diff
 # }}}
 
 # {{{ ansible

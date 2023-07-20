@@ -93,10 +93,10 @@ apt-install file
 
 # Expose local servers to the internet. Useful for testing webhooks, oauth,
 # etc.
-curl -o /tmp/ngrok.zip \
-	https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-sudo unzip /tmp/ngrok.zip -d /usr/local/bin
-rm /tmp/ngrok.zip
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends ngrok
 
 # Install git
 apt-install git
