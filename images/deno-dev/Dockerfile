@@ -2,7 +2,7 @@
 
 ARG BASE_TAG=focal
 
-FROM aghost7/nvim:$BASE_TAG
+FROM docker.io/aghost7/nvim:$BASE_TAG
 
 USER aghost-7
 

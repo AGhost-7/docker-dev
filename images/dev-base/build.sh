@@ -7,18 +7,10 @@ set -eo pipefail
 set -x
 
 apt-install() {
-	apt-get install --no-install-recommends -y "$@"
+	sudo apt-get install --no-install-recommends -y "$@"
 }
 
-apt-get update
-
-if [ "$UBUNTU_RELEASE" = "focal" ]; then
-	# fixes issue in newer releases:
-	# https://github.com/sudo-project/sudo/issues/42#issuecomment-609079906
-	echo "Set disable_coredump false" >> /etc/sudo.conf
-fi
-
-yes | unminimize || true
+sudo apt-get update
 
 # Super essential tools
 apt-install tree curl ca-certificates
@@ -128,25 +120,37 @@ apt-install swaks
 # get lines of code in a directory
 curl -L -o ~/tokei.tar.gz https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
 tar xvf ~/tokei.tar.gz -C ~/
-mv ~/tokei /usr/local/bin
-chown root:root /usr/local/bin/tokei
+sudo mv ~/tokei /usr/local/bin
+sudo chown root:root /usr/local/bin/tokei
 rm ~/tokei.tar.gz
 
 # Add timestamp to history.
 echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 
 # Alias for tree view of commit history.
-git config --system alias.tree "log --all --graph --decorate=short --color --format=format:'%C(bold blue)%h%C(reset) %C(auto)%d%C(reset)\n         %C(blink yellow)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'"
+sudo git config --system alias.tree "log --all --graph --decorate=short --color --format=format:'%C(bold blue)%h%C(reset) %C(auto)%d%C(reset)\n         %C(blink yellow)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'"
 
 # silence new message from git
-git config --system pull.rebase false
+sudo git config --system pull.rebase false
 
 # set the hooks path to be global instead of local to a project
-git config --system core.hooksPath '~/.config/git/hooks'
-su aghost-7 -c 'mkdir -p ~/.config/git/hooks'
+sudo git config --system core.hooksPath '~/.config/git/hooks'
+mkdir -p ~/.config/git/hooks
+
+# install zsh
+apt-install zsh
+
+# plugin system for zsh
+curl -L -o- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -
+
+# theme for zsh
+curl -L https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/master/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
+
+cp /tmp/zshrc /home/aghost-7/.zshrc
+sudo rm /tmp/zshrc
 
 # cache is useless to keep
-apt-get autoremove -y
-apt-get clean
-rm -rf /var/lib/apt/lists/*
+sudo apt-get autoremove -y
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/*
 

@@ -7,12 +7,8 @@ set -eo pipefail
 sudo apt-get update
 
 # {{{ kubectl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
-	sudo apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | \
-	sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
-sudo apt-get install -y kubectl
+curl --create-dirs -L -o ~/.local/bin/kubectl https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+chmod -x ~/.local/bin/kubectl
 # }}}
 
 # {{{ command line dashboard for kubernetes

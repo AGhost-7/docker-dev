@@ -1,7 +1,7 @@
 
 ARG PG_VERSION=9.6
 
-FROM postgres:$PG_VERSION
+FROM docker.io/library/postgres:$PG_VERSION
 
 ENV TERM screen-256color
 

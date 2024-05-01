@@ -1,4 +1,4 @@
-FROM aghost7/nvim
+FROM docker.io/aghost7/dev-base:jammy
 
 USER aghost-7
 

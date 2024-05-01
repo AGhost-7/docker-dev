@@ -12,34 +12,19 @@ import re
 import os
 
 language_images = [
-    {'name': 'ubuntu-dev-base', 'tag': 'focal',
-        'args': {'UBUNTU_RELEASE': 'focal'}},
-    {'name': 'ubuntu-dev-base', 'tag': 'jammy',
+    #{'name': 'dev-base', 'tag': 'noble',
+    #    'args': {'UBUNTU_RELEASE': 'noble'}},
+    {'name': 'dev-base', 'tag': 'jammy',
         'args': {'UBUNTU_RELEASE': 'jammy'}},
-    {'name': 'power-tmux', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'power-tmux', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'ruby-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'nvim', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
-    {'name': 'nvim', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'py-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'py-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'rust-dev-base', 'tag': 'focal', 'path': 'rust-dev/base'},
-    {'name': 'rust-dev', 'tag': 'focal-stable', 'path': 'rust-dev/stable'},
     {'name': 'nodejs-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy', 'NODEJS_VERSION': '16'}},
-    {'name': 'c-dev', 'tag': 'focal'},
     {'name': 'devops', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'deno-dev', 'tag': 'focal', 'args': {'BASE_TAG': 'focal'}},
     {'name': 'java-dev', 'tag': 'jammy'},
 ]
 
 db_images = [
-    {'name': 'my-dev', 'tag': '5.6'},
-    {'name': 'my-dev', 'tag': '5.7', 'args': {'MYSQL_VERSION': '5.7'}},
-    {'name': 'my-dev', 'tag': '8.0', 'args': {'MYSQL_VERSION': '8.0'}},
-    {'name': 'pg-dev', 'tag': '12', 'args': {'PG_VERSION': '12'}},
     {'name': 'pg-dev', 'tag': '15', 'args': {'PG_VERSION': '15'}},
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}},
-    {'name': 'redis-dev', 'tag': '6'},
 ]
 
 images = [*language_images, *db_images]

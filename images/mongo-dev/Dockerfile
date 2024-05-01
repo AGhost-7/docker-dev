@@ -1,6 +1,6 @@
 ARG BASE_TAG
 
-FROM mongo:$BASE_TAG
+FROM docker.io/library/mongo:$BASE_TAG
 
 # Install autocomplete enhancement
 RUN apt-get update && \

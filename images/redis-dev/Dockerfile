@@ -1,4 +1,4 @@
-FROM redis:6
+FROM docker.io/library/redis:6
 
 COPY ./build.sh /tmp/build.sh
 

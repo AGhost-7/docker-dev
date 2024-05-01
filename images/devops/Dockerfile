@@ -1,6 +1,6 @@
 ARG BASE_TAG=jammy
 
-FROM aghost7/py-dev:$BASE_TAG
+FROM docker.io/aghost7/py-dev:$BASE_TAG
 
 ENV IMAGE_CLASS devops
 

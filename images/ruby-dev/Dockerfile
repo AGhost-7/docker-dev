@@ -1,6 +1,6 @@
 ARG BASE_TAG
 
-FROM aghost7/nodejs-dev:$BASE_TAG
+FROM docker.io/aghost7/nodejs-dev:$BASE_TAG
 
 ENV IMAGE_CLASS ruby
 

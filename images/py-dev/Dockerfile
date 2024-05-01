@@ -1,6 +1,6 @@
-ARG BASE_TAG=focal
+ARG BASE_TAG=jammy
 
-FROM aghost7/nvim:$BASE_TAG
+FROM docker.io/aghost7/dev-base:$BASE_TAG
 
 USER aghost-7
 

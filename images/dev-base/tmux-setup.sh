@@ -27,15 +27,6 @@ install-tmux() {
 	popd
 }
 
-install-powerline() {
-	# POWER TMUX
-	sudo pip3 install powerline-status
-
-	# Make git status extra nice :)
-	sudo pip3 install powerline-gitstatus
-}
-
-
 sudo apt-get update
 
 # Fix file permissions from the copy
@@ -45,17 +36,11 @@ sudo chown aghost-7:aghost-7 /home/aghost-7/.config/tmux/tmux.conf
 # Need to update package cache...
 sudo apt-get update
 
-install-powerline
-
 install-tmux
 
 # Add fzf fuzzy finder
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
-
-# Add bashrc addons for powerline and etc.
-cat /tmp/bashrc-additions.sh >> "$HOME/.bashrc"
-sudo rm /tmp/bashrc-additions.sh
 
 # Cleanup cache
 sudo apt-get clean

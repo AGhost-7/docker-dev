@@ -1,6 +1,6 @@
 ARG MYSQL_VERSION=5.6
 
-FROM mysql:$MYSQL_VERSION
+FROM docker.io/library/mysql:$MYSQL_VERSION
 
 ENV MYSQL_ROOT_PASSWORD=root
 

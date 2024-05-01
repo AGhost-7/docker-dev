@@ -1,6 +1,0 @@
-{
-	"common": {
-		"log_file": "/tmp/powerline.log",
-		"log_level": "INFO"
-	}
-}

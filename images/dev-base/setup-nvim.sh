@@ -22,14 +22,8 @@ curl -Lo /tmp/nvim.deb https://github.com/neovim/neovim/releases/download/v0.8.1
 sudo dpkg -i /tmp/nvim.deb
 rm -rf /tmp/nvim.deb
 
-
 # needed by various plugins
 sudo pip3 install pynvim
-
-# Add environment variables and `vim` alias.
-cat /tmp/bashrc-additions.sh >> "$HOME/.bashrc"
-
-sudo rm /tmp/bashrc-additions.sh
 
 # Install vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
