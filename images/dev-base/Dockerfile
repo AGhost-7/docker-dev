@@ -3,7 +3,7 @@ ARG UBUNTU_RELEASE=jammy
 FROM docker.io/library/ubuntu:${UBUNTU_RELEASE} as base
 
 RUN apt-get update && \
-	apt-get install sudo -y && \
+	apt-get install sudo adduser -y && \
 	adduser --disabled-password --gecos '' aghost-7 && \
 	adduser aghost-7 sudo && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \

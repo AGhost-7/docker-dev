@@ -10,6 +10,14 @@ apt-install() {
 	sudo apt-get install --no-install-recommends -y "$@"
 }
 
+pip-install() {
+	if [ "$UBUNTU_RELEASE" = "jammy"]; then
+		pip install "$1"
+	else
+		pip install --break-system-packages "$1"
+	fi
+}
+
 sudo apt-get update
 
 # Super essential tools
@@ -18,7 +26,7 @@ apt-install tree curl ca-certificates
 # Going to need this a lot
 apt-install python3-pip
 
-pip3 install setuptools
+pip-install setuptools
 
 # See readme for how to get the clipboard working.
 apt-install xclip
@@ -30,10 +38,10 @@ apt-install gpg gpg-agent
 apt-install man-db
 
 # tldr for a short form man pages.
-pip3 install tldr
+pip-install tldr
 
 # Just gitgud
-pip3 install gitgud
+pip-install gitgud
 
 # System info. Nethogs has a bug on trusty so just going to use iftop.
 apt-install htop iotop iftop

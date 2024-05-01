@@ -23,7 +23,11 @@ sudo dpkg -i /tmp/nvim.deb
 rm -rf /tmp/nvim.deb
 
 # needed by various plugins
-sudo pip3 install pynvim
+if [ "$UBUNTU_RELEASE" = "jammy" ]; then
+	sudo pip install pynvim
+else
+	sudo pip install --break-system-packages pynvim
+fi
 
 # Install vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
