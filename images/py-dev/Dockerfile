@@ -21,10 +21,10 @@ COPY ./ptpython.py "$HOME/.ptpython/config.py"
 
 RUN sudo chown -R $USER:$USER "$HOME/.ptpython"
 
-COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
+COPY ./zshrc-additions.sh /tmp/zshrc-additions.sh
 
-RUN cat /tmp/bashrc-additions.sh >> ~/.bashrc && \
-	sudo rm /tmp/bashrc-additions.sh
+RUN cat /tmp/zshrc-additions.sh >> ~/.zshrc && \
+	sudo rm /tmp/zshrc-additions.sh
 
 # directory is used by pipenv
 RUN mkdir -p $HOME/.local/share/virtualenvs
