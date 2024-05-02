@@ -10,7 +10,7 @@ for file in plugin post-plugin; do
 done
 
 # Install node version manager
-curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | zsh
 
 # Install yarn without nodejs. The package being at the system-level means it
 # will still be available if you switch node version.
@@ -19,13 +19,12 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update
 sudo apt-get install --no-install-recommends -y yarn
 
-curl --create-dirs -o "$HOME/.local/share/bash-completion/yarn" \
-	https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
-echo '. ~/.local/share/bash-completion/yarn' >> ~/.bashrc
+git clone https://github.com/chrisands/zsh-yarn-completions ~/.oh-my-zsh/custom/plugins/zsh-yarn-completions
+echo 'plugins+=(zsh-yarn-completions)' >> ~/.zshrc
 
 # customize fzf to ignore node_modules
-cat /tmp/bashrc-additions.sh >> ~/.bashrc
-sudo rm /tmp/bashrc-additions.sh
+cat /tmp/zshrc-additions.sh >> ~/.zshrc
+sudo rm /tmp/zshrc-additions.sh
 
 # Cleanup whats left...
 sudo apt-get autoremove -y
@@ -38,7 +37,7 @@ nvim +PlugInstall +qall
 
 . ~/.nvm/nvm.sh
 
-nvm install 16
+nvm install 20
 nvm alias default stable
 
 yarn global add flip-table

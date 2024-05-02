@@ -12,12 +12,14 @@ import re
 import os
 
 language_images = [
-    #{'name': 'dev-base', 'tag': 'noble',
-    #    'args': {'UBUNTU_RELEASE': 'noble'}},
+    {'name': 'dev-base', 'tag': 'noble',
+        'args': {'UBUNTU_RELEASE': 'noble'}},
     {'name': 'dev-base', 'tag': 'jammy',
         'args': {'UBUNTU_RELEASE': 'jammy'}},
     {'name': 'py-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
+    {'name': 'py-dev', 'tag': 'noble', 'args': {'BASE_TAG': 'noble'}},
     {'name': 'nodejs-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy', 'NODEJS_VERSION': '16'}},
+    {'name': 'nodejs-dev', 'tag': 'noble', 'args': {'BASE_TAG': 'noble', 'NODEJS_VERSION': '16'}},
     {'name': 'devops', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
     {'name': 'java-dev', 'tag': 'jammy'},
 ]
