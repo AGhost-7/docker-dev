@@ -2,7 +2,7 @@
 # Utility function which automatically load the virtualenv on new tmux
 # panes.
 envbind() {
-	if [ "$1" == "-r" ]; then
+	if [[ "$1" == "-r" ]]; then
 		if [ -f ~/.envbindrc ]; then
 			source "$(cat ~/.envbindrc)/bin/activate"
 		fi

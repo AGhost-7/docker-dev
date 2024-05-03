@@ -1,6 +1,6 @@
 
 " Use python3 for completions
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 call g:YcmKeybindings('python')
 
