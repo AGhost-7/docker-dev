@@ -18,15 +18,13 @@ sudo chown "$USER:$USER" "$HOME/.editorconfig"
 sudo apt-get update
 
 # Install neovim
-curl -Lo /tmp/nvim.deb https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.deb
-sudo dpkg -i /tmp/nvim.deb
-rm -rf /tmp/nvim.deb
-
-# needed by various plugins
 if [ "$UBUNTU_RELEASE" = "jammy" ]; then
+	curl -Lo /tmp/nvim.deb https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.deb
+	sudo dpkg -i /tmp/nvim.deb
+	rm -rf /tmp/nvim.deb
 	sudo pip install pynvim
 else
-	sudo pip install --break-system-packages pynvim
+	apt-install neovim python3-pynvim
 fi
 
 # Install vim-plug
