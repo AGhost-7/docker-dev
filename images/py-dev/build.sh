@@ -4,13 +4,13 @@ set -e
 set -x
 
 if [ "$UBUNTU_RELEASE" = "jammy" ]; then
-	sudo python3 -m pip install jedi virtualenv ptpython neovim pipenv poetry
+	sudo python3 -m pip install jedi ptpython poetry
 else
-	sudo python3 -m pip install --break-system-packages jedi virtualenv ptpython neovim pipenv poetry
+	sudo python3 -m pip install --break-system-packages jedi ptpython poetry
 fi
 
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends python3-dev python3-venv
+sudo apt-get install -y --no-install-recommends python3-dev python3-venv pipx
 
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 sudo rm /tmp/plugin.vim

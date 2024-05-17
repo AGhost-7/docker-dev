@@ -33,7 +33,11 @@ rm -rf /tmp/{helm.tar.gz,linux-amd64}
 # }}}
 
 # {{{ ansible
-sudo pip3 install ansible ansible-lint
+if [ "$UBUNTU_RELEASE" = "jammy"]; then
+	sudo pip3 install ansible ansible-lint
+else
+	sudo pip3 install --break-system-packages ansible ansible-lint
+fi
 # some older dynamic inventory scripts reference `python`, they still work
 # on python3 though.
 sudo ln -s /usr/bin/python3 /usr/bin/python
@@ -63,7 +67,7 @@ rm -rf /tmp/tfswitch
 # }}}
 
 # {{{ azure cli
-pip install azure-cli==2.29
+pipx install azure-cli==2.29
 # }}}
 
 # {{{ azure aks authentication
