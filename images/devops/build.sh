@@ -8,7 +8,7 @@ sudo apt-get update
 
 # {{{ kubectl
 curl --create-dirs -L -o ~/.local/bin/kubectl https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
-chmod -x ~/.local/bin/kubectl
+chmod +x ~/.local/bin/kubectl
 # }}}
 
 # {{{ command line dashboard for kubernetes
@@ -26,10 +26,11 @@ curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.12.0-linux-amd64.tar.gz
 tar xvf /tmp/helm.tar.gz -C /tmp
 mv /tmp/linux-amd64/helm ~/.local/bin/helm
 rm -rf /tmp/{helm.tar.gz,linux-amd64}
+export PATH="$PATH:$HOME/.local/bin"
 # }}}
 
 # {{{ install helm diff
-~/.local/bin/helm plugin install https://github.com/databus23/helm-diff
+helm plugin install https://github.com/databus23/helm-diff
 # }}}
 
 # {{{ ansible
@@ -67,7 +68,8 @@ rm -rf /tmp/tfswitch
 # }}}
 
 # {{{ azure cli
-pipx install azure-cli==2.29
+pipx install azure-cli
+pipx inject azure-cli setuptools
 # }}}
 
 # {{{ azure aks authentication
