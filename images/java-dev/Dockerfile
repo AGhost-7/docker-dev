@@ -16,6 +16,6 @@ VOLUME $HOME/.m2/repository
 COPY ./build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
-COPY ./bashrc-additions.sh /tmp/bashrc-additions.sh
+COPY ./zshrc-additions.sh /tmp/zshrc-additions.sh
 
-RUN cat /tmp/bashrc-additions.sh >> ~/.bashrc && sudo rm /tmp/bashrc-additions.sh
+RUN cat /tmp/zshrc-additions.sh >> ~/.zshrc && sudo rm /tmp/zshrc-additions.sh

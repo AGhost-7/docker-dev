@@ -1,4 +1,4 @@
-FROM docker.io/aghost7/dev-base:jammy
+FROM docker.io/aghost7/dev-base:noble
 
 USER aghost-7
 
@@ -23,11 +23,17 @@ COPY ./post-plugin.vim /tmp/post-plugin.vim
 RUN cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim && \
 	sudo rm /tmp/post-plugin.vim
 
-COPY rust-install.sh /usr/local/bin/rust-install.sh
+ENV RUST_DEFAULT_TOOLCHAIN=nightly
+
+COPY ./zshrc-additions.sh /tmp/zshrc-additions.sh
+RUN cat /tmp/zshrc-additions.sh >> ~/.zshrc && sudo rm /tmp/zshrc-additions.sh
+
+COPY build.sh /usr/local/bin/build.sh
+RUN /usr/local/bin/build.sh && sudo rm -f /usr/local/bin/build.sh
 
 # For some reason rustup doesn't work well so I'll only place a volume for the
 # cargo registry.
-RUN mkdir -p $HOME/.cargo/registry
-VOLUME $HOME/.cargo/registry
-
-RUN sudo chown -R $USER:$USER $HOME/.cargo
+#RUN mkdir -p $HOME/.cargo/registry
+#VOLUME $HOME/.cargo/registry
+#
+#RUN sudo chown -R $USER:$USER $HOME/.cargo

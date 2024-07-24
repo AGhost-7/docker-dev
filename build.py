@@ -21,7 +21,8 @@ language_images = [
     {'name': 'nodejs-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy', 'NODEJS_VERSION': '16'}},
     {'name': 'nodejs-dev', 'tag': 'noble', 'args': {'BASE_TAG': 'noble', 'NODEJS_VERSION': '16'}},
     {'name': 'devops', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'java-dev', 'tag': 'jammy'},
+    {'name': 'java-dev', 'tag': 'noble'},
+    {'name': 'rust-dev', 'tag': 'noble'},
 ]
 
 db_images = [

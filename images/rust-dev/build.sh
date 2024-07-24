@@ -1,24 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -eo pipefail
 
 set -x
 
-sudo chown -R "$USER":"$USER" $HOME/.cargo
+curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain "$RUST_DEFAULT_TOOLCHAIN"
 
-toolchain="$1"
-curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain "$toolchain"
-
-echo "export RUST_DEFAULT_TOOLCHAIN='$toolchain'" >> ~/.profile
-
-# Source to update path
-. ~/.profile
+source "$HOME/.cargo/env"
 
 # Install cargo file watcher
 cargo install cargo-watch
 
 # required for goto source to work with the standard library
-rustup component add rust-src --toolchain "$toolchain"
+rustup component add rust-src --toolchain "$RUST_DEFAULT_TOOLCHAIN"
 
 # Install new plugins.
 nvim +PlugInstall +qall
