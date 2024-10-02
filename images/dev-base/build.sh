@@ -139,7 +139,7 @@ echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
 sudo git config --system alias.tree "log --all --graph --decorate=short --color --format=format:'%C(bold blue)%h%C(reset) %C(auto)%d%C(reset)\n         %C(blink yellow)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'"
 
 # silence new message from git
-sudo git config --system pull.rebase false
+sudo git config --system pull.rebase true
 
 # set the hooks path to be global instead of local to a project
 sudo git config --system core.hooksPath '~/.config/git/hooks'

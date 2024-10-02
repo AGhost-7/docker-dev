@@ -27,12 +27,8 @@ else
 	apt-install neovim python3-pynvim
 fi
 
-# Install vim-plug
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 # Install all plugins.
-nvim +PlugInstall +qall
+nvim -c 'lua require("lazy").sync(); vim.cmd("qall")'
 
 # Shellcheck: shell script linter
 apt-install shellcheck

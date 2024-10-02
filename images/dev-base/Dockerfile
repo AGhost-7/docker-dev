@@ -67,12 +67,9 @@ COPY ./tmux-setup.sh /tmp/tmux-setup.sh
 RUN bash /tmp/tmux-setup.sh && sudo rm /tmp/tmux-setup.sh
 
 
-COPY init.vim "$HOME/.config/nvim/init.vim"
-COPY plugin.vim "$HOME/.config/nvim/plugin.vim"
-COPY post-plugin.vim "$HOME/.config/nvim/post-plugin.vim"
+COPY init.lua "$HOME/.config/nvim/init.lua"
 COPY ./.editorconfig "$HOME/.editorconfig"
 
-COPY ./ycm-install /usr/local/bin/ycm-install
 COPY ./setup-nvim.sh /tmp/setup-nvim.sh
 
 RUN bash /tmp/setup-nvim.sh && sudo rm /tmp/setup-nvim.sh
