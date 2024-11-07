@@ -1,4 +1,4 @@
-ARG UBUNTU_RELEASE=jammy
+ARG UBUNTU_RELEASE=noble
 
 FROM docker.io/library/ubuntu:${UBUNTU_RELEASE} as base
 
@@ -68,6 +68,8 @@ RUN bash /tmp/tmux-setup.sh && sudo rm /tmp/tmux-setup.sh
 
 
 COPY init.lua "$HOME/.config/nvim/init.lua"
+COPY base-plugins.lua "$HOME/.config/nvim/lua/plugins/base.lua"
+
 COPY ./.editorconfig "$HOME/.editorconfig"
 
 COPY ./setup-nvim.sh /tmp/setup-nvim.sh
