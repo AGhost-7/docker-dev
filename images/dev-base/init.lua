@@ -31,11 +31,6 @@ require("lazy").setup({
     { import = "plugins" },
   },
   checker = { enabled = false },
+  change_detection = { enabled = false },
 })
 --- }}}
-
-local map = vim.keymap.set
-
-map('n', 'gd', vim.lsp.buf.definition, {})
-map('n', 'gD', vim.lsp.buf.references, {})
-map('n', 'K', vim.lsp.buf.hover, {})

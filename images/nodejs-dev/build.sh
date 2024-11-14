@@ -4,10 +4,8 @@ set -e
 
 set -x
 
-for file in plugin post-plugin; do
-	cat "/tmp/$file.vim" >> "$HOME/.config/nvim/$file.vim"
-	sudo rm "/tmp/$file.vim"
-done
+# fix permission issues
+sudo chown -R $USER:$USER $HOME/.config/nvim
 
 # Install node version manager
 curl -o- https://raw.githubusercontent.com/AGhost-7/nvm/v0.33.11/install.sh | zsh
@@ -32,16 +30,13 @@ sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 
 # Install vim plugins
-nvim +PlugInstall +qall
-
+nvim -c 'lua require("lazy").sync(); vim.cmd("qall")'
 
 . ~/.nvm/nvm.sh
 
-nvm install 20
-nvm alias default stable
+nvm install --lts
+nvm alias default $(node --version)
 
 yarn global add flip-table
-sudo apt-get update
-ycm-install --ts-completer
 sudo rm -rf /var/lib/apt/lists/*
 sudo rm -rf ~/.cache/yarn/*

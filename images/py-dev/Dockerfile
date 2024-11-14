@@ -1,4 +1,4 @@
-ARG BASE_TAG=jammy
+ARG BASE_TAG=noble
 
 FROM docker.io/aghost7/dev-base:$BASE_TAG
 
@@ -6,11 +6,7 @@ USER aghost-7
 
 ENV IMAGE_CLASS python
 
-COPY ./plugin.vim /tmp/plugin.vim
-
-COPY ./post-plugin.vim /tmp/post-plugin.vim
-
-COPY ./ale-poetry-shim $HOME/.local/bin/ale-poetry-shim
+COPY ./python.lua $HOME/.config/nvim/lua/plugins/python.lua
 
 COPY ./build.sh /tmp/build.sh
 
@@ -40,5 +36,4 @@ VOLUME $HOME/.cache/pre-commit
 
 COPY ./pre-commit $HOME/.config/git/hooks/pre-commit
 
-COPY ./global.py $HOME/.config/ycm/global.py
-RUN sudo chown $USER:$USER $HOME/.config/ycm/global.py
+RUN sudo chown -R $USER:$USER $HOME/.config/git

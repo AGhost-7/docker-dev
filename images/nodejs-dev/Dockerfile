@@ -1,6 +1,6 @@
 # vim: set ft=dockerfile
 
-ARG BASE_TAG=jammy
+ARG BASE_TAG=noble
 
 FROM docker.io/aghost7/dev-base:$BASE_TAG
 
@@ -12,9 +12,7 @@ COPY ./zshrc-additions.sh /tmp/zshrc-additions.sh
 
 COPY ./build.sh /tmp/build.sh
 
-COPY ./plugin.vim /tmp/plugin.vim
-
-COPY ./post-pluggin.vim /tmp/post-plugin.vim
+COPY ./nodejs.lua "$HOME/.config/nvim/lua/plugins/nodejs.lua"
 
 COPY ./repl /usr/local/bin/repl
 

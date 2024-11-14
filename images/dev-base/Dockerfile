@@ -55,7 +55,7 @@ COPY ./inputrc "$HOME/.inputrc"
 
 RUN sudo chown "$USER":"$USER" "$HOME/.inputrc"
 
-CMD ["/usr/bin/zsh"]
+CMD ["tmux", "new"]
 
 ENV XDG_CONFIG_HOME "$HOME/.config"
 
@@ -77,3 +77,6 @@ COPY ./setup-nvim.sh /tmp/setup-nvim.sh
 RUN bash /tmp/setup-nvim.sh && sudo rm /tmp/setup-nvim.sh
 
 ENV IMAGE_CLASS=base
+
+# fixes potential permission issues
+RUN mkdir -p ~/workspace
