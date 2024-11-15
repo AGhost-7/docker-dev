@@ -1,4 +1,4 @@
-source <(kubectl completion bash)
+source <(kubectl completion zsh)
 
 alias k='kubectl'
 alias kcu='kubectl config use-context'

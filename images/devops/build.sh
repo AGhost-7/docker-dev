@@ -4,25 +4,17 @@ set -eo pipefail
 
 . /etc/os-release
 
+set -x
+
 sudo apt-get update
 
 # {{{ kubectl
-curl --create-dirs -L -o ~/.local/bin/kubectl https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+curl -L --create-dirs -o ~/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x ~/.local/bin/kubectl
 # }}}
 
-# {{{ command line dashboard for kubernetes
-curl -L -o /tmp/k9s.tar.gz \
-	https://github.com/derailed/k9s/releases/download/v0.21.7/k9s_Linux_x86_64.tar.gz
-mkdir -p /tmp/k9s
-tar xvf /tmp/k9s.tar.gz -C /tmp/k9s
-sudo mv /tmp/k9s/k9s /usr/local/bin
-rm -rf /tmp/k9s
-rm /tmp/k9s.tar.gz
-# }}}
-
 # {{{ install helm
-curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.12.0-linux-amd64.tar.gz
+curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.16.3-linux-amd64.tar.gz
 tar xvf /tmp/helm.tar.gz -C /tmp
 mv /tmp/linux-amd64/helm ~/.local/bin/helm
 rm -rf /tmp/{helm.tar.gz,linux-amd64}
@@ -54,10 +46,6 @@ sudo apt-get install -y --no-install-recommends vault
 sudo setcap cap_ipc_lock= /usr/bin/vault
 # }}}
 
-# {{{ lsp server
-sudo apt-get install -y --no-install-recommends terraform-ls
-# }}}
-
 # {{{ install terraform switcher
 echo 'bin = "/home/aghost-7/.local/bin/terraform"' > ~/.tfswitch.toml
 mkdir -p ~/.terraform.versions /tmp/tfswitch
@@ -73,7 +61,7 @@ pipx inject azure-cli setuptools
 # }}}
 
 # {{{ azure aks authentication
-curl -L -o /tmp/kubelogin.zip https://github.com/Azure/kubelogin/releases/download/v0.0.25/kubelogin-linux-amd64.zip
+curl -L -o /tmp/kubelogin.zip https://github.com/Azure/kubelogin/releases/download/v0.1.4/kubelogin-linux-amd64.zip
 cd /tmp
 unzip /tmp/kubelogin.zip
 mv bin/linux_amd64/kubelogin ~/.local/bin
@@ -88,18 +76,9 @@ sudo ./aws/install
 rm -rf ~/{awscliv2.zip,aws}
 # }}}
 
-# {{{ vim additions
-for file in plugin.vim post-plugin.vim; do
-	cat "/tmp/$file" >> "$HOME/.config/nvim/$file"
-	sudo rm -f "/tmp/$file"
-done
-
-nvim +PlugInstall +qall
-# }}}
-
 # {{{ bash additions
-cat /tmp/bashrc-additions.sh >> ~/.bashrc
-sudo rm /tmp/bashrc-additions.sh
+cat /tmp/zshrc-additions.sh >> ~/.zshrc
+sudo rm /tmp/zshrc-additions.sh
 # }}}
 
 # {{{ firewall tool
