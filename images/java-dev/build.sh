@@ -17,16 +17,6 @@ sudo unzip -d /opt /tmp/gradle.zip
 sudo mv /opt/gradle* /opt/gradle/
 # }}}
 
-# {{{ java completer
-curl -L -o /tmp/jdtls.tar.gz https://download.eclipse.org/jdtls/milestones/1.11.0/jdt-language-server-1.11.0-202205051421.tar.gz
-mkdir /tmp/jdtls
-tar xvf /tmp/jdtls.tar.gz -C /tmp/jdtls
-sudo mv /tmp/jdtls $JDTLS_HOME
-sudo chown -R 0:0 $JDTLS_HOME
-rm /tmp/jdtls.tar.gz
-cp -r $JDTLS_HOME/config_linux $HOME/.config/jdtls
-# }}}
-
 # {{{ checkstyle
 curl -L --create-dirs \
 	-o $HOME/.local/share/checkstyle/checkstyle.jar \
@@ -40,13 +30,6 @@ SCRIPT
 chmod +x ~/.local/bin/checkstyle
 # }}}
 
-ycm-install --java-completer
-
-for file in post-plugin.vim plugin.vim; do
-	cat "/tmp/$file" >> "$HOME/.config/nvim/$file";
-	sudo rm "/tmp/$file";
-done
-
-nvim +PlugInstall +qall
+nvim -c 'lua require("lazy").sync(); vim.cmd("qall")'
 
 sudo rm -rf /var/lib/apt/lists/*
