@@ -1,7 +1,5 @@
 FROM docker.io/aghost7/dev-base:noble
 
-USER aghost-7
-
 ENV IMAGE_CLASS rust
 
 RUN sudo apt-get update && \
@@ -12,18 +10,10 @@ RUN sudo apt-get update && \
 	sudo apt-get clean && \
 	sudo rm -rf /var/lib/apt/lists/*
 
-COPY ./plugin.vim /tmp/plugin.vim
+COPY ./rust.lua $HOME/.config/nvim/lua/plugins/rust.lua
+RUN sudo chown -R $USER:$USER $HOME/.config/nvim/lua/plugins
 
-RUN cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim && \
-	nvim +PlugInstall +qall && \
-	sudo rm /tmp/plugin.vim
-
-COPY ./post-plugin.vim /tmp/post-plugin.vim
-
-RUN cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim && \
-	sudo rm /tmp/post-plugin.vim
-
-ENV RUST_DEFAULT_TOOLCHAIN=nightly
+ENV RUST_DEFAULT_TOOLCHAIN=stable
 
 COPY ./zshrc-additions.sh /tmp/zshrc-additions.sh
 RUN cat /tmp/zshrc-additions.sh >> ~/.zshrc && sudo rm /tmp/zshrc-additions.sh

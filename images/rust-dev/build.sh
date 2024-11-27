@@ -15,10 +15,4 @@ cargo install cargo-watch
 rustup component add rust-src --toolchain "$RUST_DEFAULT_TOOLCHAIN"
 
 # Install new plugins.
-nvim +PlugInstall +qall
-
-# Install racer completer with ycmd
-sudo apt-get update
-ycm-install --rust-completer
-sudo apt-get clean
-sudo rm -rf /var/lib/apt/lists/*
+nvim -c 'lua require("lazy").sync(); vim.cmd("qall")'
