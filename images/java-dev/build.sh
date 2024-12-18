@@ -12,7 +12,7 @@ sudo tar xvf /tmp/maven.tar.gz -C /opt/maven/ --strip-component=1
 # }}}
 
 # {{{ gradle
-curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-7.4.2-all.zip
+curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.11.1-all.zip
 sudo unzip -d /opt /tmp/gradle.zip
 sudo mv /opt/gradle* /opt/gradle/
 # }}}
