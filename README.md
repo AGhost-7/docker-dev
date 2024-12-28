@@ -8,10 +8,10 @@ To run, just:
 docker run -ti aghost7/nodejs-dev:boron tmux new
 ```
 
-Alternatively, if on Linux:
+Alternatively, using [slipway](https://github.com/AGhost-7/slipway):
 ```
 python3 -m pip install --user slipway
-slipway start aghost7/nodejs-dev:carbon
+slipway start aghost7/nodejs-dev:noble
 ```
 
 ## Terminal
@@ -24,67 +24,27 @@ Lately, I've been using [alacritty][alacritty]. You can find my configurations
 ## Images
 
 ### Language Images
-- `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
-already installed. It is also configured to allow passwordless `sudo` just like
-those vagrant images. Tags available:
-	- `focal`: Ubuntu Focal Fossa (20.04) image.
-- `power-tmux`: Powerline + Tmux. Based from the `ubuntu-dev-base` image.
-Images available:
-	- `focal`
-- `nvim`: NeoVim image. Based from `ubuntu-tmux`. Language agnostic vim
-setup (no language-specific plugins in there). Images available:
-	- `focal`
+Only the `:noble` tag is currently maintained.
+- `dev-base`: Ubuntu base image with neovim and tmux.
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `focal-erbium`: Ubuntu 20.04 + NodeJs 12.
-    - `focal-fermium`: Ubuntu 20.04 + NodeJs 14.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
-	- `focal-stable` uses rust stable with YouCompleteMe backed by only racer.
-	- `focal-nightly` uses rust nightly with deoplete backed by RLS.
 - `py-dev`: Python configuration with autocomplete for python and ptpython.
-	- `focal`: Ubuntu 20.04 + python 3.8
-- `ruby-dev`: Ruby image with language server. Tags:
-	- `focal`: Ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
-	- `focal`: Ubuntu 20.04 + clangd
 - `deno-dev`: Ubuntu Bionic image for deno development with bash completions.
 Tags Available:
-	- `bionic`: Ubuntu 18.4 + Deno v1.0 
 - `devops`: Python image with additional tools (e.g., terraform) for devops
-related tasks. Images available:
-	- `focal`
+related tasks.
 	
 ### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
-version:
-	- `9.6`
-	- `10`
-	- `11`
-- `my-dev`: MySql image with mycli utility. Tags correspond to the mysql
-version:
-	- `5.6`
-	- `5.7`
-	- `8.0`
+version.
 - `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
-Tags correspond to the mongdb version:
-	- `4.1`
-- `redis-dev`: Redis image with [iredis][iredis] included. Tags available:
-	- `6`
+Tags correspond to the mongdb version.
 
 [mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
 [iredis]: https://github.com/laixintao/iredis
 
-## Vim Configuration
-Vim configurations are broken down into three parts:
-- `init.vim`: This is the equivalent for `.vimrc` in NeoVim.
-- `plugin.vim`: This contains all plugins which will be installed using 
-`vim.plug`.
-- `post-plugin.vim`: Contains all plugin-specific configurations for Neovim.
-Configurations which aren't plugin-specific reside in the `init.vim` file.
-
-Breaking it down this way allows one to just run
-`cat addition.vim >> $XDG_CONFIG_PATH/file` to add new plugins and configs for
-specific programing languages and libraries.
 
 ## Calling Docker on the Host
 The docker daemon run over a socket. The command line tool is just a client to

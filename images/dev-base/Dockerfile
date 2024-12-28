@@ -12,7 +12,10 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # install man pages, etc
-RUN yes | unminimize || true
+RUN apt-get update && \
+    apt-get install unminimize -y && \
+    yes | unminimize && \
+    rm -rf /var/lib/apt/lists
 
 # squash image due to unminimize re-installing a lot of packages
 FROM scratch
