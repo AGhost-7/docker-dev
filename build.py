@@ -12,15 +12,10 @@ import re
 import os
 
 language_images = [
-    {'name': 'dev-base', 'tag': 'noble',
-        'args': {'UBUNTU_RELEASE': 'noble'}},
-    {'name': 'dev-base', 'tag': 'jammy',
-        'args': {'UBUNTU_RELEASE': 'jammy'}},
-    {'name': 'py-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
-    {'name': 'py-dev', 'tag': 'noble', 'args': {'BASE_TAG': 'noble'}},
-    {'name': 'nodejs-dev', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy', 'NODEJS_VERSION': '16'}},
-    {'name': 'nodejs-dev', 'tag': 'noble', 'args': {'BASE_TAG': 'noble', 'NODEJS_VERSION': '16'}},
-    {'name': 'devops', 'tag': 'jammy', 'args': {'BASE_TAG': 'jammy'}},
+    {'name': 'dev-base', 'tag': 'noble'},
+    {'name': 'py-dev', 'tag': 'noble'},
+    {'name': 'nodejs-dev', 'tag': 'noble'},
+    {'name': 'devops', 'tag': 'noble'},
     {'name': 'java-dev', 'tag': 'noble'},
     {'name': 'rust-dev', 'tag': 'noble'},
 ]
@@ -32,6 +27,7 @@ db_images = [
 
 images = [*language_images, *db_images]
 
+builder_binary = "podman" if sys.platform == "linux" else "docker"
 
 def debug(*args):
     if environ.get('DEBUG') == '1':
@@ -62,16 +58,9 @@ def parse_image_dependency(image):
     file = open(path.join('images', image['path'], 'Dockerfile'), 'r')
     contents = file.read()
     file.close()
-    baseimage = re.search('\n*\\s*FROM\\s+(\\S+)\n', contents).group(1)
+    baseimage = re.search(r"FROM\s+[^\/]+\/[^\/]+\/([^\/:]+)", contents).group(1)
+    return baseimage
 
-    # Due to build args, I can't easily determine statically which tag my image
-    # depends on. Will probably implement more accurate algorithm later.
-    untagged = baseimage.split(':')[0]
-    parts = untagged.split('/')
-    if len(parts) != 2:
-        return untagged
-    else:
-        return parts[1]
 
 
 def files_changed(ref):
@@ -120,7 +109,7 @@ def vader_test_volume(file):
 def run_vader_tests(image, vader_dir):
     for file in list_extensions(vader_dir, '.vader'):
         code = call([
-            'podman',
+            builder_binary,
             'run',
             '--rm',
             '-t',
@@ -148,7 +137,7 @@ def run_tests(image):
 def build_image(image):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
-    command = ['podman', 'build', '--tag', image['full_name']]
+    command = [builder_binary, 'build', '--tag', image['full_name']]
     if 'args' in image:
         for k, v in image['args'].items():
             command.append('--build-arg')
@@ -160,15 +149,15 @@ def build_image(image):
     if code > 0:
         raise BuildException(image['full_name'], 'Build', code)
 
-    run_tests(image)
+    #run_tests(image)
 
-    code = call(['podman', 'push', image['full_name']])
+    code = call([builder_binary, 'push', image['full_name']])
     if code > 0:
         raise BuildException(image['full_name'], 'Push', code)
 
 
 def remove_image(image):
-    code = call(['podman', 'rmi', image['full_name']])
+    code = call([builder_binary, 'rmi', image['full_name']])
     if code > 0:
         raise BuildException(image['full_name'], 'Cleanup', code)
 

@@ -1,4 +1,4 @@
-FROM docker.io/aghost7/dev-base:jammy
+FROM docker.io/aghost7/dev-base:noble
 
 ENV IMAGE_CLASS c
 
