@@ -25,6 +25,18 @@ vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 
+vim.g.clipboard = {
+    name = 'xclip-nvim',
+    copy = {
+        ['+'] = {'xclip', '-quiet', '-i', '-selection', 'clipboard'},
+        ['*'] = {'xclip', '-quiet', '-i', '-selection', 'primary'},
+    },
+    paste = {
+        ['+'] = {'xclip', '-o', '-selection', 'clipboard'},
+        ['*'] = {'xclip', '-o', '-selection', 'primary'},
+    }
+}
+
 -- {{{ configure plugins
 require("lazy").setup({
   spec = {
