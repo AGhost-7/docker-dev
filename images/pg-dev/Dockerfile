@@ -1,7 +1,6 @@
 
-ARG PG_VERSION=9.6
 
-FROM docker.io/library/postgres:$PG_VERSION
+FROM docker.io/library/postgres:16
 
 ENV TERM screen-256color
 
@@ -14,4 +13,3 @@ RUN /tmp/build.sh $PG_VERSION && \
 	rm /tmp/build.sh
 
 COPY pgcliconfig /root/.config/pgcli/config
-

@@ -13,3 +13,5 @@ vi = True
 syntax_style = monokai
 
 auto_expand = True
+
+keyring = False

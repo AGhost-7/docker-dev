@@ -21,7 +21,7 @@ language_images = [
 ]
 
 db_images = [
-    {'name': 'pg-dev', 'tag': '15', 'args': {'PG_VERSION': '15'}},
+    {'name': 'pg-dev', 'tag': '16'},
     {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}},
 ]
 
