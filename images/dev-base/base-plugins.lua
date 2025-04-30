@@ -151,6 +151,7 @@ return {
         keys = {
             { "gd", vim.lsp.buf.definition },
             { "gD", vim.lsp.buf.references },
+            { "gi", vim.lsp.buf.implementation },
             { "K", vim.lsp.buf.hover, },
         },
         config = function(_, opts)
