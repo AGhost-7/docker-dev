@@ -18,7 +18,7 @@ sudo chown "$USER:$USER" "$HOME/.editorconfig"
 sudo apt-get update
 
 # Install neovim
-curl -L -o /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64.tar.gz
+curl -L -o /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz
 sudo tar xvf /tmp/nvim.tar.gz -C /usr/local --strip-components=1
 rm -rf /tmp/nvim.tar.gz
 sudo pip install --break-system-package pynvim
