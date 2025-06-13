@@ -10,7 +10,7 @@ apt-get install -y \
 	postgresql-server-dev-16 \
 	git
 
-pip install --break-system-packages pgcli
+pip install --break-system-packages pgcli Pygments
 
 apt-get purge python3-dev postgresql-server-dev-16 build-essential git -y
 apt-get autoremove -y
