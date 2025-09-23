@@ -2,8 +2,12 @@
 
 set -exo pipefail
 
+
+curl -o- https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+. /etc/os-release
+echo "deb https://packages.adoptium.net/artifactory/deb $VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/adoptium.list
 sudo apt-get update
-sudo apt-get install -y openjdk-17-jdk-headless
+sudo apt-get install -y temurin-21-jdk
 
 # {{{ maven
 curl -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz

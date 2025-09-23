@@ -14,11 +14,10 @@ chmod +x ~/.local/bin/kubectl
 # }}}
 
 # {{{ install helm
-curl -L -o /tmp/helm.tar.gz https://get.helm.sh/helm-v3.16.3-linux-amd64.tar.gz
-tar xvf /tmp/helm.tar.gz -C /tmp
-mv /tmp/linux-amd64/helm ~/.local/bin/helm
-rm -rf /tmp/{helm.tar.gz,linux-amd64}
-export PATH="$PATH:$HOME/.local/bin"
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
 # }}}
 
 # {{{ install helm diff
