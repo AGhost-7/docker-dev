@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get install -y temurin-21-jdk
 
 # {{{ maven
-curl -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+curl -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz
 sudo mkdir /opt/maven
 sudo tar xvf /tmp/maven.tar.gz -C /opt/maven/ --strip-component=1
 # }}}
