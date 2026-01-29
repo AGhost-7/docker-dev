@@ -13,12 +13,32 @@ vim.g.slime_target = "tmux"
 -- skip certain file types
 vim.g.EditorConfig_exclude_patterns = {"fugitive://.*", "scp://.*"}
 
+-- faster hover for diagnostics (default is 4000ms)
+vim.o.updatetime = 300
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      focus = false,
+      scope = "cursor",
+    })
+  end,
+})
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 local map = vim.keymap.set
 
 return {
     -- color theme
     {
-        "morhetz/gruvbox",
+        "ellisonleao/gruvbox.nvim",
         config = function()
             vim.cmd([[colorscheme gruvbox]])
         end,
@@ -109,8 +129,13 @@ return {
     {'tpope/vim-fugitive'},
     -- Github integration for fugitive
     {'tpope/vim-rhubarb'},
-    -- diagnostics. type check error, linter, etc.
-    {'folke/trouble.nvim'},
+    -- diagnostics list
+    {
+        'folke/trouble.nvim',
+        config = function()
+            map('n', '<leader>t', function() require("trouble").open("diagnostics") end)
+        end,
+    },
     -- autocomplete and stuff
     {
         "neovim/nvim-lspconfig",

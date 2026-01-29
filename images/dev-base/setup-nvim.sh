@@ -35,6 +35,12 @@ apt-install exuberant-ctags
 # Install editorconfig cli needed for vim plugin
 apt-install editorconfig
 
+# used by neovim telescope
+curl -L -o /tmp/ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz
+tar xvf /tmp/ripgrep.tar.gz -C /tmp --strip-components=1
+mv /tmp/rg "$HOME/.local/bin/rg"
+rm -rf /tmp/*
+
 # Cleanups
 sudo apt-get purge software-properties-common -y
 sudo apt-get autoremove -y
