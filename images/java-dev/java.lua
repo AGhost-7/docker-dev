@@ -2,9 +2,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {"williamboman/mason-lspconfig.nvim"},
-        opts = {
-          jdtls = {}
-        }
+        opts = function(_, opts)
+          opts.jdtls = {}
+        end
     },
     {
         "williamboman/mason-lspconfig.nvim",

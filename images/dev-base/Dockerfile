@@ -52,7 +52,7 @@ COPY build.sh /tmp/build.sh
 COPY zshrc /tmp/zshrc
 
 RUN bash /tmp/build.sh && \
-	sudo rm /tmp/build.sh
+	sudo rm -rf /tmp/*
 
 COPY ./inputrc "$HOME/.inputrc"
 
@@ -67,7 +67,7 @@ ENV TMUX_VERSION 3.1
 COPY ./tmux.conf "$HOME/.config/tmux/tmux.conf"
 COPY ./tmux-setup.sh /tmp/tmux-setup.sh
 
-RUN bash /tmp/tmux-setup.sh && sudo rm /tmp/tmux-setup.sh
+RUN bash /tmp/tmux-setup.sh && sudo rm -f /tmp/*
 
 
 COPY init.lua "$HOME/.config/nvim/init.lua"
@@ -77,7 +77,7 @@ COPY ./.editorconfig "$HOME/.editorconfig"
 
 COPY ./setup-nvim.sh /tmp/setup-nvim.sh
 
-RUN bash /tmp/setup-nvim.sh && sudo rm /tmp/setup-nvim.sh
+RUN bash /tmp/setup-nvim.sh && sudo rm -rf /tmp/*
 
 ENV IMAGE_CLASS=base
 

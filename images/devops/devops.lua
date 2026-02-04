@@ -2,9 +2,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {"williamboman/mason-lspconfig.nvim"},
-        opts = {
-          terraformls = {},
-        }
+        opts = function(_, opts)
+          opts.terraformls = {}
+        end
     },
     {
         "williamboman/mason-lspconfig.nvim",

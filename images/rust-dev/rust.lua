@@ -3,9 +3,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {"williamboman/mason-lspconfig.nvim"},
-        opts = {
-          rust_analyzer = {}
-        }
+        opts = function(_, opts)
+          opts.rust_analyzer = {}
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
