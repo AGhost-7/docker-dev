@@ -161,13 +161,12 @@ return {
               }
             }
         },
-        keys = {
-            { "gd", vim.lsp.buf.definition },
-            { "gD", vim.lsp.buf.references },
-            { "gi", vim.lsp.buf.implementation },
-            { "K", vim.lsp.buf.hover, },
-        },
         config = function(_, opts)
+            map('n', 'gd', vim.lsp.buf.definition)
+            map('n', 'gD', vim.lsp.buf.references)
+            map('n', 'gi', vim.lsp.buf.implementation)
+            map('n', 'K', vim.lsp.buf.hover)
+
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             for name, cfg in pairs(opts) do

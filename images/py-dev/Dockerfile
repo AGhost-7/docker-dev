@@ -11,7 +11,7 @@ COPY ./python.lua $HOME/.config/nvim/lua/plugins/python.lua
 COPY ./build.sh /tmp/build.sh
 
 RUN /tmp/build.sh && \
-	sudo rm /tmp/build.sh
+	sudo rm -rf /tmp/*
 
 COPY ./ptpython.py "$HOME/.ptpython/config.py"
 
