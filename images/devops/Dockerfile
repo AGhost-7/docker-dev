@@ -1,6 +1,7 @@
 ARG BASE_TAG=noble
+ARG BASE_IMAGE=docker.io/aghost7/py-dev
 
-FROM docker.io/aghost7/py-dev:$BASE_TAG
+FROM $BASE_IMAGE:$BASE_TAG
 
 ENV IMAGE_CLASS devops
 

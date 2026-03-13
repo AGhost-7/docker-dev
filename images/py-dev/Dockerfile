@@ -1,6 +1,7 @@
 ARG BASE_TAG=noble
+ARG BASE_IMAGE=docker.io/aghost7/dev-base
 
-FROM docker.io/aghost7/dev-base:$BASE_TAG
+FROM $BASE_TAG:$BASE_TAG
 
 USER aghost-7
 

@@ -1,6 +1,7 @@
 ARG BASE_TAG=noble
+ARG BASE_IMAGE=docker.io/aghost7/dev-base
 
-FROM docker.io/aghost7/dev-base:$BASE_TAG
+FROM $BASE_IMAGE:$BASE_TAG
 
 ENV IMAGE_CLASS java
 

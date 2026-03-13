@@ -58,8 +58,12 @@ def parse_image_dependency(image):
     file = open(path.join('images', image['path'], 'Dockerfile'), 'r')
     contents = file.read()
     file.close()
-    baseimage = re.search(r"FROM\s+[^\/]+\/[^\/]+\/([^\/:]+)", contents).group(1)
-    return baseimage
+    base_image_match = re.search("ARG BASE_IMAGE=([^\s]+)", contents)
+    if base_image_match is None:
+        base_image = re.search(r"FROM\s+[^\/]+\/[^\/]+\/([^\/:]+)", contents).group(1)
+    else:
+        base_image = base_image_match.group(1)
+    return base_image
 
 
 
