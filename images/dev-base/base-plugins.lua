@@ -242,4 +242,6 @@ return {
     },
     -- autocomplete source for lsp
     {"hrsh7th/cmp-nvim-lsp"},
+    -- nicer git diff
+    {"sindrets/diffview.nvim"},
 }
