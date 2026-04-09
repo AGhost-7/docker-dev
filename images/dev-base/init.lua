@@ -24,6 +24,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.colorcolumn = "90"
 
 vim.g.clipboard = {
     name = 'xclip-nvim',
