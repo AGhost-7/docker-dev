@@ -18,6 +18,7 @@ language_images = [
     {'name': 'devops', 'tag': 'noble'},
     {'name': 'java-dev', 'tag': 'noble'},
     {'name': 'rust-dev', 'tag': 'noble'},
+    {'name': 'elixir-dev', 'tag': 'noble'},
 ]
 
 db_images = [
