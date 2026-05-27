@@ -9,7 +9,8 @@ set -x
 sudo apt-get update
 
 # {{{ kubectl
-curl -L --create-dirs -o ~/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+if [ "$(uname -m)" = "x86_64" ]; then arch=amd64 else arch=arm64 fi
+curl -L --create-dirs -o ~/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/$arch/kubectl"
 chmod +x ~/.local/bin/kubectl
 # }}}
 
@@ -48,7 +49,11 @@ sudo setcap cap_ipc_lock= /usr/bin/vault
 # {{{ install terraform switcher
 echo 'bin = "/home/aghost-7/.local/bin/terraform"' > ~/.tfswitch.toml
 mkdir -p ~/.terraform.versions /tmp/tfswitch
-curl -Lo /tmp/tfswitch/tfswitch.tar.gz https://github.com/warrensbox/terraform-switcher/releases/download/0.13.1288/terraform-switcher_0.13.1288_linux_amd64.tar.gz
+url=https://github.com/warrensbox/terraform-switcher/releases/download/v1.18.0/terraform-switcher_v1.18.0_linux_arm64.tar.gz
+if [ "$(uname -m)" = "x86_64" ]; then
+	url=https://github.com/warrensbox/terraform-switcher/releases/download/v1.18.0/terraform-switcher_v1.18.0_linux_arm64.tar.gz
+fi
+curl -Lo /tmp/tfswitch/tfswitch.tar.gz "$url"
 tar xvf /tmp/tfswitch/tfswitch.tar.gz -C /tmp/tfswitch
 mv /tmp/tfswitch/tfswitch ~/.local/bin/tfswitch
 rm -rf /tmp/tfswitch
@@ -60,6 +65,10 @@ pipx inject azure-cli setuptools
 # }}}
 
 # {{{ azure aks authentication
+url=https://github.com/Azure/kubelogin/releases/download/v0.2.17/kubelogin-linux-arm64.zip
+if [ "$(uname -m)" = "x86_64" ]; then
+	url=https://github.com/Azure/kubelogin/releases/download/v0.2.17/kubelogin-linux-amd64.zip
+fi
 curl -L -o /tmp/kubelogin.zip https://github.com/Azure/kubelogin/releases/download/v0.1.4/kubelogin-linux-amd64.zip
 cd /tmp
 unzip /tmp/kubelogin.zip
