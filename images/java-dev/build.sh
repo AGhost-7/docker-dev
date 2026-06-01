@@ -3,11 +3,13 @@
 set -exo pipefail
 
 
+# {{{ jdk
 curl -o- https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
 . /etc/os-release
 echo "deb https://packages.adoptium.net/artifactory/deb $VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/adoptium.list
 sudo apt-get update
 sudo apt-get install -y temurin-21-jdk
+# }}}
 
 # {{{ maven
 curl -L -o /tmp/maven.tar.gz https://archive.apache.org/dist/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
@@ -16,9 +18,7 @@ sudo tar xvf /tmp/maven.tar.gz -C /opt/maven/ --strip-component=1
 # }}}
 
 # {{{ gradle
-curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.11.1-all.zip
-sudo unzip -d /opt /tmp/gradle.zip
-sudo mv /opt/gradle* /opt/gradle/
+sudo apt-get install -y gradle
 # }}}
 
 # {{{ checkstyle
