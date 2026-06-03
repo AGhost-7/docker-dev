@@ -18,7 +18,11 @@ sudo chown "$USER:$USER" "$HOME/.editorconfig"
 sudo apt-get update
 
 # Install neovim
-curl -L -o /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz
+url=https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz
+if [ $(uname -m) == "aarch64" ]; then
+	url=https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-arm64.tar.gz
+fi
+curl -L -o /tmp/nvim.tar.gz "$url"
 sudo tar xvf /tmp/nvim.tar.gz -C /usr/local --strip-components=1
 rm -rf /tmp/nvim.tar.gz
 sudo pip install --break-system-package pynvim
@@ -36,7 +40,11 @@ apt-install exuberant-ctags
 apt-install editorconfig
 
 # used by neovim telescope
-curl -L -o /tmp/ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz
+url=https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz
+if [ $(uname -m) == "aarch64" ]; then
+	url=https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
+fi
+curl -L -o /tmp/ripgrep.tar.gz "$url"
 tar xvf /tmp/ripgrep.tar.gz -C /tmp --strip-components=1
 mv /tmp/rg "$HOME/.local/bin/rg"
 

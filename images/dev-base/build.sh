@@ -128,7 +128,7 @@ apt-install swaks
 # get lines of code in a directory
 url=https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-aarch64-unknown-linux-gnu.tar.gz
 if [ "$(uname -m)" = "x86_64" ]; then
-	url=https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-aarch64-unknown-linux-gnu.tar.gz
+	url=https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
 fi
 curl -L -o ~/tokei.tar.gz "$url" 
 tar xvf ~/tokei.tar.gz -C ~/
