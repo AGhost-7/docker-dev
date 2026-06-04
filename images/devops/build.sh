@@ -36,15 +36,6 @@ fi
 sudo ln -s /usr/bin/python3 /usr/bin/python
 # }}}
 
-# {{{ install hashicorp vault
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://apt.releases.hashicorp.com $VERSION_CODENAME main" | \
-	sudo tee /etc/apt/sources.list.d/vault.list
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends vault
-# https://github.com/hashicorp/vault/issues/10048#issuecomment-706315167
-sudo setcap cap_ipc_lock= /usr/bin/vault
-# }}}
 
 # {{{ install terraform switcher
 echo 'bin = "/home/aghost-7/.local/bin/terraform"' > ~/.tfswitch.toml
