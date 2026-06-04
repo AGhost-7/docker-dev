@@ -9,7 +9,7 @@ set -x
 sudo apt-get update
 
 # {{{ kubectl
-if [ "$(uname -m)" = "x86_64" ]; then arch=amd64 else arch=arm64 fi
+if [ "$(uname -m)" = "x86_64" ]; then arch=amd64; else arch=arm64; fi
 curl -L --create-dirs -o ~/.local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/$arch/kubectl"
 chmod +x ~/.local/bin/kubectl
 # }}}
