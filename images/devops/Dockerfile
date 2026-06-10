@@ -13,7 +13,7 @@ COPY ./devops.lua $HOME/.config/nvim/lua/plugins/devops.lua
 RUN /tmp/build.sh && sudo rm /tmp/build.sh
 
 # store session and stuff
-RUN mkdir -p $HOME/.azure $HOME/.kube $HOME/.terraform.version
+RUN mkdir -p $HOME/.azure $HOME/.kube $HOME/.terraform.versions
 VOLUME $HOME/.azure
 VOLUME $HOME/.kube
 VOLUME $HOME/.terraform.versions

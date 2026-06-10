@@ -22,7 +22,7 @@ sudo apt-get install helm
 # }}}
 
 # {{{ install helm diff
-helm plugin install https://github.com/databus23/helm-diff
+helm plugin install --verify=false https://github.com/databus23/helm-diff
 # }}}
 
 # {{{ ansible

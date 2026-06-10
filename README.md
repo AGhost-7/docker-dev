@@ -34,6 +34,8 @@ Only the `:noble` tag is currently maintained.
 Tags Available:
 - `devops`: Python image with additional tools (e.g., terraform) for devops
 related tasks.
+- `e2e-dev`: `nodejs-dev` with extra stuff to write end to end tests with playwright,
+cucumber, etc.
 	
 ### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
