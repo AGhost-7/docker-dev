@@ -16,7 +16,7 @@ install-tmux() {
 	git clone --branch "$TMUX_VERSION" --depth 1 https://github.com/tmux/tmux.git "$tmux_src"
 	pushd "$tmux_src"
 	# libevent is a run-time requirement. *-dev are for the header files.
-	apt-install libevent-2.1-7 libevent-dev libncurses-dev autoconf automake pkg-config bison
+	apt-install libevent-2.1-7 libevent-core-2.1-7t64 libevent-dev libncurses-dev autoconf automake pkg-config bison
 	sh autogen.sh
 	./configure
 	make

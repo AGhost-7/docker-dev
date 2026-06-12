@@ -62,7 +62,7 @@ CMD ["tmux", "new"]
 
 ENV XDG_CONFIG_HOME "$HOME/.config"
 
-ENV TMUX_VERSION 3.1
+ENV TMUX_VERSION 3.6
 
 COPY ./tmux.conf "$HOME/.config/tmux/tmux.conf"
 COPY ./tmux-setup.sh /tmp/tmux-setup.sh
