@@ -10,6 +10,7 @@ from subprocess import call, check_output
 import sys
 import re
 import os
+from argparse import ArgumentParser
 
 language_images = [
     {'name': 'dev-base', 'tag': 'noble'},
@@ -139,7 +140,7 @@ def run_tests(image):
             run_vader_tests(image, vader_dir)
 
 
-def build_image(image):
+def build_image(image, no_push):
     print('\033[1;33mBuilding image: {}\033[0;0m'.format(image['full_name']))
     sys.stdout.flush()
     command = [builder_binary, 'build', '--tag', image['full_name']]
@@ -156,9 +157,10 @@ def build_image(image):
 
     #run_tests(image)
 
-    code = call([builder_binary, 'push', image['full_name']])
-    if code > 0:
-        raise BuildException(image['full_name'], 'Push', code)
+    if not no_push:
+        code = call([builder_binary, 'push', image['full_name']])
+        if code > 0:
+            raise BuildException(image['full_name'], 'Push', code)
 
 
 def remove_image(image):
@@ -248,16 +250,23 @@ def error_exit(error):
         file=sys.stderr)
     sys.exit(error.code)
 
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument("--no-push", action='store_true', default=False)
+    parser.add_argument('committish')
+    return parser.parse_args()
+
 
 if __name__ == "__main__":
+    args = parse_args()
     expand_images_config(images)
-    changes = changed_images(images, sys.argv[1])
+    changes = changed_images(images, args.committish)
     plan = build_plan(images, changes)
     print_plan(plan)
     last_error = None
     for image in plan:
         try:
-            build_image(image)
+            build_image(image, args.no_push)
         except BuildException as error:
             last_error = error
             if not image['leaf']:
