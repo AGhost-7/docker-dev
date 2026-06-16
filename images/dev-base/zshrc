@@ -8,7 +8,10 @@ DISABLE_UPDATE_PROMPT="true"
 source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.local/bin"
-export TERM=screen-256color
+
+if [ "$TERM" = "alacritty" ]; then
+    export TERM=xterm-256color
+fi
 
 export FZF_DEFAULT_OPTS='--color=light,hl:12,hl+:15,info:10,bg+:4'
 
