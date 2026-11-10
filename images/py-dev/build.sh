@@ -13,9 +13,9 @@ poetry config virtualenvs.in-project true
 
 sudo chown -R $USER:$USER ~/.config/nvim
 
-url=https://releases.astral.sh/github/uv/releases/download/0.11.16/uv-aarch64-unknown-linux-gnu.tar.gz
+url=https://releases.astral.sh/github/uv/releases/download/0.13.7/uv-aarch64-unknown-linux-gnu.tar.gz
 if [ "$(uname -m)" = "x86_64" ]; then
-	url=https://releases.astral.sh/github/uv/releases/download/0.11.16/uv-x86_64-unknown-linux-gnu.tar.gz
+	url=https://releases.astral.sh/github/uv/releases/download/0.13.7/uv-x86_64-unknown-linux-gnu.tar.gz
 fi
 curl -o /tmp/uv.tar.gz -L "$url"
 tar xvf /tmp/uv.tar.gz -C /tmp --strip-components=1

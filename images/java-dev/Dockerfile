@@ -5,6 +5,9 @@ FROM $BASE_IMAGE:$BASE_TAG
 
 ENV IMAGE_CLASS java
 
+# when using host networking, gradle cli isnt able to connect to the daemon
+ENV GRADLE_DAEMON_BIND_ADDRESS=127.0.0.1
+
 RUN mkdir -p $HOME/.m2/repository
 VOLUME $HOME/.m2/repository
 COPY ./build.sh /tmp/build.sh
